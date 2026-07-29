@@ -6,7 +6,7 @@ of a pipeline.
 Planned sequence:
 
 1. `01_data_audit.ipynb` — complete data audit and time-aware EDA
-2. `02_baseline_models.ipynb`
+2. `02_baseline_models.ipynb` — Plotly review of packaged baseline artifacts
 3. `03_sensor_ablation.ipynb`
 4. `04_robustness.ipynb`
 5. `05_explainability_and_cost.ipynb`

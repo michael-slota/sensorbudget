@@ -115,6 +115,17 @@ python -m sensorbudget.data.build
 The build writes `data/processed/occupancy.csv` and a generated provenance
 manifest. Both are reproducible local artifacts and remain outside Git.
 
+Train and evaluate leakage-safe baseline models:
+
+```powershell
+python -m sensorbudget.modeling.train
+```
+
+This performs expanding chronological validation inside the supplied training
+period, selects one all-sensor and one no-Light finalist, and then evaluates
+only those finalists on the two held-out periods. Generated models, metrics,
+predictions, and metadata are written under `models/baseline/`.
+
 ## Working principles
 
 - Preserve temporal ordering during validation.
@@ -127,6 +138,6 @@ manifest. Both are reproducible local artifacts and remain outside Git.
 
 ## Current status
 
-The project scaffold, EDA, reusable data loader, validation contract, checksum
-verification, and processed-data builder are complete. Leakage-safe baseline
-modeling is the next milestone in the [roadmap](docs/roadmap.md).
+The project scaffold, EDA, validated data pipeline, and leakage-safe baseline
+comparison are complete. Sensor-subset experiments are the next milestone in
+the [roadmap](docs/roadmap.md).

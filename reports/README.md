@@ -6,7 +6,7 @@ and are excluded from version control by default.
 Reports:
 
 - `data_quality.md` — initial source audit and EDA findings
-- `baseline_results.md`
+- `baseline_results.md` — chronological model comparison and held-out results
 - `sensor_ablation_results.md`
 - `robustness_results.md`
 - `final_report.md`

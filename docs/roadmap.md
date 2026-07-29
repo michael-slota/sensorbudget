@@ -82,6 +82,9 @@ risks before model selection begins.
 
 **Suggested duration:** 2–3 days
 
+**Status:** Core baseline comparison complete; model card and extended error
+analysis remain.
+
 Tasks:
 
 - Add dummy and rule-based baselines.

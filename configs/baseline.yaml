@@ -19,14 +19,31 @@ features:
     - HumidityRatio
   add_calendar_features: false
   add_lag_features: false
+  feature_sets:
+    all_sensors:
+      - Temperature
+      - Humidity
+      - Light
+      - CO2
+      - HumidityRatio
+    no_light:
+      - Temperature
+      - Humidity
+      - CO2
+      - HumidityRatio
 
 model:
-  name: logistic_regression
-  class_weight: balanced
-  max_iter: 1000
+  candidates:
+    - dummy_prior
+    - logistic_regression
+    - decision_tree
+    - random_forest
+    - hist_gradient_boosting
 
 evaluation:
   primary_metric: f1
+  chronological_cv_splits: 5
+  decision_threshold: 0.5
   metrics:
     - precision
     - recall

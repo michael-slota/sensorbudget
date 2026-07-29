@@ -1,2 +1,1 @@
-"""Model training, prediction, and evaluation."""
-
+"""Leakage-safe model training, selection, and evaluation."""
