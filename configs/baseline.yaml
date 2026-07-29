@@ -1,0 +1,37 @@
+project:
+  name: sensorbudget
+  random_seed: 42
+
+data:
+  raw_dir: data/raw/occupancy
+  processed_dir: data/processed
+  timestamp_column: date
+  target_column: Occupancy
+  id_column: id
+  preserve_supplied_splits: true
+
+features:
+  sensor_columns:
+    - Temperature
+    - Humidity
+    - Light
+    - CO2
+    - HumidityRatio
+  add_calendar_features: false
+  add_lag_features: false
+
+model:
+  name: logistic_regression
+  class_weight: balanced
+  max_iter: 1000
+
+evaluation:
+  primary_metric: f1
+  metrics:
+    - precision
+    - recall
+    - f1
+    - balanced_accuracy
+    - average_precision
+    - roc_auc
+
