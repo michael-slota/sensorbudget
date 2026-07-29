@@ -28,7 +28,7 @@ explain = [
     "shap>=0.45",
 ]
 app = [
-    "streamlit>=1.36",
+    "dash>=3.0",
 ]
 
 [project.scripts]

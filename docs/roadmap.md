@@ -181,11 +181,8 @@ objective rather than the default value of 0.5.
 
 **Suggested duration:** 2–4 days
 
-Choose one:
-
-- Streamlit demonstration;
-- batch-scoring command;
-- small REST API.
+Build a Plotly Dash application that uses the packaged prediction interface.
+Retain a batch-scoring command for reproducibility and automation.
 
 Complete:
 
@@ -193,6 +190,9 @@ Complete:
 - reproducibility instructions;
 - architecture diagram;
 - polished report;
+- interactive sensor inputs and occupancy probability display;
+- model and sensor-subset comparison views;
+- input validation and clear out-of-range warnings;
 - CI for linting and tests;
 - optional container image.
 
