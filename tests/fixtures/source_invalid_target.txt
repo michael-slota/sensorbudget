@@ -1,0 +1,2 @@
+"date","Temperature","Humidity","Light","CO2","HumidityRatio","Occupancy"
+"1","2015-02-04 17:51:00",23,27,400,700,0.0047,2

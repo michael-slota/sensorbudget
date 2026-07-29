@@ -63,7 +63,7 @@ experiments.
 Raw files should remain unchanged after download. Their expected location is:
 
 ```text
-data/raw/occupancy/
+data/raw/
 ├── datatraining.txt
 ├── datatest.txt
 └── datatest2.txt
@@ -98,9 +98,6 @@ ROC-AUC, confusion matrices, calibration, inference cost, and robustness.
 
 ## Quick start
 
-The repository currently provides the project design and source skeleton.
-Implementation is staged in the roadmap.
-
 ```powershell
 python -m venv .venv
 .\.venv\Scripts\Activate.ps1
@@ -108,12 +105,15 @@ python -m pip install -e ".[dev]"
 pytest
 ```
 
-When the ingestion command is implemented:
+Validate the imported source files and build the processed dataset:
 
 ```powershell
-python -m sensorbudget.data.download
 python -m sensorbudget.data.validate
+python -m sensorbudget.data.build
 ```
+
+The build writes `data/processed/occupancy.csv` and a generated provenance
+manifest. Both are reproducible local artifacts and remain outside Git.
 
 ## Working principles
 
@@ -127,5 +127,6 @@ python -m sensorbudget.data.validate
 
 ## Current status
 
-Project design and repository scaffold are complete. Phase 1 in the
-[roadmap](docs/roadmap.md) is the next implementation milestone.
+The project scaffold, EDA, reusable data loader, validation contract, checksum
+verification, and processed-data builder are complete. Leakage-safe baseline
+modeling is the next milestone in the [roadmap](docs/roadmap.md).

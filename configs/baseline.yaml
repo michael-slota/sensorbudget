@@ -3,11 +3,11 @@ project:
   random_seed: 42
 
 data:
-  raw_dir: data/raw/occupancy
+  raw_dir: data/raw
   processed_dir: data/processed
   timestamp_column: date
   target_column: Occupancy
-  id_column: id
+  id_column: source_row_id
   preserve_supplied_splits: true
 
 features:
@@ -34,4 +34,3 @@ evaluation:
     - balanced_accuracy
     - average_precision
     - roc_auc
-

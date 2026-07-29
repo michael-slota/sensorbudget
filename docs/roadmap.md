@@ -21,6 +21,8 @@ and success criteria from the documentation alone.
 
 **Suggested duration:** 1–2 days
 
+**Status:** Complete
+
 Tasks:
 
 - Run `notebooks/01_data_audit.ipynb` as the initial source-file inspection.
@@ -33,8 +35,10 @@ Tasks:
 
 Deliverables:
 
-- `src/sensorbudget/data/download.py`
+- `src/sensorbudget/data/load.py`
 - `src/sensorbudget/data/validate.py`
+- `src/sensorbudget/data/provenance.py`
+- `src/sensorbudget/data/build.py`
 - `reports/data_quality.md`
 - automated data-contract tests
 

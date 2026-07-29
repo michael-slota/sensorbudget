@@ -1,0 +1,8 @@
+{
+  "files": {
+    "sample.bin": {
+      "bytes": 13,
+      "sha256": "not-the-actual-hash"
+    }
+  }
+}

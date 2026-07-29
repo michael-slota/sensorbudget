@@ -6,7 +6,7 @@ than treated as a substitute for validation.
 
 | Variable | Role | Meaning | Unit | Modeling note |
 |---|---|---|---|---|
-| `id` | Identifier | Row identifier | — | Exclude from features |
+| `source_row_id` | Identifier | Row identifier from the source file | — | Exclude from features; unique only within a source split |
 | `date` | Feature | Observation timestamp | datetime | Preserve for ordering; derive calendar features cautiously |
 | `Temperature` | Feature | Room air temperature | °C | Slowly varying |
 | `Humidity` | Feature | Relative humidity | % | Related to humidity ratio |
@@ -28,4 +28,3 @@ Candidates should be added incrementally and evaluated through ablation:
 
 Calendar variables can inflate apparent performance by learning the observed
 office schedule. Always report results both with and without them.
-

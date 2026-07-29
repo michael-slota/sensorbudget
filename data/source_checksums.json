@@ -1,0 +1,22 @@
+{
+  "source": {
+    "name": "UCI Occupancy Detection",
+    "url": "https://archive.ics.uci.edu/dataset/357/occupancy%2Bdetection",
+    "doi": "10.24432/C5X01N",
+    "license": "CC BY 4.0"
+  },
+  "files": {
+    "datatraining.txt": {
+      "bytes": 596674,
+      "sha256": "b2c4d0ce2b9e4e453c476f7125ef31aeec2d1f5c7f5572d0e80de3df6521ab56"
+    },
+    "datatest.txt": {
+      "bytes": 200766,
+      "sha256": "1b92c7c1b2838963464fa891a610cf3c5db4becb7189189b29b330107a584c7f"
+    },
+    "datatest2.txt": {
+      "bytes": 699664,
+      "sha256": "d026d1bd5aeccd4aff4f3b3710d48e40613bd5fc370db7e61bbdcaa50d985095"
+    }
+  }
+}

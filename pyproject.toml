@@ -31,6 +31,10 @@ app = [
     "streamlit>=1.36",
 ]
 
+[project.scripts]
+sensorbudget-build-data = "sensorbudget.data.build:main"
+sensorbudget-validate-data = "sensorbudget.data.validate:main"
+
 [tool.setuptools.packages.find]
 where = ["src"]
 

@@ -1,2 +1,1 @@
-"""Data acquisition, parsing, and validation."""
-
+"""Data loading, validation, provenance, and build utilities."""
