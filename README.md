@@ -1,5 +1,7 @@
 # SensorBudget
 
+[![CI](https://github.com/michael-slota/sensorbudget/actions/workflows/ci.yml/badge.svg)](https://github.com/michael-slota/sensorbudget/actions/workflows/ci.yml)
+
 SensorBudget is an applied machine-learning project for detecting office
 occupancy from environmental sensors while asking a practical question:
 
@@ -9,6 +11,29 @@ occupancy from environmental sensors while asking a practical question:
 The project uses the UCI Occupancy Detection dataset, which contains
 time-stamped temperature, humidity, light, CO2, humidity-ratio, and binary
 occupancy observations.
+
+## Headline baseline results
+
+Five classifiers were compared using expanding chronological validation. The
+selected all-sensor histogram gradient boosting model was then evaluated on
+two untouched, later test periods at the default 0.5 decision threshold.
+
+| Held-out period | F1 | Precision | Recall | ROC-AUC |
+|---|---:|---:|---:|---:|
+| Test 1 | **0.930** | 0.940 | 0.920 | 0.990 |
+| Test 2 | **0.883** | 0.830 | 0.943 | 0.991 |
+
+Removing the Light sensor reduced F1 to 0.832 on Test 1 and 0.546 on Test 2,
+showing that sensor cost and robustness cannot be judged from aggregate model
+accuracy alone. See the
+[full baseline report](reports/baseline_results.md) for validation variability,
+confusion counts, limitations, and reproduction details.
+
+### Headline visualization
+
+> **Plotly chart placeholder:** the upcoming sensor-budget experiment will add
+> a model-performance-versus-sensor-cost chart here. It will compare sensor
+> subsets and highlight the Pareto-efficient deployment choices.
 
 ## Project goals
 
@@ -88,7 +113,7 @@ identified. This project parses the source files, combines their supplied
 splits for analysis, validates their contents, and creates derived model
 artifacts. The original raw files are not committed to this repository.
 
-## Proposed modeling approach
+## Modeling methodology
 
 The primary evaluation uses the dataset's chronological train/test periods.
 Randomly splitting individual rows is not suitable for final reporting because
