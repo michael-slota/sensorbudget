@@ -31,9 +31,9 @@ confusion counts, limitations, and reproduction details.
 
 ### Headline visualization
 
-> **Plotly chart placeholder:** the upcoming sensor-budget experiment will add
-> a model-performance-versus-sensor-cost chart here. It will compare sensor
-> subsets and highlight the Pareto-efficient deployment choices.
+> **Plotly chart placeholder:** the next reporting step will add a
+> model-performance-versus-sensor-cost chart here. It will compare the measured
+> sensor subsets and highlight the Pareto-efficient deployment choices.
 
 ## Project goals
 
@@ -168,6 +168,17 @@ period, selects one all-sensor and one no-Light finalist, and then evaluates
 only those finalists on the two held-out periods. Generated models, metrics,
 predictions, and metadata are written under `models/baseline/`.
 
+Evaluate all physical-sensor combinations against the versioned relative-cost
+scenario:
+
+```powershell
+python -m sensorbudget.modeling.sensor_budget
+```
+
+This selects one model per combination using chronological validation, then
+reports each selected model on the two later test periods. Generated artifacts
+are written under `models/sensor_budget/`.
+
 ## Working principles
 
 - Preserve temporal ordering during validation.
@@ -181,8 +192,12 @@ predictions, and metadata are written under `models/baseline/`.
 ## Current status
 
 The project scaffold, EDA, validated data pipeline, and leakage-safe baseline
-comparison are complete. Sensor-subset experiments are the next milestone in
-the [roadmap](docs/roadmap.md).
+comparison are complete. The sensor-budget phase now evaluates every non-empty
+combination of four physical sensors; cost sensitivity, robustness testing,
+and the final decision remain. See the [roadmap](docs/roadmap.md) and
+[initial sensor-budget results](reports/sensor_budget_results.md). The
+interactive analysis is presented in
+[`notebooks/03_sensor_budget_analysis.ipynb`](notebooks/03_sensor_budget_analysis.ipynb).
 
 ## License
 

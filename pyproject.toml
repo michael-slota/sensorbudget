@@ -33,6 +33,7 @@ app = [
 
 [project.scripts]
 sensorbudget-build-data = "sensorbudget.data.build:main"
+sensorbudget-run-sensor-budget = "sensorbudget.modeling.sensor_budget:main"
 sensorbudget-train-baselines = "sensorbudget.modeling.train:main"
 sensorbudget-validate-data = "sensorbudget.data.validate:main"
 

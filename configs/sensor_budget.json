@@ -1,0 +1,45 @@
+{
+  "cost_unit": "illustrative relative cost points",
+  "cost_note": "These values are transparent scenario assumptions, not vendor prices. They represent a simplified combination of purchase, integration, calibration, and operating burden. Conclusions should be sensitivity-tested before any procurement decision.",
+  "physical_sensors": {
+    "temperature": {
+      "cost": 1.0,
+      "features": ["Temperature"]
+    },
+    "humidity": {
+      "cost": 1.0,
+      "features": ["Humidity"]
+    },
+    "light": {
+      "cost": 0.5,
+      "features": ["Light"]
+    },
+    "co2": {
+      "cost": 4.0,
+      "features": ["CO2"]
+    }
+  },
+  "derived_features": {
+    "HumidityRatio": {
+      "requires": ["temperature", "humidity"],
+      "incremental_cost": 0.0
+    }
+  },
+  "feature_sets": [
+    ["temperature"],
+    ["humidity"],
+    ["light"],
+    ["co2"],
+    ["temperature", "humidity"],
+    ["temperature", "light"],
+    ["temperature", "co2"],
+    ["humidity", "light"],
+    ["humidity", "co2"],
+    ["light", "co2"],
+    ["temperature", "humidity", "light"],
+    ["temperature", "humidity", "co2"],
+    ["temperature", "light", "co2"],
+    ["humidity", "light", "co2"],
+    ["temperature", "humidity", "light", "co2"]
+  ]
+}

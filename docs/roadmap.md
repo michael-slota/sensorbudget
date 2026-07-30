@@ -111,6 +111,10 @@ data has not influenced tuning.
 
 **Suggested duration:** 3–4 days
 
+**Status:** In progress; all 15 physical-sensor combinations now have a
+reproducible evaluation pipeline and initial measured results. Cost
+sensitivity, the Pareto chart, and the final recommendation remain.
+
 Run the predefined ablations:
 
 1. All sensors.
@@ -127,7 +131,8 @@ predictive quality against cost and identify the Pareto frontier.
 
 Deliverables:
 
-- ablation results table;
+- ablation results table (complete);
+- `notebooks/03_sensor_budget_analysis.ipynb` (complete);
 - performance-versus-cost chart;
 - recommendation for full-performance and budget deployments.
 
