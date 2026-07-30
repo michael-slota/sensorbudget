@@ -45,9 +45,11 @@ signal still requires failure and shortcut-robustness testing.
 
 ### Headline visualization
 
-> **Plotly chart placeholder:** the next reporting step will add a
-> model-performance-versus-sensor-cost chart here. It will compare the measured
-> sensor subsets and highlight the Pareto-efficient deployment choices.
+![Validation performance versus illustrative sensor cost](images/performance_vs_sensor_cost.png)
+
+Validation performance versus illustrative sensor cost. Connected points form
+the Pareto frontier: no cheaper configuration achieves a higher mean
+validation F1. Costs are scenario assumptions rather than market prices.
 
 ## Project goals
 
