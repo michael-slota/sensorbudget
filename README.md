@@ -12,7 +12,7 @@ The project uses the UCI Occupancy Detection dataset, which contains
 time-stamped temperature, humidity, light, CO2, humidity-ratio, and binary
 occupancy observations.
 
-## Headline baseline results
+## Headline results
 
 Five classifiers were compared using expanding chronological validation. The
 selected all-sensor histogram gradient boosting model was then evaluated on
@@ -29,6 +29,20 @@ accuracy alone. See the
 [full baseline report](reports/baseline_results.md) for validation variability,
 confusion counts, limitations, and reproduction details.
 
+The subsequent sensor-budget experiment evaluated all 15 non-empty
+combinations of four physical sensors. Under the current illustrative costs,
+the chronological-validation Pareto frontier is:
+
+| Physical sensors | Relative cost | Mean validation F1 |
+|---|---:|---:|
+| Light | 0.5 | 0.755 |
+| Humidity + Light | 1.5 | 0.756 |
+| Temperature + Light + CO2 | 5.5 | 0.780 |
+
+These three configurations remain on the frontier in all five tested cost
+scenarios. This is not yet a deployment recommendation: the strong Light
+signal still requires failure and shortcut-robustness testing.
+
 ### Headline visualization
 
 > **Plotly chart placeholder:** the next reporting step will add a
@@ -42,7 +56,7 @@ confusion counts, limitations, and reproduction details.
 3. Quantify the value and risk of relying on the light sensor.
 4. Test robustness to sensor noise, missing readings, drift, and failure.
 5. Select a model using both predictive quality and operational cost.
-6. Package the final pipeline as a reproducible portfolio project.
+6. Package the final pipeline as a reproducible software project.
 
 ## Repository layout
 
@@ -179,6 +193,13 @@ This selects one model per combination using chronological validation, then
 reports each selected model on the two later test periods. Generated artifacts
 are written under `models/sensor_budget/`.
 
+Recalculate the validation Pareto frontier under alternative relative-cost
+scenarios without retraining the models:
+
+```powershell
+python -m sensorbudget.modeling.cost_sensitivity
+```
+
 ## Working principles
 
 - Preserve temporal ordering during validation.
@@ -191,11 +212,11 @@ are written under `models/sensor_budget/`.
 
 ## Current status
 
-The project scaffold, EDA, validated data pipeline, and leakage-safe baseline
-comparison are complete. The sensor-budget phase now evaluates every non-empty
-combination of four physical sensors; cost sensitivity, robustness testing,
-and the final decision remain. See the [roadmap](docs/roadmap.md) and
-[initial sensor-budget results](reports/sensor_budget_results.md). The
+The project scaffold, EDA, validated data pipeline, leakage-safe baseline
+comparison, complete sensor ablation, and five-scenario cost-sensitivity
+analysis are implemented. Robustness testing and the final deployment decision
+remain. See the [roadmap](docs/roadmap.md) and
+[sensor-budget results](reports/sensor_budget_results.md). The
 interactive analysis is presented in
 [`notebooks/03_sensor_budget_analysis.ipynb`](notebooks/03_sensor_budget_analysis.ipynb).
 

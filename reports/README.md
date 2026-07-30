@@ -5,9 +5,13 @@ and are excluded from version control by default.
 
 Reports:
 
-- `data_quality.md` — initial source audit and EDA findings
+- `data_quality.md` — source audit and time-aware EDA findings
 - `baseline_results.md` — chronological model comparison and held-out results
-- `sensor_ablation_results.md`
+- `sensor_budget_results.md` — physical-sensor ablation, cost-performance
+  frontier, and cost-scenario sensitivity
+
+Planned reports:
+
 - `robustness_results.md`
 - `final_report.md`
 - `model_card.md`

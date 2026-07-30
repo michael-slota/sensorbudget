@@ -101,3 +101,27 @@ In particular, strong results from Light should be interpreted as evidence
 that lighting state is a powerful occupancy proxy in this room. Robustness
 tests must still examine daylight, lights left on, automation, and sensor
 failure before Light-only deployment could be recommended.
+
+## Cost-scenario sensitivity
+
+After the main experiment, recalculate frontier membership without retraining:
+
+```powershell
+python -m sensorbudget.modeling.cost_sensitivity
+```
+
+The scenario definitions are versioned in
+[`configs/cost_scenarios.json`](../configs/cost_scenarios.json). The command
+writes detailed scenario results, frontier rows, membership frequencies, and
+configuration checksums under `models/sensor_budget/`.
+
+| Scenario | Temperature | Humidity | Light | CO2 |
+|---|---:|---:|---:|---:|
+| Current assumptions | 1.0 | 1.0 | 0.5 | 4.0 |
+| Equal sensor costs | 1.0 | 1.0 | 1.0 | 1.0 |
+| Cheaper CO2 | 1.0 | 1.0 | 0.5 | 1.5 |
+| High Light cost (extreme case) | 1.0 | 1.0 | 5.0 | 4.0 |
+| High-maintenance CO2 | 1.0 | 1.0 | 0.5 | 8.0 |
+
+Except for the equal-cost scenario, each alternative changes only the sensor
+named by the scenario. The other three retain their current assumed costs.

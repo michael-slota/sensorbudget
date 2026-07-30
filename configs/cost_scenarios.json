@@ -1,0 +1,41 @@
+{
+  "cost_unit": "illustrative relative cost points",
+  "note": "These scenarios test whether conclusions depend on assumed relative sensor costs. They are not vendor quotations or procurement estimates.",
+  "scenarios": {
+    "current_assumptions": {
+      "label": "Current assumptions",
+      "temperature": 1.0,
+      "humidity": 1.0,
+      "light": 0.5,
+      "co2": 4.0
+    },
+    "equal_sensor_costs": {
+      "label": "Equal sensor costs",
+      "temperature": 1.0,
+      "humidity": 1.0,
+      "light": 1.0,
+      "co2": 1.0
+    },
+    "cheaper_co2": {
+      "label": "Cheaper CO2",
+      "temperature": 1.0,
+      "humidity": 1.0,
+      "light": 0.5,
+      "co2": 1.5
+    },
+    "high_light_cost_extreme": {
+      "label": "High Light cost (extreme case)",
+      "temperature": 1.0,
+      "humidity": 1.0,
+      "light": 5.0,
+      "co2": 4.0
+    },
+    "high_maintenance_co2": {
+      "label": "High-maintenance CO2",
+      "temperature": 1.0,
+      "humidity": 1.0,
+      "light": 0.5,
+      "co2": 8.0
+    }
+  }
+}

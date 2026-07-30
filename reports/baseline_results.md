@@ -95,9 +95,10 @@ These results support two conclusions:
 - The Light relationship may change under daylight, automated lighting, or
   sensor failure.
 
-Next, perform the planned sensor-subset ablations and error analysis. Threshold
-optimization and calibration should use training-period validation—not the
-held-out tests reported here.
+The subsequent sensor-subset ablations and cost-scenario analysis are reported
+in `reports/sensor_budget_results.md`. Robustness, threshold, and calibration
+decisions should use training-period validation—not the held-out tests
+reported here.
 
 ## Reproduction
 

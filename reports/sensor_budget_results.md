@@ -78,6 +78,32 @@ cover important lighting failures. Phase 5 should test lights left on while
 unoccupied, dark occupancy, sensor loss, noise, and drift before choosing a
 deployment configuration.
 
+## Cost-scenario sensitivity
+
+The frontier was recalculated under five illustrative scenarios: current
+assumptions, equal sensor costs, cheaper CO2, an extreme high-Light-cost case,
+and high-maintenance CO2. Models were not retrained because costs do not alter
+the validation predictions.
+
+The cheaper-CO2 scenario changes CO2 from 4.0 to 1.5 while Temperature,
+Humidity, and Light remain 1.0, 1.0, and 0.5. The extreme high-Light-cost case
+changes Light from 0.5 to 5.0 while the other current assumptions remain
+unchanged. The high-maintenance scenario changes only CO2, from 4.0 to 8.0.
+
+| Physical sensors | Frontier scenarios | Share |
+|---|---:|---:|
+| Light | 5 of 5 | 100% |
+| Humidity + Light | 5 of 5 | 100% |
+| Temperature + Light + CO2 | 5 of 5 | 100% |
+| Temperature | 1 of 5 | 20% |
+| CO2 | 1 of 5 | 20% |
+
+The original three frontier points remain efficient in every tested scenario.
+Temperature and CO2 enter only in the deliberately extreme high-Light-cost
+case. This supports stability across the named assumptions, but
+does not cover all possible prices, shared sensor hardware, volume discounts,
+or non-additive installation and maintenance costs.
+
 ## Limitations
 
 - Relative costs are scenario assumptions and require sensitivity analysis.
