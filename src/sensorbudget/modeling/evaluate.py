@@ -99,12 +99,14 @@ def time_series_cross_validate(
     *,
     n_splits: int = DEFAULT_CV_SPLITS,
     threshold: float = DEFAULT_THRESHOLD,
-) -> pd.DataFrame:
+    return_predictions: bool = False,
+) -> pd.DataFrame | tuple[pd.DataFrame, pd.DataFrame]:
     """Evaluate every model and feature set on expanding chronological folds."""
 
     ordered = training_frame.sort_values("date").reset_index(drop=True)
     splitter = TimeSeriesSplit(n_splits=n_splits)
     rows: list[dict[str, Any]] = []
+    prediction_frames: list[pd.DataFrame] = []
 
     for fold, (train_indices, validation_indices) in enumerate(
         splitter.split(ordered),
@@ -151,7 +153,23 @@ def time_series_cross_validate(
                     }
                 )
 
-    return pd.DataFrame(rows)
+                if return_predictions:
+                    predictions = validation[
+                        ["source_row_id", "date", "source_split", TARGET_COLUMN]
+                    ].copy()
+                    predictions.insert(0, "fold", fold)
+                    predictions.insert(1, "feature_set", feature_set_name)
+                    predictions.insert(2, "model", model_name)
+                    predictions["probability_occupied"] = probability
+                    predictions["predicted_occupancy"] = (
+                        probability >= threshold
+                    ).astype(int)
+                    prediction_frames.append(predictions)
+
+    metrics_frame = pd.DataFrame(rows)
+    if not return_predictions:
+        return metrics_frame
+    return metrics_frame, pd.concat(prediction_frames, ignore_index=True)
 
 
 def summarize_cross_validation(fold_metrics: pd.DataFrame) -> pd.DataFrame:

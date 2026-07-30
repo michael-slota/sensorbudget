@@ -57,6 +57,31 @@ def test_time_series_validation_preserves_fold_order() -> None:
     assert (metrics["validation_start"] > frame["date"].min()).all()
 
 
+def test_time_series_validation_can_return_row_probabilities() -> None:
+    frame = pd.DataFrame(
+        {
+            "source_row_id": range(12),
+            "source_split": ["train"] * 12,
+            "date": pd.date_range("2026-01-01", periods=12, freq="min"),
+            "Temperature": np.linspace(20, 22, 12),
+            "Occupancy": [0, 0, 1, 1] * 3,
+        }
+    )
+
+    metrics, predictions = time_series_cross_validate(
+        frame,
+        {"dummy": DummyClassifier(strategy="prior")},
+        {"temperature": ["Temperature"]},
+        n_splits=3,
+        return_predictions=True,
+    )
+
+    assert len(metrics) == 3
+    assert len(predictions) == 9
+    assert predictions["fold"].nunique() == 3
+    assert predictions["probability_occupied"].between(0, 1).all()
+
+
 def test_cv_summary_and_selection_use_mean_f1() -> None:
     folds = pd.DataFrame(
         {
@@ -77,4 +102,3 @@ def test_cv_summary_and_selection_use_mean_f1() -> None:
     selected = select_best_models(summary)
 
     assert selected == {"all": "b"}
-

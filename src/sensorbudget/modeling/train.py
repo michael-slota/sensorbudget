@@ -74,12 +74,13 @@ def train_baselines(
 
     training = frames["train"].sort_values("date").reset_index(drop=True)
     estimators = build_baseline_estimators(random_seed)
-    fold_metrics = time_series_cross_validate(
+    fold_metrics, cv_predictions = time_series_cross_validate(
         training,
         estimators,
         FEATURE_SETS,
         n_splits=n_splits,
         threshold=threshold,
+        return_predictions=True,
     )
     cv_summary = summarize_cross_validation(fold_metrics)
     selected = select_best_models(cv_summary)
@@ -87,6 +88,7 @@ def train_baselines(
     output = Path(output_dir)
     output.mkdir(parents=True, exist_ok=True)
     write_table(output / "cv_fold_metrics.csv", fold_metrics)
+    write_table(output / "cv_predictions.csv", cv_predictions)
     write_table(output / "cv_summary.csv", cv_summary)
 
     heldout_rows = []
@@ -173,6 +175,7 @@ def train_baselines(
     write_json(output / "metadata.json", metadata)
     return {
         "fold_metrics": fold_metrics,
+        "cv_predictions": cv_predictions,
         "cv_summary": cv_summary,
         "selected_models": selected,
         "heldout_metrics": heldout_metrics,

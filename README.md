@@ -50,7 +50,8 @@ sensorbudget/
 
 See [docs/roadmap.md](docs/roadmap.md) for the phased delivery plan and
 [docs/experiment_catalog.md](docs/experiment_catalog.md) for suggested
-experiments.
+experiments. See [docs/model_training.md](docs/model_training.md) for a
+step-by-step explanation of the baseline ML pipeline.
 
 ## Dataset
 

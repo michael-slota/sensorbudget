@@ -107,6 +107,5 @@ python -m sensorbudget.modeling.train
 ```
 
 Generated artifacts are written to `models/baseline/` and include fold metrics,
-summary metrics, held-out predictions, fitted model bundles, and environment
-metadata.
-
+row-level chronological validation probabilities, summary metrics, held-out
+predictions, fitted model bundles, and environment metadata.

@@ -101,6 +101,9 @@ Deliverables:
 - confusion matrices and precision-recall curves;
 - initial model card.
 
+Implementation details are documented in `docs/model_training.md`; measured
+results are documented in `reports/baseline_results.md`.
+
 Exit criterion: all models are compared on identical splits and the final test
 data has not influenced tuning.
 
