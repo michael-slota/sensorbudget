@@ -23,29 +23,29 @@ occupancy observations.
 
 ```text
 sensorbudget/
-├── configs/                 # Versioned experiment settings
-├── data/
-│   ├── external/            # Third-party reference data
-│   ├── interim/             # Intermediate transformations
-│   ├── processed/           # Model-ready datasets
-│   └── raw/                 # Immutable source data
-├── docs/
-│   ├── decisions/           # Architecture and methodology decisions
-│   ├── data_dictionary.md
-│   ├── evaluation_plan.md
-│   ├── experiment_catalog.md
-│   └── roadmap.md
-├── models/                  # Serialized models and metadata (not in Git)
-├── notebooks/               # Numbered exploratory notebooks
-├── references/              # Papers, links, and background notes
-├── reports/
-│   └── figures/             # Generated charts
-├── src/sensorbudget/
-│   ├── data/                # Downloading and validation
-│   ├── features/            # Feature engineering
-│   ├── modeling/            # Training, prediction, and evaluation
-│   └── robustness/          # Sensor-fault simulation
-└── tests/                   # Automated tests
+|-- configs/                 # Versioned experiment settings
+|-- data/
+|   |-- external/            # Third-party reference data
+|   |-- interim/             # Intermediate transformations
+|   |-- processed/           # Model-ready datasets
+|   `-- raw/                 # Immutable source data
+|-- docs/
+|   |-- decisions/           # Architecture and methodology decisions
+|   |-- data_dictionary.md
+|   |-- evaluation_plan.md
+|   |-- experiment_catalog.md
+|   `-- roadmap.md
+|-- models/                  # Serialized models and metadata (not in Git)
+|-- notebooks/               # Numbered exploratory notebooks
+|-- references/              # Papers, links, and background notes
+|-- reports/
+|   `-- figures/             # Generated charts
+|-- src/sensorbudget/
+|   |-- data/                # Loading, validation, and provenance
+|   |-- features/            # Feature engineering
+|   |-- modeling/            # Training, prediction, and evaluation
+|   `-- robustness/          # Sensor-fault simulation
+`-- tests/                   # Automated tests
 ```
 
 See [docs/roadmap.md](docs/roadmap.md) for the phased delivery plan and
@@ -65,12 +65,28 @@ Raw files should remain unchanged after download. Their expected location is:
 
 ```text
 data/raw/
-├── datatraining.txt
-├── datatest.txt
-└── datatest2.txt
+|-- datatraining.txt
+|-- datatest.txt
+`-- datatest2.txt
 ```
 
 See [data/README.md](data/README.md) for data-handling rules.
+
+### Dataset attribution and license
+
+The dataset is third-party material and is **not** covered by this project's
+MIT software license.
+
+> Candanedo, L. (2016). *Occupancy Detection* [Dataset]. UCI Machine Learning
+> Repository. https://doi.org/10.24432/C5X01N
+
+The dataset is distributed under the
+[Creative Commons Attribution 4.0 International license](https://creativecommons.org/licenses/by/4.0/)
+(CC BY 4.0). It may be shared and adapted, including for commercial purposes,
+provided appropriate credit is given, the license is linked, and changes are
+identified. This project parses the source files, combines their supplied
+splits for analysis, validates their contents, and creates derived model
+artifacts. The original raw files are not committed to this repository.
 
 ## Proposed modeling approach
 
@@ -142,3 +158,9 @@ predictions, and metadata are written under `models/baseline/`.
 The project scaffold, EDA, validated data pipeline, and leakage-safe baseline
 comparison are complete. Sensor-subset experiments are the next milestone in
 the [roadmap](docs/roadmap.md).
+
+## License
+
+The original software and documentation in this repository are available under
+the [MIT License](LICENSE). The UCI dataset remains subject to its separate
+CC BY 4.0 license and attribution requirements described above.
