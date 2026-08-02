@@ -1,0 +1,17 @@
+{
+  "primary_feature_set": "temperature__light__co2",
+  "fallback_candidates": [
+    "temperature",
+    "co2",
+    "temperature__co2"
+  ],
+  "heldout_splits": ["test_1", "test_2"],
+  "selection_metric": "cv_f1_mean",
+  "stuck_quantiles": {
+    "low": 0.05,
+    "high": 0.95
+  },
+  "drift_std_fractions": [-1.0, -0.5, 0.5, 1.0],
+  "routing_assumption": "Oracle routing: the experiment knows when the simulated Light fault is active and sends the affected period to the fallback model. Fault detection is not implemented in this phase.",
+  "hardware_constraint": "Fallback candidates may use only non-Light sensors already included in the primary physical sensor configuration."
+}

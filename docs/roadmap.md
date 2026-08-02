@@ -147,9 +147,9 @@ deployment configuration.
 
 **Suggested duration:** 3–5 days
 
-**Status:** In progress; the first reproducible fault-injection comparison is
-complete for the three Phase 4 frontier configurations. Mitigation comparisons
-and the reliability decision remain.
+**Status:** In progress; the reproducible fault-injection comparison and an
+initial Light-independent oracle-fallback mitigation are complete. Real fault
+detection, fault-aware retraining, and the reliability decision remain.
 
 Simulate:
 
@@ -168,6 +168,8 @@ Deliverables:
 - robustness test harness (complete);
 - initial degradation curves (complete);
 - initial failure-mode table (complete);
+- training-selected Light-independent fallback comparison (complete);
+- oracle-gated mitigation analysis (complete);
 - reliability recommendation.
 
 Exit criterion: the selected model has documented behavior under every defined

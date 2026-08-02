@@ -11,6 +11,8 @@ Reports:
   frontier, and cost-scenario sensitivity
 - `robustness_results.md` — initial missingness, noise, failure, and drift
   evaluation
+- `fallback_mitigation_results.md` — Light-independent fallback selection and
+  oracle-routing evaluation
 
 Planned reports:
 
