@@ -40,8 +40,14 @@ the chronological-validation Pareto frontier is:
 | Temperature + Light + CO2 | 5.5 | 0.780 |
 
 These three configurations remain on the frontier in all five tested cost
-scenarios. This is not yet a deployment recommendation: the strong Light
-signal still requires failure and shortcut-robustness testing.
+scenarios. Phase 4 makes no sensor recommendation; it records the measured
+trade-offs that will be tested under sensor failures in Phase 5.
+
+Initial Phase 5 fault injection finds that occupied darkness and complete
+Light loss reduce F1 to approximately zero for all three frontier
+configurations. Additional sensors do not provide automatic fallback behavior
+in the currently fitted models. See the
+[robustness report](reports/robustness_results.md) for the full failure matrix.
 
 ### Headline visualization
 
@@ -202,6 +208,12 @@ scenarios without retraining the models:
 python -m sensorbudget.modeling.cost_sensitivity
 ```
 
+Evaluate the Phase 4 frontier configurations under predefined sensor faults:
+
+```powershell
+python -m sensorbudget.robustness.evaluate
+```
+
 ## Working principles
 
 - Preserve temporal ordering during validation.
@@ -215,12 +227,14 @@ python -m sensorbudget.modeling.cost_sensitivity
 ## Current status
 
 The project scaffold, EDA, validated data pipeline, leakage-safe baseline
-comparison, complete sensor ablation, and five-scenario cost-sensitivity
-analysis are implemented. Robustness testing and the final deployment decision
-remain. See the [roadmap](docs/roadmap.md) and
-[sensor-budget results](reports/sensor_budget_results.md). The
-interactive analysis is presented in
-[`notebooks/03_sensor_budget_analysis.ipynb`](notebooks/03_sensor_budget_analysis.ipynb).
+comparison, complete sensor ablation, cost-sensitivity analysis, and initial
+fault-injection evaluation are implemented. Robustness mitigation experiments
+remain, and no final sensor recommendation has been made. See the
+[roadmap](docs/roadmap.md), [sensor-budget results](reports/sensor_budget_results.md),
+and [robustness results](reports/robustness_results.md). Interactive analyses
+are presented in
+[`notebooks/03_sensor_budget_analysis.ipynb`](notebooks/03_sensor_budget_analysis.ipynb)
+and [`notebooks/04_robustness.ipynb`](notebooks/04_robustness.ipynb).
 
 ## License
 

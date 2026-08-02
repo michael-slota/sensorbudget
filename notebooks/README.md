@@ -9,7 +9,8 @@ Notebook sequence:
 2. `02_baseline_models.ipynb` — Plotly review of packaged baseline artifacts
 3. `03_sensor_budget_analysis.ipynb` — sensor ablation, validation Pareto
    frontier, cost scenarios, and held-out stability
-4. `04_robustness.ipynb` — planned sensor-failure analysis
+4. `04_robustness.ipynb` — sensor-failure, missingness, noise, and drift
+   analysis
 5. `05_explainability.ipynb` — planned decision and explanation layer
 
 Move reusable parsing, feature, plotting, and evaluation functions into

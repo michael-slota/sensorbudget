@@ -50,7 +50,7 @@ held-out periods. This does not establish that Light is intrinsically the best
 occupancy sensor: in this dataset, lighting state is nearly a direct proxy for
 the label.
 
-## Current conclusion
+## Current findings — no sensor recommendation
 
 Three configurations form the validation Pareto frontier under the current
 cost assumptions:
@@ -73,10 +73,10 @@ with gains ranging from about 0.059 to 0.543. Because model selection is
 repeated after Light is added, these gains describe the combined sensor-plus-
 model pipeline rather than a purely causal Light effect.
 
-A Light-only recommendation remains premature because the dataset does not
-cover important lighting failures. Phase 5 should test lights left on while
-unoccupied, dark occupancy, sensor loss, noise, and drift before choosing a
-deployment configuration.
+These findings describe frontier membership and measured trade-offs only.
+Phase 4 intentionally does not select or recommend a sensor configuration.
+Phase 5 will test lights left on while unoccupied, dark occupancy, sensor
+loss, noise, and drift.
 
 ## Cost-scenario sensitivity
 

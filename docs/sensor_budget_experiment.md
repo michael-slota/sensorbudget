@@ -34,9 +34,8 @@ never treated as an independently purchasable sensor.
 
 The costs are illustrative relative points, not vendor prices. They represent
 a simplified purchase, integration, calibration, and operating burden. Their
-purpose is to make the decision rule explicit and reproducible. A real
-procurement recommendation requires sourced prices and cost-sensitivity
-analysis.
+purpose is to make the trade-off analysis explicit and reproducible. Phase 4
+does not make a procurement or sensor recommendation.
 
 ## Experiment coverage
 
@@ -92,15 +91,15 @@ Git.
 
 ## Interpretation rule
 
-Cost-performance recommendations must be based on chronological validation,
-not on whichever configuration happens to score highest on a held-out test
-period. The held-out results answer a different question: whether a
+Cost-performance frontiers must be based on chronological validation, not on
+whichever configuration happens to score highest on a held-out test period.
+The held-out results answer a different question: whether a
 validation-selected configuration remains stable during later periods.
 
 In particular, strong results from Light should be interpreted as evidence
-that lighting state is a powerful occupancy proxy in this room. Robustness
-tests must still examine daylight, lights left on, automation, and sensor
-failure before Light-only deployment could be recommended.
+that lighting state is a powerful occupancy proxy in this room. Phase 4 stops
+at that finding. Robustness tests must next examine daylight, lights left on,
+automation, and sensor failure.
 
 ## Cost-scenario sensitivity
 

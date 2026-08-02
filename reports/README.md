@@ -9,10 +9,11 @@ Reports:
 - `baseline_results.md` — chronological model comparison and held-out results
 - `sensor_budget_results.md` — physical-sensor ablation, cost-performance
   frontier, and cost-scenario sensitivity
+- `robustness_results.md` — initial missingness, noise, failure, and drift
+  evaluation
 
 Planned reports:
 
-- `robustness_results.md`
 - `final_report.md`
 - `model_card.md`
 

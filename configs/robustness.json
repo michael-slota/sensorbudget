@@ -1,0 +1,19 @@
+{
+  "comparison_feature_sets": [
+    "light",
+    "humidity__light",
+    "temperature__light__co2"
+  ],
+  "heldout_splits": ["test_1", "test_2"],
+  "random_seed": 42,
+  "random_repeats": 5,
+  "random_missing_rates": [0.01, 0.05, 0.1, 0.2, 0.4],
+  "gaussian_noise_std_fractions": [0.1, 0.25, 0.5, 1.0],
+  "stuck_quantiles": {
+    "low": 0.05,
+    "high": 0.95
+  },
+  "drift_std_fractions": [-1.0, -0.5, 0.5, 1.0],
+  "median_imputation_note": "Random missing values and complete sensor loss are replaced with medians calculated from the supplied training period only.",
+  "light_policy_note": "For diagnostic counterfactuals, unoccupied rows are assigned the occupied-training median Light value and occupied rows are assigned the unoccupied-training median Light value."
+}

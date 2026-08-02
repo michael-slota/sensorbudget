@@ -111,9 +111,10 @@ data has not influenced tuning.
 
 **Suggested duration:** 3–4 days
 
-**Status:** In progress; all 15 physical-sensor combinations and five explicit
-cost scenarios now have reproducible measured results. The static README
-Pareto chart and robustness-informed final recommendation remain.
+**Status:** Complete; all 15 physical-sensor combinations and five explicit
+cost scenarios have reproducible measured results, and the static README
+Pareto chart is published. Phase 4 intentionally makes no final sensor
+recommendation.
 
 Run the predefined ablations:
 
@@ -134,15 +135,21 @@ Deliverables:
 - ablation results table (complete);
 - `notebooks/03_sensor_budget_analysis.ipynb` (complete);
 - cost-scenario sensitivity analysis (complete);
-- performance-versus-cost chart;
-- recommendation for full-performance and budget deployments.
+- performance-versus-cost chart (complete);
+- decision-neutral summary of frontier configurations and trade-offs
+  (complete).
 
-Exit criterion: the project can quantify what is lost when each sensor is
-removed and whether the light sensor is an unacceptable shortcut.
+Exit criterion: the project quantifies what is lost when each sensor is
+removed and identifies shortcut risks to test in Phase 5 without selecting a
+deployment configuration.
 
 ## Phase 5 — Robustness and reliability
 
 **Suggested duration:** 3–5 days
+
+**Status:** In progress; the first reproducible fault-injection comparison is
+complete for the three Phase 4 frontier configurations. Mitigation comparisons
+and the reliability decision remain.
 
 Simulate:
 
@@ -158,9 +165,9 @@ fault augmentation.
 
 Deliverables:
 
-- robustness test harness;
-- degradation curves;
-- failure-mode table;
+- robustness test harness (complete);
+- initial degradation curves (complete);
+- initial failure-mode table (complete);
 - reliability recommendation.
 
 Exit criterion: the selected model has documented behavior under every defined
