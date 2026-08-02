@@ -48,8 +48,10 @@ Exit criterion: one command reproduces validated data from the raw inputs.
 
 **Suggested duration:** 2–3 days
 
-**Status:** Core EDA complete in `notebooks/01_data_audit.ipynb`; reusable
-pipeline extraction remains.
+**Status:** Complete. The time-aware audit, data-quality report, and proxy-risk
+analysis are documented in `notebooks/01_data_audit.ipynb` and
+`reports/data_quality.md`. Plotting code needed by the final dashboard will be
+extracted during Phase 7 rather than treated as unfinished EDA.
 
 Questions:
 
@@ -71,9 +73,10 @@ Suggested figures:
 
 Deliverables:
 
-- `notebooks/01_data_audit.ipynb`
-- `reports/data_quality.md`
-- reusable plotting code moved into `src/`
+- `notebooks/01_data_audit.ipynb` (complete);
+- `reports/data_quality.md` (complete);
+- documented class balance, temporal behavior, split drift, redundancy, and
+  Light proxy risk (complete).
 
 Exit criterion: the analysis identifies likely leakage, drift, and proxy-feature
 risks before model selection begins.
@@ -82,12 +85,15 @@ risks before model selection begins.
 
 **Suggested duration:** 2–3 days
 
-**Status:** Core baseline comparison complete; model card and extended error
-analysis remain.
+**Status:** Complete. The leakage-safe comparison, chronological model
+selection, held-out evaluation, packaged training command, saved artifacts,
+and explanatory notebook are implemented. The final model card belongs to
+Phase 7, after reliability and operating-threshold decisions. Transition-level
+error analysis belongs to Phase 6.
 
 Tasks:
 
-- Add dummy and rule-based baselines.
+- Add a dummy baseline and interpretable learned baseline.
 - Train logistic regression with a fitted preprocessing pipeline.
 - Compare decision tree, random forest, and gradient boosting.
 - Use chronological validation for tuning.
@@ -99,7 +105,8 @@ Deliverables:
 - reproducible training command;
 - baseline comparison table;
 - confusion matrices and precision-recall curves;
-- initial model card.
+- `notebooks/02_baseline_models.ipynb`;
+- `reports/baseline_results.md`.
 
 Implementation details are documented in `docs/model_training.md`; measured
 results are documented in `reports/baseline_results.md`.
@@ -147,9 +154,10 @@ deployment configuration.
 
 **Suggested duration:** 3–5 days
 
-**Status:** In progress; the reproducible fault-injection comparison and an
-initial Light-independent oracle-fallback mitigation are complete. Real fault
-detection, fault-aware retraining, and the reliability decision remain.
+**Status:** In progress. The reproducible fault-injection comparison and
+Light-independent oracle-fallback mitigation are complete. The immediate next
+step is a training-validated Light-health detector and realistic routing
+evaluation. Fault-aware retraining and the reliability conclusion follow.
 
 Simulate:
 
@@ -170,10 +178,16 @@ Deliverables:
 - initial failure-mode table (complete);
 - training-selected Light-independent fallback comparison (complete);
 - oracle-gated mitigation analysis (complete);
+- `notebooks/04_robustness.ipynb` (complete);
+- `notebooks/05_fallback_mitigation.ipynb` (complete);
+- Light-health detector and non-oracle routing evaluation;
+- false-alarm and missed-fault analysis;
+- fault-aware retraining comparison;
 - reliability recommendation.
 
-Exit criterion: the selected model has documented behavior under every defined
-sensor fault.
+Exit criterion: the candidate system has documented behavior under every
+defined sensor fault, including the effect of imperfect fault detection and
+routing.
 
 ## Phase 6 — Decision and explainability layer
 
@@ -202,8 +216,10 @@ objective rather than the default value of 0.5.
 
 **Suggested duration:** 2–4 days
 
-Build a Plotly Dash application that uses the packaged prediction interface.
-Retain a batch-scoring command for reproducibility and automation.
+Build a static Plotly dashboard suite for GitHub Pages using precomputed,
+versioned results. Retain the packaged experiment and batch-scoring commands
+for reproducibility. A server-hosted Plotly Dash application may remain an
+optional extension, but it is not required for the GitHub Pages release.
 
 Complete:
 
@@ -211,14 +227,16 @@ Complete:
 - reproducibility instructions;
 - architecture diagram;
 - polished report;
-- interactive sensor inputs and occupancy probability display;
-- model and sensor-subset comparison views;
-- input validation and clear out-of-range warnings;
+- overview, EDA, model, sensor-budget, robustness, and mitigation pages;
+- interactive static Plotly model and sensor-subset comparison views;
+- methodology, limitations, dataset attribution, and license notices;
+- GitHub Pages deployment workflow;
 - CI for linting and tests;
-- optional container image.
+- optional server-hosted Dash application and container image.
 
-Exit criterion: a new user can install the project, reproduce the headline
-result, and run a prediction from documented commands.
+Exit criterion: a new user can inspect the published dashboard, understand the
+main evidence and limitations, install the project, and reproduce the
+headline results from documented commands.
 
 ## Stretch goals
 
@@ -233,7 +251,7 @@ These should begin only after the core classification study is complete:
 
 ## Suggested headline outputs
 
-For a portfolio-quality final presentation, prioritize:
+For the final standalone project presentation, prioritize:
 
 1. A timeline showing sensor behavior and occupancy transitions.
 2. A model comparison table using chronological evaluation.

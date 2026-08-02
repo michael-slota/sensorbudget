@@ -21,6 +21,8 @@ silently becoming the final evaluation.
 | E13 | What threshold minimizes operational cost? | Validation threshold sweep | Required |
 | E14 | Are probabilities trustworthy? | Calibration analysis and correction | Recommended |
 | E15 | Can occupancy be forecast early? | Shift target by 5/15/30 minutes | Stretch |
+| E16 | Can a non-Light fallback recover severe Light failures? | Training-selected fallback with oracle routing | Required |
+| E17 | Can Light faults be detected well enough to route safely? | Training-tuned health rules with false alarms and missed faults | Required |
 
 ## Required comparison table
 
@@ -41,4 +43,3 @@ Every core experiment should save at least:
 Run `E00`–`E03` first. Complete `E04`, `E05`, and `E08` before adding complex
 features. Robustness experiments `E09`–`E12` should use only a small set of
 finalist models. Run `E13` after the operational cost assumptions are written.
-
