@@ -16,7 +16,8 @@ occupancy observations.
 
 Five classifiers were compared using expanding chronological validation. The
 selected all-sensor histogram gradient boosting model was then evaluated on
-two untouched, later test periods at the default 0.5 decision threshold.
+the two source-provided held-out periods at the default 0.5 decision threshold.
+Test 1 precedes the training period; Test 2 follows it.
 
 | Held-out period | F1 | Precision | Recall | ROC-AUC |
 |---|---:|---:|---:|---:|
@@ -121,6 +122,8 @@ sensorbudget/
 `-- tests/                   # Automated tests
 ```
 
+See the consolidated [model card](reports/model_card.md) for intended use,
+evaluation evidence, known failure modes, and pre-deployment requirements.
 See [docs/roadmap.md](docs/roadmap.md) for the phased delivery plan and
 [docs/experiment_catalog.md](docs/experiment_catalog.md) for suggested
 experiments. See [docs/model_training.md](docs/model_training.md) for a
@@ -224,7 +227,7 @@ python -m sensorbudget.modeling.sensor_budget
 ```
 
 This selects one model per combination using chronological validation, then
-reports each selected model on the two later test periods. Generated artifacts
+reports each selected model on the two held-out source periods. Generated artifacts
 are written under `models/sensor_budget/`.
 
 Recalculate the validation Pareto frontier under alternative relative-cost

@@ -1,5 +1,18 @@
 # Fault-aware training results
 
+> **Project status:** This report completes the Phase 5 mitigation comparison.
+> Detector routing is the strongest tested strategy on average, but the project
+> does not certify it for deployment. See the consolidated
+> [model card](model_card.md).
+
+**Traceability:** Settings are versioned in
+[`configs/fault_aware_training.json`](../configs/fault_aware_training.json),
+the presentation is in
+[`notebooks/07_fault_aware_training.ipynb`](../notebooks/07_fault_aware_training.ipynb),
+and source identity is fixed by
+[`data/source_checksums.json`](../data/source_checksums.json). The Git commit
+containing this report identifies the corresponding code revision.
+
 ## Training-validation selection
 
 Both representations selected logistic regression with a 1% added fault

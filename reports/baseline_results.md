@@ -1,5 +1,18 @@
 # Baseline occupancy model results
 
+> **Project status:** This report records the Phase 3 baseline comparison. The
+> later sensor-budget study selected a separate Temperature + Light + CO2
+> logistic research candidate for Phases 5–6. See the
+> [sensor-budget report](sensor_budget_results.md) and consolidated
+> [model card](model_card.md).
+
+**Traceability:** Settings are versioned in
+[`configs/baseline.yaml`](../configs/baseline.yaml), the presentation is in
+[`notebooks/02_baseline_models.ipynb`](../notebooks/02_baseline_models.ipynb),
+and source identity is fixed by
+[`data/source_checksums.json`](../data/source_checksums.json). The Git commit
+containing this report identifies the corresponding code revision.
+
 ## Experiment design
 
 Five fixed baseline classifiers were compared:

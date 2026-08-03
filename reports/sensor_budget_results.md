@@ -1,5 +1,19 @@
 # Sensor-budget results
 
+> **Project status:** This report records the Phase 4 sensor-subset and
+> illustrative-cost comparison. The planned robustness follow-up is complete;
+> see the [robustness report](robustness_results.md) and consolidated
+> [model card](model_card.md).
+
+**Traceability:** Settings are versioned in
+[`configs/sensor_budget.json`](../configs/sensor_budget.json) and
+[`configs/cost_scenarios.json`](../configs/cost_scenarios.json), the
+presentation is in
+[`notebooks/03_sensor_budget_analysis.ipynb`](../notebooks/03_sensor_budget_analysis.ipynb),
+and source identity is fixed by
+[`data/source_checksums.json`](../data/source_checksums.json). The Git commit
+containing this report identifies the corresponding code revision.
+
 ## Experiment
 
 All 15 non-empty combinations of temperature, humidity, light, and CO2 sensors
@@ -75,8 +89,9 @@ model pipeline rather than a purely causal Light effect.
 
 These findings describe frontier membership and measured trade-offs only.
 Phase 4 intentionally does not select or recommend a sensor configuration.
-Phase 5 will test lights left on while unoccupied, dark occupancy, sensor
-loss, noise, and drift.
+Phase 5 subsequently tested lights left on while unoccupied, dark occupancy,
+sensor loss, noise, and drift; those results are recorded in
+[`reports/robustness_results.md`](robustness_results.md).
 
 ## Cost-scenario sensitivity
 

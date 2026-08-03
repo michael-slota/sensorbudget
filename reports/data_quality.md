@@ -1,5 +1,16 @@
 # Occupancy dataset quality and EDA report
 
+> **Project status:** This report records the Phase 1–2 source audit and EDA.
+> The data pipeline and all later modeling phases are now complete. Continue
+> with the [baseline report](baseline_results.md), or see the consolidated
+> [model card](model_card.md).
+
+**Traceability:** The analysis is implemented in
+[`notebooks/01_data_audit.ipynb`](../notebooks/01_data_audit.ipynb), and source
+identity is fixed by [`data/source_checksums.json`](../data/source_checksums.json).
+The Git commit containing this report identifies the corresponding code and
+documentation revision.
+
 ## Scope
 
 This report summarizes the initial audit of the UCI Occupancy Detection files:
@@ -136,7 +147,6 @@ an optimistic evaluation.
 ## Reproduction
 
 The calculations and interactive Plotly figures are in
-`notebooks/01_data_audit.ipynb`. The next engineering step is to move its
-explicit schema and validation rules into `src/sensorbudget/data/` and record
-source-file checksums.
-
+[`notebooks/01_data_audit.ipynb`](../notebooks/01_data_audit.ipynb). Its schema,
+validation rules, and checksum verification have since been implemented in
+[`src/sensorbudget/data/`](../src/sensorbudget/data/).

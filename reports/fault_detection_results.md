@@ -1,5 +1,18 @@
 # Light-health detector and routing results
 
+> **Project status:** This report records the causal-detector step of Phase 5.
+> The planned fault-aware-training comparison is complete; see the
+> [fault-aware report](fault_aware_results.md) and consolidated
+> [model card](model_card.md).
+
+**Traceability:** Settings are versioned in
+[`configs/fault_detection.json`](../configs/fault_detection.json), the
+presentation is in
+[`notebooks/06_fault_detection_and_routing.ipynb`](../notebooks/06_fault_detection_and_routing.ipynb),
+and source identity is fixed by
+[`data/source_checksums.json`](../data/source_checksums.json). The Git commit
+containing this report identifies the corresponding code revision.
+
 ## Selected detector
 
 Training-only chronological validation selected:
@@ -61,6 +74,6 @@ only from fault-containing scenarios.
 Simple causal rules are effective for explicit missingness and extreme values,
 but they do not reliably solve plausible stuck-at-darkness or gradual positive
 calibration bias. A safe detector must accept that some faults are unobservable
-from Light alone. The next comparison should test fault-aware training and
-missingness indicators, then decide whether routing adds enough value relative
-to its false-alarm cost.
+from Light alone. The subsequent comparison tests fault-aware training and
+missingness indicators in
+[`reports/fault_aware_results.md`](fault_aware_results.md).

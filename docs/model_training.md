@@ -370,8 +370,9 @@ The held-out periods do not influence:
 - model selection;
 - the current threshold.
 
-The results provide an estimate of how each selected model behaves in later,
-different collection periods. The tests are reported separately because their
+The results provide an estimate of how each selected model behaves in distinct
+held-out collection periods: Test 1 precedes training and Test 2 follows it.
+The tests are reported separately because their
 occupancy prevalence and sensor distributions differ.
 
 ## Step 11: generated artifacts

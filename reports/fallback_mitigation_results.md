@@ -1,5 +1,18 @@
 # Light-independent fallback results
 
+> **Project status:** This report records the oracle-routing step of Phase 5.
+> The planned causal detector and routing evaluation is complete; see the
+> [fault-detection report](fault_detection_results.md) and consolidated
+> [model card](model_card.md).
+
+**Traceability:** Settings are versioned in
+[`configs/fallback_mitigation.json`](../configs/fallback_mitigation.json), the
+presentation is in
+[`notebooks/05_fallback_mitigation.ipynb`](../notebooks/05_fallback_mitigation.ipynb),
+and source identity is fixed by
+[`data/source_checksums.json`](../data/source_checksums.json). The Git commit
+containing this report identifies the corresponding code revision.
+
 ## Scope
 
 This experiment evaluates whether known Light faults can be mitigated by
@@ -54,6 +67,6 @@ every anomaly.
 
 A Light-independent fallback is a credible mitigation for known severe Light
 faults, but the oracle experiment does not solve fault detection and does not
-maintain clean-model performance. The next reliability experiment should
-develop a validation-tuned routing rule and measure false alarms, missed
-faults, and end-to-end gated performance.
+maintain clean-model performance. The subsequent causal-routing experiment
+measures false alarms, missed faults, and end-to-end gated performance in
+[`reports/fault_detection_results.md`](fault_detection_results.md).
