@@ -1,0 +1,35 @@
+{
+  "primary_feature_set": "temperature__light__co2",
+  "fallback_feature_set": "temperature__co2",
+  "heldout_splits": ["test_1", "test_2"],
+  "cv_splits": 5,
+  "random_seed": 42,
+  "clean_reference_model": "logistic_regression",
+  "candidate_models": [
+    "logistic_regression",
+    "decision_tree",
+    "random_forest",
+    "hist_gradient_boosting"
+  ],
+  "representations": [
+    "fault_aware",
+    "fault_aware_missing_indicator"
+  ],
+  "augmentation_ratios": [0.01, 0.05, 0.1],
+  "fault_scenarios": [
+    "missing",
+    "stuck_current",
+    "stuck_low",
+    "stuck_high",
+    "out_of_range_high",
+    "linear_bias_positive",
+    "linear_bias_negative"
+  ],
+  "heldout_episode_lengths": [15, 60],
+  "heldout_repeats": 2,
+  "maximum_clean_f1_drop": 0.02,
+  "linear_bias_final_std": 1.0,
+  "out_of_range_std_multiplier": 1.0,
+  "selection_rule": "Retain candidates whose mean clean chronological-validation F1 is within 0.02 of the clean-trained logistic-regression primary reference. Among eligible candidates for each representation, maximize the equally weighted mean of clean F1 and mean F1 across all configured whole-validation-period Light faults; break ties with higher clean F1, lower augmentation ratio, then model name. If no candidate satisfies the guardrail, retain the highest-clean-F1 candidate for diagnostic held-out comparison and mark the guardrail as unsatisfied; it is not an accepted replacement.",
+  "augmentation_note": "Each development fold retains all clean rows and adds a fault-augmented sample equal to 1%, 5%, or 10% of the clean row count. Added rows are divided equally among configured Light faults. Missing Light is replaced with the development-fold median after a missingness flag is calculated. Augmentation strength and model algorithm are selected inside chronological training validation."
+}

@@ -15,6 +15,8 @@ Reports:
   oracle-routing evaluation
 - `fault_detection_results.md` — causal Light-health detection, false alarms,
   missed faults, and realistic routing
+- `fault_aware_results.md` — training-only fault augmentation, missingness
+  indicators, held-out comparison, and Phase 5 reliability conclusion
 
 Planned reports:
 

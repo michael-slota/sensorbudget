@@ -15,7 +15,9 @@ Notebook sequence:
    routing analysis
 6. `06_fault_detection_and_routing.ipynb` — causal Light-health detection and
    realistic fallback routing
-7. `07_explainability.ipynb` — planned decision and explanation layer
+7. `07_fault_aware_training.ipynb` — training-only fault augmentation,
+   missingness indicators, and reliability comparison
+8. `08_explainability.ipynb` — planned decision and explanation layer
 
 Move reusable parsing, feature, plotting, and evaluation functions into
 `src/sensorbudget/`. Clear large cell outputs before committing unless the

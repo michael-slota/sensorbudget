@@ -17,7 +17,7 @@ silently becoming the final evaluation.
 | E09 | What happens when data goes missing? | 1%, 5%, 10%, 20%, 40% missingness | Required |
 | E10 | What happens when a sensor is stuck? | Freeze one channel at median/high/low | Required |
 | E11 | How sensitive is the model to drift? | Gradual offsets by sensor | Recommended |
-| E12 | Can fault augmentation improve resilience? | Train with simulated faults | Optional |
+| E12 | Can fault augmentation improve resilience? | Train with simulated faults and compare missingness indicators | Complete |
 | E13 | What threshold minimizes operational cost? | Validation threshold sweep | Required |
 | E14 | Are probabilities trustworthy? | Calibration analysis and correction | Recommended |
 | E15 | Can occupancy be forecast early? | Shift target by 5/15/30 minutes | Stretch |
