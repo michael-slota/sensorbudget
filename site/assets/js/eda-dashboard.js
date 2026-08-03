@@ -41,6 +41,13 @@ const VIEW_TEXT = {
     boundary: "Standardized mean difference compares means relative to spread; it does not capture every kind of distribution change.",
   },
 };
+const VIEW_SUMMARY = {
+  balance: "Occupancy prevalence differs substantially between the supplied periods, so accuracy alone would give a misleading comparison.",
+  schedule: "Observed occupancy follows a strong working-hours pattern that may not persist beyond the short collection window.",
+  correlation: "Light has the strongest linear association with occupancy, while the remaining physical sensors provide weaker signals.",
+  light: "Almost no occupied observations are dark, but many unoccupied observations are lit, making Light a powerful asymmetric proxy.",
+  drift: "Sensor distributions shift between training and both evaluation periods, with the largest affected variables differing by period.",
+};
 
 const baseLayout = (title) => ({
   title: { text: title, x: 0.02, xanchor: "left", font: { size: 20 } },
@@ -205,8 +212,8 @@ const figureBuilders = { balance: balanceFigure, schedule: scheduleFigure, corre
 function updateInterpretation(view) {
   const content = VIEW_TEXT[view];
   document.querySelector("#interpretation-title").textContent = content.title;
-  document.querySelector("#interpretation-copy").textContent = content.copy;
-  document.querySelector("#interpretation-boundary").textContent = `Interpretation boundary: ${content.boundary}`;
+  document.querySelector("#interpretation-copy").textContent = VIEW_SUMMARY[view];
+  document.querySelector("#interpretation-boundary").textContent = `Limit: ${content.boundary}`;
 }
 
 function activateButton(view) {
@@ -224,9 +231,10 @@ async function initialiseDashboard() {
   const chart = document.querySelector("#eda-chart");
 
   const render = (requestedView) => {
-    const view = figureBuilders[requestedView] ? requestedView : "balance";
+    const view = figureBuilders[requestedView] ? requestedView : "light";
     const figure = figureBuilders[view](data);
     styleBarLabels(figure.traces);
+    window.formatDashboardFigure(figure);
     Plotly.react(chart, figure.traces, figure.layout, config);
     activateButton(view);
     updateInterpretation(view);

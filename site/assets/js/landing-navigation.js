@@ -5,6 +5,18 @@ function enhanceDashboardReadingPath() {
 
   const hero = document.querySelector(".dashboard-hero");
   const currentPage = window.location.pathname.split("/").pop();
+  // All visible header, answer, and method content is stored in the HTML so it
+  // appears on first paint. The code below remains only as a fallback for an
+  // older or incomplete dashboard page.
+  if (hero?.querySelector(".dashboard-switcher") && document.querySelector(".dashboard-answer") && document.querySelector(".dashboard-method")) return;
+  const dashboardPages = [
+    ["model-performance.html", "Model performance", "core"],
+    ["sensor-selection.html", "Sensor trade-offs", "core"],
+    ["robustness.html", "Robustness", "core"],
+    ["decision-explainability.html", "Decision analysis", "core"],
+    ["eda.html", "EDA", "supporting"],
+    ["fault-mitigation.html", "Fault mitigation", "supporting"],
+  ];
   const methods = {
     "eda.html": {
       title: "Audit the source data before modeling",
@@ -17,7 +29,7 @@ function enhanceDashboardReadingPath() {
     },
     "model-performance.html": {
       title: "Compare fixed classifiers without random shuffling",
-      answer: "Chronological evaluation produces strong candidates, but performance changes materially across feature sets and source periods.",
+      answer: "Chronological evaluation produces strong candidates, but performance changes significantly across feature sets and source periods.",
       steps: [
         "Test a dummy prior, logistic regression, decision tree, random forest, and histogram gradient boosting.",
         "Select models with five expanding chronological folds so every validation block follows its training rows.",
@@ -26,7 +38,7 @@ function enhanceDashboardReadingPath() {
     },
     "sensor-selection.html": {
       title: "Repeat model selection for every physical-sensor subset",
-      answer: "Temperature + Light + CO2 leads validation, while three Light-containing configurations remain Pareto-efficient across the tested costs, so the evidence does not justify one hardware choice.",
+      answer: "The sensor combination Temperature + Light + CO2 leads validation, while three Light-containing configurations remain Pareto-efficient across the tested costs, so the evidence does not justify one hardware choice.",
       steps: [
         "Evaluate all 15 non-empty combinations of Temperature, Humidity, Light, and CO2.",
         "Select the strongest fixed classifier for each combination using chronological validation only.",
@@ -56,7 +68,7 @@ function enhanceDashboardReadingPath() {
     },
     "decision-explainability.html": {
       title: "Audit how a fixed model becomes an operating decision",
-      answer: "The validation-selected threshold of 0.86 does not remain cost-effective on held-out periods, and model explanations confirm that Light drives the prediction most strongly.",
+      answer: "Under the stated validation cost assumptions, threshold 0.86 appears most cost-effective, but that advantage does not hold on the held-out periods; model explanations also confirm that Light drives the prediction most strongly.",
       steps: [
         "Select probability thresholds using chronological validation and explicit illustrative error costs.",
         "Check whether the chosen threshold and probability calibration remain stable on both held-out periods.",
@@ -66,6 +78,17 @@ function enhanceDashboardReadingPath() {
     },
   };
   const method = methods[currentPage];
+  const currentIndex = dashboardPages.findIndex(([path]) => path === currentPage);
+  if (hero && currentIndex >= 0 && !hero.querySelector(".dashboard-switcher")) {
+    const navigation = document.createElement("nav");
+    navigation.className = "dashboard-switcher";
+    navigation.setAttribute("aria-label", "Dashboard pages");
+    const renderGroup = (group, label) => `<div class="dashboard-nav-group"><span>${label}</span><div>${dashboardPages.map(([path, pageLabel, pageGroup], index) => pageGroup === group ? `<a href="${path}"${index === currentIndex ? ' class="is-current" aria-current="page"' : ""}>${pageLabel}</a>` : "").join("")}</div></div>`;
+    navigation.innerHTML = renderGroup("core", "Main review") + renderGroup("supporting", "Deep dives");
+    const breadcrumb = hero.querySelector(".breadcrumb");
+    if (breadcrumb) breadcrumb.insertAdjacentElement("afterend", navigation);
+    else hero.querySelector("div")?.prepend(navigation);
+  }
   let answerPanel = document.querySelector(".dashboard-answer");
   if (method && hero && !answerPanel) {
     answerPanel = document.createElement("aside");
@@ -76,26 +99,26 @@ function enhanceDashboardReadingPath() {
   if (method && hero && !document.querySelector(".dashboard-method")) {
     const panel = document.createElement("aside");
     panel.className = "dashboard-method";
-    panel.innerHTML = `<div><p class="eyebrow">Method</p><h2>${method.title}</h2>${method.assumption ? `<p class="method-assumption"><strong>Assumptions</strong>${method.assumption}</p>` : ""}</div><ol>${method.steps.map((step, index) => `<li><span>0${index + 1}</span>${step}</li>`).join("")}</ol>`;
-    (answerPanel || hero).insertAdjacentElement("afterend", panel);
+    panel.innerHTML = `<details><summary><span><small>Method</small>${method.title}</span><span class="method-toggle" aria-hidden="true">Details +</span></summary><div class="method-details">${method.assumption ? `<p class="method-assumption"><strong>Assumptions</strong>${method.assumption}</p>` : ""}<ol>${method.steps.map((step, index) => `<li><span>0${index + 1}</span>${step}</li>`).join("")}</ol></div></details>`;
+    (document.querySelector(".finding-strip") || answerPanel || hero).insertAdjacentElement("afterend", panel);
   }
 
-  const nextPages = {
-    "eda.html": ["model-performance.html", "Model performance", "See how candidate models were selected chronologically."],
-    "model-performance.html": ["sensor-selection.html", "Sensor trade-offs", "Compare all physical-sensor combinations and cost assumptions."],
-    "sensor-selection.html": ["robustness.html", "Robustness", "Test whether the leading clean configurations remain reliable under faults."],
-    "robustness.html": ["decision-explainability.html", "Decision analysis", "Review threshold stability, calibration, and model explanations."],
-    "fault-mitigation.html": ["decision-explainability.html", "Decision analysis", "Continue to the operating-threshold and explanation evidence."],
-    "decision-explainability.html": ["../index.html#summary", "Project summary", "Return to the consolidated conclusion and evidence limits."],
-  };
-  const next = nextPages[currentPage];
-  const footer = document.querySelector(".site-footer");
-  if (next && footer && !document.querySelector(".dashboard-next")) {
-    const panel = document.createElement("aside");
-    panel.className = "dashboard-next";
-    panel.innerHTML = `<div><p class="eyebrow">Continue the review</p><h2>Next: ${next[1]}</h2><p>${next[2]}</p></div><a class="button button-primary" href="${next[0]}">Continue →</a>`;
-    footer.insertAdjacentElement("beforebegin", panel);
+  const highlights = document.querySelector(".finding-strip");
+  if (answerPanel && highlights) {
+    highlights.classList.add("dashboard-summary");
+    highlights.prepend(answerPanel);
+    hero.insertAdjacentElement("afterend", highlights);
   }
+
+}
+
+function formatDashboardFigure(value) {
+  if (typeof value === "string") return value.replaceAll("Test 1", "First period").replaceAll("Test 2", "Second period");
+  if (Array.isArray(value)) return value.map(formatDashboardFigure);
+  if (value && typeof value === "object") {
+    Object.keys(value).forEach((key) => { value[key] = formatDashboardFigure(value[key]); });
+  }
+  return value;
 }
 
 function initialiseScrollRail() {
@@ -171,5 +194,6 @@ function initialisePageNavigation() {
 }
 
 window.initialiseScrollRail = initialiseScrollRail;
+window.formatDashboardFigure = formatDashboardFigure;
 if (document.readyState === "loading") window.addEventListener("DOMContentLoaded", initialisePageNavigation);
 else initialisePageNavigation();

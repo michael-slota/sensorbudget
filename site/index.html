@@ -30,7 +30,6 @@
       </div>
       <div class="scroll-rail-links">
         <a href="#overview" data-scroll-section="overview" aria-current="true"><span class="scroll-rail-dot"></span>Overview</a>
-        <a href="#method" data-scroll-section="method"><span class="scroll-rail-dot"></span>Method</a>
         <a href="#dashboards" data-scroll-section="dashboards"><span class="scroll-rail-dot"></span>Dashboards</a>
         <a href="#evidence-scope" data-scroll-section="evidence-scope"><span class="scroll-rail-dot"></span><span class="scroll-rail-copy">Evidence<br>scope</span></a>
         <a href="#summary" data-scroll-section="summary"><span class="scroll-rail-dot"></span>Summary</a>
@@ -58,42 +57,25 @@
             <a class="button button-primary" href="#dashboards">Explore dashboards</a>
             <a class="button button-secondary" href="https://github.com/michael-slota/sensorbudget/blob/main/reports/model_card.md">Read the model card</a>
           </div>
-          <p class="scope-note">
-            Applied research study · One office room
-          </p>
         </div>
         <aside class="hero-panel" aria-label="Project evidence summary">
           <p class="panel-kicker">Evidence at a glance</p>
           <div class="metric-stack">
             <div>
-              <span class="metric-value">3 sensors</span>
-              <span class="metric-label">Temperature + Light + CO2 logistic research candidate</span>
-            </div>
-            <div>
               <span class="metric-value">0.971 / 0.980</span>
-              <span class="metric-label">clean F1 on Test 1 / Test 2 at 0.50</span>
+              <span class="metric-label">clean F1 across the two evaluation periods</span>
             </div>
             <div>
-              <span class="metric-value">≈ 0</span>
-              <span class="metric-label">F1 under complete Light loss</span>
+              <span class="metric-value">0–0.001 F1</span>
+              <span class="metric-label">under simulated complete Light loss or occupied darkness across the tested candidates and periods</span>
+            </div>
+            <div>
+              <span class="metric-value">5.75 → 22.05</span>
+              <span class="metric-label">illustrative error-cost units per 1,000 rows: validation at threshold 0.86 versus the second evaluation period</span>
             </div>
           </div>
           <p class="panel-footnote">Based on 20,560 minute-level observations from one office room.</p>
         </aside>
-      </section>
-
-      <section class="section method-overview" id="method" data-page-section aria-labelledby="method-title">
-        <div class="method-heading">
-          <p class="eyebrow">Method at a glance</p>
-          <h2 id="method-title">From time-ordered data to an auditable decision</h2>
-          <p>Each stage answers a different part of the research question while preserving the supplied temporal evaluation periods.</p>
-        </div>
-        <ol class="method-flow">
-          <li><span>01</span><strong>Validate the data</strong><small>20,560 time-ordered observations</small></li>
-          <li><span>02</span><strong>Select chronologically</strong><small>Models and sensor subsets</small></li>
-          <li><span>03</span><strong>Test reliability</strong><small>Cost assumptions and sensor faults</small></li>
-          <li><span>04</span><strong>Audit decisions</strong><small>Thresholds, calibration and explanations</small></li>
-        </ol>
       </section>
 
       <section class="section" id="dashboards" data-page-section aria-labelledby="dashboard-title">
@@ -112,10 +94,10 @@
             <p>Use this route for the central model, sensor, reliability, and decision findings. Supporting dashboards remain available below.</p>
           </div>
           <ol>
-            <li><a href="dashboards/model-performance.html"><span>Step 1</span><strong>Model performance</strong><small>Selection and held-out results</small></a></li>
-            <li><a href="dashboards/sensor-selection.html"><span>Step 2</span><strong>Sensor trade-offs</strong><small>Performance versus assumed cost</small></a></li>
-            <li><a href="dashboards/robustness.html"><span>Step 3</span><strong>Robustness</strong><small>Critical sensor failure modes</small></a></li>
-            <li><a href="dashboards/decision-explainability.html"><span>Step 4</span><strong>Decision analysis</strong><small>Threshold stability and explanations</small></a></li>
+            <li><a href="dashboards/model-performance.html"><span>Step 1</span><strong>Model performance</strong><small>Compare five classifiers with expanding chronological validation</small></a></li>
+            <li><a href="dashboards/sensor-selection.html"><span>Step 2</span><strong>Sensor trade-offs</strong><small>Repeat model selection across 15 sensor subsets and assumed costs</small></a></li>
+            <li><a href="dashboards/robustness.html"><span>Step 3</span><strong>Robustness</strong><small>Stress-test fixed candidates under controlled sensor failures</small></a></li>
+            <li><a href="dashboards/decision-explainability.html"><span>Step 4</span><strong>Decision analysis</strong><small>Audit threshold transfer, calibration and model explanations</small></a></li>
           </ol>
         </aside>
 
@@ -156,9 +138,10 @@
         <h2 id="summary-title">Strong clean performance, with reliability governed by Light and operating context.</h2>
         <p class="summary-lead">
           The Temperature + Light + CO2 logistic candidate achieves clean F1
-          of 0.971 on Test 1 and 0.980 on Test 2 at threshold 0.50. The wider
+          of 0.971 in the first evaluation period and 0.980 in the second at threshold 0.50. The wider
           study shows why those scores are not sufficient on their own.
         </p>
+        <p class="summary-lead">The evidence is produced by an installable Python package with command-line pipelines, automated tests, continuous integration, and reproducible static-dashboard exports.</p>
         <div class="summary-points">
           <p><strong>Sensor trade-off</strong>Light-containing configurations lead the validation frontier under every tested cost scenario, but the assumed costs do not justify a final hardware recommendation.</p>
           <p><strong>Reliability trade-off</strong>Complete or plausible Light failures can cause severe degradation. Detector routing offers the strongest tested mitigation overall, while retaining known false alarms and missed faults.</p>

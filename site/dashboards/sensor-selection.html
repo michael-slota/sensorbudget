@@ -36,26 +36,29 @@
     <main>
       <section id="overview" class="dashboard-hero" data-page-section>
         <div>
-          <p class="breadcrumb"><a class="breadcrumb-home" href="../index.html"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 11.5 12 4l9 7.5M5.5 10v10h13V10M9.5 20v-6h5v6"/></svg>Home</a><span>/</span>Sensor selection and cost</p>
+          <p class="breadcrumb"><a class="breadcrumb-home" href="../index.html"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 11.5 12 4l9 7.5M5.5 10v10h13V10M9.5 20v-6h5v6"/></svg>Home</a></p>
+          <nav class="dashboard-switcher" aria-label="Dashboard pages"><div class="dashboard-nav-group"><span>Main review</span><div><a href="model-performance.html">Model performance</a><a href="sensor-selection.html" class="is-current" aria-current="page">Sensor trade-offs</a><a href="robustness.html">Robustness</a><a href="decision-explainability.html">Decision analysis</a></div></div><div class="dashboard-nav-group"><span>Deep dives</span><div><a href="eda.html">EDA</a><a href="fault-mitigation.html">Fault mitigation</a></div></div></nav>
           <p class="eyebrow">Interactive evidence</p>
-          <h1>Which sensor combinations preserve performance at lower assumed cost?</h1>
+          <h1>Which sensor combinations preserve performance at lower illustrative relative cost?</h1>
           <p class="hero-lead">All 15 non-empty combinations of Temperature, Humidity, Light, and CO2 are compared using the same chronological model-selection process. Costs are transparent sensitivity assumptions rather than market prices.</p>
         </div>
       </section>
 
-      <section id="highlights" class="finding-strip" aria-labelledby="sensor-findings-title" data-page-section>
+      <section id="highlights" class="finding-strip dashboard-summary" aria-labelledby="sensor-findings-title" data-page-section>
         <h2 id="sensor-findings-title" class="sr-only">Key highlights</h2>
+        <aside class="dashboard-answer"><span>Answer</span><p>Temperature + Light + CO2 leads validation. Three Light-containing configurations remain Pareto-efficient, so the tested costs do not justify one hardware choice.</p></aside>
         <article class="finding-card"><span class="finding-value">+0.059–0.543</span><h3>F1 gain after adding Light</h3><p>Every matched sensor-plus-model comparison improves when Light is added.</p></article>
         <article class="finding-card finding-card-accent"><span class="finding-value">0.780</span><h3>Leading validation F1</h3><p>Temperature + Light + CO2 with logistic regression.</p></article>
         <article class="finding-card"><span class="finding-value">3</span><h3>Stable frontier members</h3><p>The same core configurations remain efficient in all five cost scenarios.</p></article>
-        <article class="finding-card"><span class="finding-value">≈ 0.001</span><h3>Small frontier gain</h3><p>Humidity + Light improves only marginally over Light alone in mean validation F1.</p></article>
       </section>
 
+      <aside class="dashboard-method"><details><summary><span><small>Method</small>Repeat model selection for every physical-sensor subset</span><span class="method-toggle" aria-hidden="true">Details +</span></summary><div class="method-details"><p class="method-assumption"><strong>Assumptions</strong>Reference sensor-cost example (relative points): Temperature 1, Humidity 1, Light 0.5, and CO2 4. Sensitivity cases also test equal costs, CO2 at 1.5 or 8, and Light at 5.</p><ol><li><span>01</span>Evaluate all 15 non-empty combinations of Temperature, Humidity, Light, and CO2.</li><li><span>02</span>Select the strongest fixed classifier for each combination using chronological validation only.</li><li><span>03</span>Compare validation F1 with five transparent relative-cost scenarios and identify Pareto-efficient options.</li></ol></div></details></aside>
+
       <section id="analysis" class="dashboard-stage" aria-labelledby="sensor-view-heading" data-page-section>
-        <div class="stage-header"><div><p class="eyebrow">Interactive analysis</p><h2 id="sensor-view-heading">Explore the trade-offs</h2></div><p>Select a view. The chart and interpretation update together.</p></div>
+        <div class="stage-header"><div><p class="eyebrow">Interactive analysis</p><h2 id="sensor-view-heading">Explore the trade-offs</h2></div><p>Reference relative costs: Temperature 1, Humidity 1, Light 0.5, CO2 4. Select another view to inspect sensitivity.</p></div>
         <div class="view-tabs" role="tablist" aria-label="Sensor-selection chart views">
-          <button class="view-tab is-active" type="button" role="tab" aria-selected="true" data-view="ranking">Validation ranking</button>
-          <button class="view-tab" type="button" role="tab" aria-selected="false" data-view="frontier">Cost frontier</button>
+          <button class="view-tab" type="button" role="tab" aria-selected="false" data-view="ranking">Validation ranking</button>
+          <button class="view-tab is-active" type="button" role="tab" aria-selected="true" data-view="frontier">Cost frontier</button>
           <button class="view-tab" type="button" role="tab" aria-selected="false" data-view="light">Adding Light</button>
           <button class="view-tab" type="button" role="tab" aria-selected="false" data-view="scenarios">Scenario stability</button>
           <button class="view-tab" type="button" role="tab" aria-selected="false" data-view="heldout">Held-out stability</button>

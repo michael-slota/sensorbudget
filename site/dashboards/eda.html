@@ -39,7 +39,8 @@
     <main>
       <section id="overview" class="dashboard-hero" data-page-section>
         <div>
-          <p class="breadcrumb"><a class="breadcrumb-home" href="../index.html"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 11.5 12 4l9 7.5M5.5 10v10h13V10M9.5 20v-6h5v6"/></svg>Home</a><span>/</span>Data and EDA</p>
+          <p class="breadcrumb"><a class="breadcrumb-home" href="../index.html"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 11.5 12 4l9 7.5M5.5 10v10h13V10M9.5 20v-6h5v6"/></svg>Home</a></p>
+          <nav class="dashboard-switcher" aria-label="Dashboard pages"><div class="dashboard-nav-group"><span>Main review</span><div><a href="model-performance.html">Model performance</a><a href="sensor-selection.html">Sensor trade-offs</a><a href="robustness.html">Robustness</a><a href="decision-explainability.html">Decision analysis</a></div></div><div class="dashboard-nav-group"><span>Deep dives</span><div><a href="eda.html" class="is-current" aria-current="page">EDA</a><a href="fault-mitigation.html">Fault mitigation</a></div></div></nav>
           <p class="eyebrow">Interactive evidence</p>
           <h1>What does the source data tell us before modeling?</h1>
           <p class="hero-lead">
@@ -50,13 +51,15 @@
         </div>
       </section>
 
-      <section id="highlights" class="finding-strip" aria-labelledby="findings-title" data-page-section>
+      <section id="highlights" class="finding-strip dashboard-summary" aria-labelledby="findings-title" data-page-section>
         <h2 id="findings-title" class="sr-only">Key highlights</h2>
+        <aside class="dashboard-answer"><span>Answer</span><p>The source data is structurally clean. However, Light is a dominant occupancy proxy and the single-room sample limits broader generalization.</p></aside>
         <article class="finding-card"><span class="finding-value">20,560</span><h3>Validated rows</h3><p>No missing cells, duplicate timestamps, or gaps above 90 seconds.</p></article>
-        <article class="finding-card"><span class="finding-value">21.2%</span><h3>Training occupancy</h3><p>The occupied class is the minority and prevalence changes by period.</p></article>
         <article class="finding-card finding-card-accent"><span class="finding-value">0.915</span><h3>Light correlation</h3><p>Light is the strongest target correlate and a potential shortcut.</p></article>
         <article class="finding-card"><span class="finding-value">1 room</span><h3>Evidence boundary</h3><p>Short-period results do not establish broader building generalization.</p></article>
       </section>
+
+      <aside class="dashboard-method"><details><summary><span><small>Method</small>Audit the source data before modeling</span><span class="method-toggle" aria-hidden="true">Details +</span></summary><div class="method-details"><p class="method-assumption"><strong>Scope</strong>All three supplied periods are used descriptively for EDA; model selection remains restricted to chronological validation within the training period.</p><ol><li><span>01</span>Validate all three supplied files, timestamps, target values, and sensor ranges.</li><li><span>02</span>Compare class balance, schedules, distributions, and drift across the training and evaluation periods.</li><li><span>03</span>Identify redundancy and proxy risks; the Light exception view defines complete darkness as a recorded value of 0 lx.</li></ol></div></details></aside>
 
       <section id="analysis" class="dashboard-stage" aria-labelledby="view-heading" data-page-section>
         <div class="stage-header">
@@ -68,10 +71,10 @@
         </div>
 
         <div class="view-tabs" role="tablist" aria-label="EDA chart views">
-          <button class="view-tab is-active" type="button" role="tab" aria-selected="true" data-view="balance">Class balance</button>
+          <button class="view-tab" type="button" role="tab" aria-selected="false" data-view="balance">Class balance</button>
           <button class="view-tab" type="button" role="tab" aria-selected="false" data-view="schedule">Daily pattern</button>
           <button class="view-tab" type="button" role="tab" aria-selected="false" data-view="correlation">Sensor signal</button>
-          <button class="view-tab" type="button" role="tab" aria-selected="false" data-view="light">Light proxy</button>
+          <button class="view-tab is-active" type="button" role="tab" aria-selected="true" data-view="light">Light proxy</button>
           <button class="view-tab" type="button" role="tab" aria-selected="false" data-view="drift">Period drift</button>
         </div>
 

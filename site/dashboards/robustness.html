@@ -29,18 +29,21 @@
     </nav>
     <main>
       <section id="overview" class="dashboard-hero" data-page-section><div>
-        <p class="breadcrumb"><a class="breadcrumb-home" href="../index.html"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 11.5 12 4l9 7.5M5.5 10v10h13V10M9.5 20v-6h5v6"/></svg>Home</a><span>/</span>Robustness</p>
+        <p class="breadcrumb"><a class="breadcrumb-home" href="../index.html"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 11.5 12 4l9 7.5M5.5 10v10h13V10M9.5 20v-6h5v6"/></svg>Home</a></p>
+        <nav class="dashboard-switcher" aria-label="Dashboard pages"><div class="dashboard-nav-group"><span>Main review</span><div><a href="model-performance.html">Model performance</a><a href="sensor-selection.html">Sensor trade-offs</a><a href="robustness.html" class="is-current" aria-current="page">Robustness</a><a href="decision-explainability.html">Decision analysis</a></div></div><div class="dashboard-nav-group"><span>Deep dives</span><div><a href="eda.html">EDA</a><a href="fault-mitigation.html">Fault mitigation</a></div></div></nav>
         <p class="eyebrow">Interactive evidence</p><h1>How does performance change when sensor inputs become unreliable?</h1>
         <p class="hero-lead">Strong clean scores do not show how a model behaves when sensors fail. This page tests the leading sensor configurations under missingness, noise, complete loss, stuck readings, drift, and changed lighting behaviour.</p>
       </div></section>
 
-      <section id="highlights" class="finding-strip" aria-labelledby="robustness-findings-title" data-page-section>
+      <section id="highlights" class="finding-strip dashboard-summary" aria-labelledby="robustness-findings-title" data-page-section>
         <h2 id="robustness-findings-title" class="sr-only">Key highlights</h2>
+        <aside class="dashboard-answer"><span>Answer</span><p>Strong clean performance hides a critical dependence on Light. Complete Light loss and occupied darkness reduce F1 to approximately zero.</p></aside>
         <article class="finding-card"><span class="finding-value">0.96–0.98</span><h3>Clean F1</h3><p>All three configurations begin with strong clean held-out performance.</p></article>
-        <article class="finding-card finding-card-accent"><span class="finding-value">≈ 0</span><h3>Critical Light failure</h3><p>Occupied darkness and complete Light loss cause near-total failure.</p></article>
+        <article class="finding-card finding-card-accent"><span class="finding-value">0–0.001</span><h3>Critical Light-failure F1</h3><p>Range across tested candidates and periods under occupied darkness or complete Light loss.</p></article>
         <article class="finding-card"><span class="finding-value">0.71–0.74</span><h3>40% missing cells</h3><p>Training-median replacement retains partial predictive ability.</p></article>
-        <article class="finding-card"><span class="finding-value">0.68–0.83</span><h3>One-SD noise</h3><p>Strong noise produces configuration- and period-dependent degradation.</p></article>
       </section>
+
+      <aside class="dashboard-method"><details><summary><span><small>Method</small>Simulate three families of sensor and operating failures</span><span class="method-toggle" aria-hidden="true">Details +</span></summary><div class="method-details"><p class="method-assumption"><strong>Assumptions</strong>The three frontier candidates remain fixed and are not retrained for each failure. These controlled scenarios diagnose sensitivity; they do not estimate how frequently real hardware faults occur.</p><ol><li><span>01</span>Data availability: randomly missing cells represent intermittent gaps, while complete sensor loss represents a sustained outage replaced by the training median.</li><li><span>02</span>Measurement quality: Gaussian noise represents unstable readings, stuck-low or stuck-high values represent a frozen sensor, and gradual drift represents calibration bias building over time.</li><li><span>03</span>Changed room behaviour: occupied darkness and an unoccupied-but-lit room break the historical lighting pattern learned as an occupancy proxy.</li></ol></div></details></aside>
 
       <section id="analysis" class="dashboard-stage" aria-labelledby="robustness-view-heading" data-page-section>
         <div class="stage-header"><div><p class="eyebrow">Interactive analysis</p><h2 id="robustness-view-heading">Explore the failure tests</h2></div><p>Select a view. The chart and interpretation update together.</p></div>

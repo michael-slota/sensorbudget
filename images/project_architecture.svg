@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="360" viewBox="0 0 1200 360" role="img" aria-labelledby="title desc">
+  <title id="title">SensorBudget project architecture</title>
+  <desc id="desc">A reproducible flow from UCI source data through validation, modeling, reliability analysis, reports, and the published dashboard suite.</desc>
+  <defs>
+    <style>.box{fill:#fffdf8;stroke:#b8c7c3;stroke-width:2}.accent{fill:#dceee9;stroke:#0f766e;stroke-width:2}.text{font:700 22px Arial,sans-serif;fill:#223236}.sub{font:16px Arial,sans-serif;fill:#5e6d70}.arrow{stroke:#0f766e;stroke-width:3;fill:none;marker-end:url(#head)}</style>
+    <marker id="head" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#0f766e"/></marker>
+  </defs>
+  <rect width="1200" height="360" rx="24" fill="#f5f3ec"/>
+  <g transform="translate(35 105)"><rect class="box" width="170" height="130" rx="16"/><text class="text" x="85" y="48" text-anchor="middle">UCI data</text><text class="sub" x="85" y="78" text-anchor="middle">3 time-ordered</text><text class="sub" x="85" y="101" text-anchor="middle">source files</text></g>
+  <path class="arrow" d="M215 170 H255"/>
+  <g transform="translate(265 105)"><rect class="box" width="190" height="130" rx="16"/><text class="text" x="95" y="42" text-anchor="middle">Data pipeline</text><text class="sub" x="95" y="72" text-anchor="middle">schema checks</text><text class="sub" x="95" y="95" text-anchor="middle">provenance + build</text></g>
+  <path class="arrow" d="M465 170 H505"/>
+  <g transform="translate(515 75)"><rect class="accent" width="210" height="190" rx="16"/><text class="text" x="105" y="42" text-anchor="middle">ML experiments</text><text class="sub" x="105" y="76" text-anchor="middle">chronological CV</text><text class="sub" x="105" y="101" text-anchor="middle">sensor selection</text><text class="sub" x="105" y="126" text-anchor="middle">robustness + routing</text><text class="sub" x="105" y="151" text-anchor="middle">decision analysis</text></g>
+  <path class="arrow" d="M735 170 H775"/>
+  <g transform="translate(785 105)"><rect class="box" width="170" height="130" rx="16"/><text class="text" x="85" y="42" text-anchor="middle">Evidence</text><text class="sub" x="85" y="72" text-anchor="middle">metrics + figures</text><text class="sub" x="85" y="95" text-anchor="middle">reports + model card</text></g>
+  <path class="arrow" d="M965 170 H1005"/>
+  <g transform="translate(1015 105)"><rect class="box" width="150" height="130" rx="16"/><text class="text" x="75" y="42" text-anchor="middle">Delivery</text><text class="sub" x="75" y="72" text-anchor="middle">Plotly pages</text><text class="sub" x="75" y="95" text-anchor="middle">GitHub Actions</text></g>
+</svg>

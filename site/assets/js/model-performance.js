@@ -28,6 +28,13 @@ const VIEW_TEXT = {
     boundary: "Error counts describe clean source data. The robustness dashboards separately test what happens when sensor behaviour changes.",
   },
 };
+const VIEW_SUMMARY = {
+  validation: "Histogram boosting leads the all-sensor validation comparison, while logistic regression leads when Light is excluded.",
+  heldout: "Removing Light reduces performance in both evaluation periods and produces the larger loss in the second period.",
+  progression: "The later three-sensor logistic candidate outperforms the initial all-sensor baseline on both clean evaluation periods.",
+  curves: "Both candidates rank occupied observations strongly across thresholds, with hover values exposing the precision–recall trade-off.",
+  errors: "At threshold 0.50, the three-sensor candidate makes few errors, but their composition differs across evaluation periods.",
+};
 
 const baseLayout = (title) => ({
   title: { text: title, x: 0.02, xanchor: "left", font: { size: 20 } },
@@ -95,14 +102,14 @@ function errorsFigure(data) {
 }
 
 const builders = { validation: validationFigure, heldout: heldoutFigure, progression: progressionFigure, curves: curvesFigure, errors: errorsFigure };
-function updateText(view) { const text = VIEW_TEXT[view]; document.querySelector("#interpretation-title").textContent = text.title; document.querySelector("#interpretation-copy").textContent = text.copy; document.querySelector("#interpretation-boundary").textContent = `Interpretation boundary: ${text.boundary}`; }
+function updateText(view) { const text = VIEW_TEXT[view]; document.querySelector("#interpretation-title").textContent = text.title; document.querySelector("#interpretation-copy").textContent = VIEW_SUMMARY[view]; document.querySelector("#interpretation-boundary").textContent = `Limit: ${text.boundary}`; }
 function activate(view) { document.querySelectorAll(".view-tab").forEach((button) => { const selected = button.dataset.view === view; button.classList.toggle("is-active", selected); button.setAttribute("aria-selected", String(selected)); }); }
 
 async function initialise() {
   const response = await fetch("../data/model-performance.json");
   if (!response.ok) throw new Error(`Model data request failed: ${response.status}`);
   const data = await response.json(); const chart = document.querySelector("#model-chart");
-  const render = (requested) => { const view = builders[requested] ? requested : "validation"; const figure = builders[view](data); styleBarLabels(figure.traces); Plotly.react(chart, figure.traces, figure.layout, config); activate(view); updateText(view); if (window.location.hash !== `#${view}`) history.replaceState(null, "", `#${view}`); };
+  const render = (requested) => { const view = builders[requested] ? requested : "progression"; const figure = builders[view](data); styleBarLabels(figure.traces); window.formatDashboardFigure(figure); Plotly.react(chart, figure.traces, figure.layout, config); activate(view); updateText(view); if (window.location.hash !== `#${view}`) history.replaceState(null, "", `#${view}`); };
   document.querySelectorAll(".view-tab").forEach((button) => button.addEventListener("click", () => render(button.dataset.view)));
   window.addEventListener("hashchange", () => render(window.location.hash.slice(1)));
   render(window.location.hash.slice(1));

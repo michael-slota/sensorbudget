@@ -38,9 +38,10 @@
     <main>
       <section id="overview" class="dashboard-hero" data-page-section>
         <div>
-          <p class="breadcrumb"><a class="breadcrumb-home" href="../index.html"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 11.5 12 4l9 7.5M5.5 10v10h13V10M9.5 20v-6h5v6"/></svg>Home</a><span>/</span>Model performance</p>
+          <p class="breadcrumb"><a class="breadcrumb-home" href="../index.html"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 11.5 12 4l9 7.5M5.5 10v10h13V10M9.5 20v-6h5v6"/></svg>Home</a></p>
+          <nav class="dashboard-switcher" aria-label="Dashboard pages"><div class="dashboard-nav-group"><span>Main review</span><div><a href="model-performance.html" class="is-current" aria-current="page">Model performance</a><a href="sensor-selection.html">Sensor trade-offs</a><a href="robustness.html">Robustness</a><a href="decision-explainability.html">Decision analysis</a></div></div><div class="dashboard-nav-group"><span>Deep dives</span><div><a href="eda.html">EDA</a><a href="fault-mitigation.html">Fault mitigation</a></div></div></nav>
           <p class="eyebrow">Interactive evidence</p>
-          <h1>How were the models compared, and how stable were their results?</h1>
+          <h1>How did chronological model selection lead to the final research candidate?</h1>
           <p class="hero-lead">
             Five fixed classifiers were compared with expanding chronological
             validation. This page separates the initial all-sensor baseline
@@ -49,13 +50,15 @@
         </div>
       </section>
 
-      <section id="highlights" class="finding-strip" aria-labelledby="model-findings-title" data-page-section>
+      <section id="highlights" class="finding-strip dashboard-summary" aria-labelledby="model-findings-title" data-page-section>
         <h2 id="model-findings-title" class="sr-only">Key highlights</h2>
+        <aside class="dashboard-answer"><span>Answer</span><p>Chronological evaluation produces strong candidates. Performance still changes significantly across feature sets and source periods.</p></aside>
         <article class="finding-card"><span class="finding-value">0.930 / 0.883</span><h3>Initial baseline F1</h3><p>Histogram boosting on the earlier / later held-out periods.</p></article>
-        <article class="finding-card"><span class="finding-value">0.767</span><h3>Baseline validation F1</h3><p>Histogram boosting leads the initial all-sensor comparison.</p></article>
-        <article class="finding-card finding-card-accent"><span class="finding-value">0.971 / 0.980</span><h3>Research-candidate F1</h3><p>Clean Test 1 / Test 2 results at the fixed 0.50 threshold.</p></article>
+        <article class="finding-card finding-card-accent"><span class="finding-value">0.971 / 0.980</span><h3>Selected candidate F1</h3><p>Clean F1 in the first and second evaluation periods at threshold 0.50.</p></article>
         <article class="finding-card"><span class="finding-value">0.832 / 0.546</span><h3>No-Light baseline F1</h3><p>Removing Light produces a much larger loss on the later held-out period.</p></article>
       </section>
+
+      <aside class="dashboard-method"><details><summary><span><small>Method</small>Compare fixed classifiers without random shuffling</span><span class="method-toggle" aria-hidden="true">Details +</span></summary><div class="method-details"><ol><li><span>01</span>Test a dummy prior, logistic regression, decision tree, random forest, and histogram gradient boosting.</li><li><span>02</span>Select models with five expanding chronological folds so every validation block follows its training rows.</li><li><span>03</span>Separate the initial all-sensor baseline from the later three-sensor logistic research candidate.</li></ol></div></details></aside>
 
       <section id="analysis" class="dashboard-stage" aria-labelledby="model-view-heading" data-page-section>
         <div class="stage-header">
@@ -64,9 +67,9 @@
         </div>
 
         <div class="view-tabs" role="tablist" aria-label="Model-performance chart views">
-          <button class="view-tab is-active" type="button" role="tab" aria-selected="true" data-view="validation">Validation comparison</button>
+          <button class="view-tab" type="button" role="tab" aria-selected="false" data-view="validation">Validation comparison</button>
           <button class="view-tab" type="button" role="tab" aria-selected="false" data-view="heldout">Held-out baselines</button>
-          <button class="view-tab" type="button" role="tab" aria-selected="false" data-view="progression">Candidate progression</button>
+          <button class="view-tab is-active" type="button" role="tab" aria-selected="true" data-view="progression">Candidate progression</button>
           <button class="view-tab" type="button" role="tab" aria-selected="false" data-view="curves">Precision–recall</button>
           <button class="view-tab" type="button" role="tab" aria-selected="false" data-view="errors">Candidate errors</button>
         </div>

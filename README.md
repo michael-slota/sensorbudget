@@ -18,6 +18,9 @@ additional dashboards for EDA and fault mitigation. Each page combines a short
 method summary, headline metrics, interactive Plotly views, interpretation, and
 links to the underlying evidence.
 
+The interactive figures are currently designed for the best experience on a
+desktop or laptop display; a dedicated mobile-layout audit is planned.
+
 For a technical review, continue with the [model card](reports/model_card.md)
 and use the [results index](reports/README.md) to trace each conclusion to its
 detailed report.
@@ -42,13 +45,13 @@ occupancy observations.
 
 The main research candidate is a class-balanced logistic regression using
 Temperature, Light, and CO2. It was selected through expanding chronological
-validation and evaluated at the reference threshold of 0.50. Test 1 precedes
-the training period; Test 2 follows it.
+validation and evaluated at the reference threshold of 0.50. The first
+evaluation period precedes training; the second follows it.
 
 | Held-out period | F1 | Precision | Recall |
 |---|---:|---:|---:|
-| Test 1 | **0.971** | 0.946 | 0.998 |
-| Test 2 | **0.980** | 0.967 | 0.994 |
+| First evaluation period | **0.971** | 0.946 | 0.998 |
+| Second evaluation period | **0.980** | 0.967 | 0.994 |
 
 The wider analysis changes how those clean scores should be interpreted:
 
@@ -67,11 +70,30 @@ The wider analysis changes how those clean scores should be interpreted:
   optimum.
 
 The project began with an all-sensor model comparison, where histogram gradient
-boosting obtained F1 of 0.930 on Test 1 and 0.883 on Test 2. The later
+boosting obtained F1 of 0.930 in the first evaluation period and 0.883 in the
+second. The later
 sensor-budget study selected the three-sensor logistic candidate used for the
 robustness, mitigation, and explainability work. See the
 [model card](reports/model_card.md) for the consolidated evidence and the
 [baseline report](reports/baseline_results.md) for the initial comparison.
+
+## Project architecture
+
+![SensorBudget project architecture](images/project_architecture.svg)
+
+The command-line pipelines create reproducible artifacts from immutable source
+data. Notebooks explain and inspect those artifacts; they are not required to
+run the training or evaluation workflows.
+
+## Implementation scope
+
+| Area | Implementation |
+|---|---|
+| Data engineering | Validated imports, schema checks, immutable raw data, processed-data build, and provenance metadata |
+| Machine learning | Chronological cross-validation, five classifier families, sensor-subset selection, and fixed held-out evaluation |
+| Reliability | Missingness, noise, drift, stuck sensors, changed room behaviour, fault detection, fallback routing, and fault-aware training |
+| Decision support | Relative sensor-cost scenarios, Pareto analysis, threshold costs, calibration, and model explanations |
+| Software delivery | Installable Python package, command-line modules, automated tests and linting, CI, and static Plotly dashboards on GitHub Pages |
 
 ### Headline visualization
 
