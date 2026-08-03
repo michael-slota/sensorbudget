@@ -22,7 +22,7 @@
       <div class="scroll-rail-track" aria-hidden="true"><span id="scroll-rail-progress"></span></div>
       <div class="scroll-rail-links">
         <a href="#overview" data-scroll-section="overview" aria-current="true"><span class="scroll-rail-dot"></span>Overview</a>
-        <a href="#findings" data-scroll-section="findings"><span class="scroll-rail-dot"></span>Findings</a>
+        <a href="#results" data-scroll-section="results"><span class="scroll-rail-dot"></span>Results</a>
         <a href="#analysis" data-scroll-section="analysis"><span class="scroll-rail-dot"></span>Analysis</a>
         <a href="#evidence" data-scroll-section="evidence"><span class="scroll-rail-dot"></span>Evidence</a>
       </div><span class="scroll-rail-more" aria-hidden="true">↓</span>
@@ -31,11 +31,11 @@
       <section id="overview" class="dashboard-hero" data-page-section><div>
         <p class="breadcrumb"><a class="breadcrumb-home" href="../index.html"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 11.5 12 4l9 7.5M5.5 10v10h13V10M9.5 20v-6h5v6"/></svg>Home</a><span>/</span>Robustness</p>
         <p class="eyebrow">Dashboard 04</p><h1>How does performance change when sensor inputs become unreliable?</h1>
-        <p class="hero-lead">The three validation-frontier configurations are evaluated under predefined missingness, noise, complete loss, stuck readings, drift, and changed lighting behaviour.</p>
+        <p class="hero-lead">Strong clean scores do not show how a model behaves when sensors fail. This page tests the leading sensor configurations under missingness, noise, complete loss, stuck readings, drift, and changed lighting behaviour.</p>
       </div></section>
 
-      <section id="findings" class="finding-strip" aria-labelledby="robustness-findings-title" data-page-section>
-        <h2 id="robustness-findings-title" class="sr-only">Key findings</h2>
+      <section id="results" class="finding-strip" aria-labelledby="robustness-findings-title" data-page-section>
+        <h2 id="robustness-findings-title" class="sr-only">Key results</h2>
         <article class="finding-card"><span class="finding-value">0.96–0.98</span><h3>Clean F1</h3><p>All three configurations begin with strong clean held-out performance.</p></article>
         <article class="finding-card finding-card-accent"><span class="finding-value">≈ 0</span><h3>Critical Light failure</h3><p>Occupied darkness and complete Light loss cause near-total failure.</p></article>
         <article class="finding-card"><span class="finding-value">0.71–0.74</span><h3>40% missing cells</h3><p>Training-median replacement retains partial predictive ability.</p></article>

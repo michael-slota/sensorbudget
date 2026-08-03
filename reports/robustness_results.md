@@ -1,5 +1,14 @@
 # Robustness results
 
+## Executive summary
+
+- All three frontier configurations achieve strong clean F1 but depend heavily
+  on the historical relationship between Light and occupancy.
+- Occupied darkness and complete Light loss reduce F1 to approximately zero;
+  adding sensors does not create automatic fallback behaviour.
+- Missingness, noise, stuck readings, and drift produce different degradation
+  across periods, making robustness a separate requirement from clean accuracy.
+
 > **Project status:** This report records the initial Phase 5 fault-injection
 > study. Fallback, realistic routing, and fault-aware-training follow-ups are
 > now complete; see the [model card](model_card.md) for their combined

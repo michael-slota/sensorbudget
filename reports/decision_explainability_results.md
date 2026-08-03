@@ -1,5 +1,14 @@
 # Decision threshold and explainability results
 
+## Executive summary
+
+- Equal-cost chronological validation selects threshold `0.86`, reducing its
+  assumed cost from `11.05` to `5.75` per 1,000 validation rows.
+- That advantage does not transfer: threshold `0.50` has lower equal-cost error
+  on both held-out periods, especially Test 2.
+- Light has the largest standardized model coefficient, reinforcing the
+  robustness finding that the candidate relies strongly on lighting behaviour.
+
 > **Project status:** This report completes Phase 6. It documents an auditable
 > validation-selected threshold but makes no unconditional operating-point or
 > deployment recommendation. See the consolidated [model card](model_card.md).

@@ -1,5 +1,14 @@
 # Light-independent fallback results
 
+## Executive summary
+
+- Training-only validation selects Temperature + CO2 logistic regression as
+  the strongest eligible no-Light fallback (`0.679` mean validation F1).
+- With perfect knowledge of severe Light faults, routing recovers F1 to `0.817`
+  on Test 1 and `0.540` on Test 2 instead of approximately zero.
+- The fallback limits catastrophic failure but remains weaker than the clean
+  primary and does not solve real-time fault detection.
+
 > **Project status:** This report records the oracle-routing step of Phase 5.
 > The planned causal detector and routing evaluation is complete; see the
 > [fault-detection report](fault_detection_results.md) and consolidated

@@ -1,5 +1,14 @@
 # Occupancy dataset quality and EDA report
 
+## Executive summary
+
+- The three source files contain 20,560 validated minute-level rows with no
+  missing sensor values, duplicate timestamps, or gaps above 90 seconds.
+- Light is the strongest occupancy correlate (`0.915`) and therefore both a
+  useful predictor and the project’s main proxy-risk signal.
+- The evidence covers one office over a short winter period, so later results
+  describe this setting rather than general performance across buildings.
+
 > **Project status:** This report records the Phase 1–2 source audit and EDA.
 > The data pipeline and all later modeling phases are now complete. Continue
 > with the [baseline report](baseline_results.md), or see the consolidated

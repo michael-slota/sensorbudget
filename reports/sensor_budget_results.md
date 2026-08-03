@@ -1,5 +1,15 @@
 # Sensor-budget results
 
+## Executive summary
+
+- All 15 non-empty combinations of Temperature, Humidity, Light, and CO2 were
+  evaluated using the same chronological model-selection procedure.
+- Temperature + Light + CO2 logistic regression had the leading mean
+  validation F1 (`0.780`); three Light-containing configurations remained on
+  the Pareto frontier across all five illustrative cost scenarios.
+- The cost values are sensitivity assumptions, so this experiment identifies
+  trade-offs without making a final hardware recommendation.
+
 > **Project status:** This report records the Phase 4 sensor-subset and
 > illustrative-cost comparison. The planned robustness follow-up is complete;
 > see the [robustness report](robustness_results.md) and consolidated

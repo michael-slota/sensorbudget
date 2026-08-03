@@ -1,5 +1,14 @@
 # Fault-aware training results
 
+## Executive summary
+
+- Training-only fault augmentation selected logistic regression with a 1%
+  injected-fault share for both tested feature representations.
+- An explicit missingness indicator teaches the model that replacement
+  occurred, but clean Test 2 F1 falls from `0.980` to `0.942`.
+- Detector routing remains the strongest tested mitigation overall; none of
+  the tested approaches removes the known missed-fault and false-alarm risks.
+
 > **Project status:** This report completes the Phase 5 mitigation comparison.
 > Detector routing is the strongest tested strategy on average, but the project
 > does not certify it for deployment. See the consolidated

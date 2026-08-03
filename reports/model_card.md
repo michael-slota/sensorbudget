@@ -1,5 +1,24 @@
 # Model card: SensorBudget occupancy research candidate
 
+## Executive summary
+
+The project’s main research candidate is a class-balanced logistic regression
+using Temperature, Light, and CO2. At threshold `0.50`, clean F1 is `0.971` on
+Test 1 and `0.980` on Test 2. Those scores are not sufficient evidence for a
+deployment decision:
+
+- complete Light loss and occupied darkness reduce F1 to approximately zero;
+- detector routing provides the strongest tested mitigation overall but has
+  known false alarms and missed plausible faults;
+- a validation-selected threshold of `0.86` performs worse than `0.50` under
+  the same illustrative cost objective on both held-out periods; and
+- the data covers one office over a short period, with no external building or
+  seasonal validation.
+
+The central conclusion is therefore conditional: the candidate performs well
+on clean source periods, while reliability depends strongly on lighting
+behaviour, temporal context, and fault handling.
+
 ## Model-card status
 
 This card documents the main research candidate produced by SensorBudget as of

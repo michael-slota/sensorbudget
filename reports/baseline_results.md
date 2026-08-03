@@ -1,5 +1,14 @@
 # Baseline occupancy model results
 
+## Executive summary
+
+- Five fixed classifiers were compared with expanding chronological
+  validation; histogram gradient boosting led the initial all-sensor study.
+- Its held-out F1 was `0.930` on Test 1 and `0.883` on Test 2, showing that
+  strong ranking metrics did not translate into identical period performance.
+- This is the initial baseline, not the later three-sensor logistic research
+  candidate used for robustness and explainability.
+
 > **Project status:** This report records the Phase 3 baseline comparison. The
 > later sensor-budget study selected a separate Temperature + Light + CO2
 > logistic research candidate for Phases 5–6. See the
