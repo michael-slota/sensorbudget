@@ -19,11 +19,12 @@ Reports:
   indicators, held-out comparison, and Phase 5 reliability conclusion
 - `decision_explainability_results.md` — validation-selected operating
   thresholds, calibration, coefficients, local errors, and transition recall
+- `model_card.md` — consolidated intended use, model evidence, limitations,
+  and pre-deployment requirements through Phase 6
 
 Planned reports:
 
 - `final_report.md`
-- `model_card.md`
 
 Each report should link to the exact experiment configuration and record the
 code revision and data checksums used to produce it.

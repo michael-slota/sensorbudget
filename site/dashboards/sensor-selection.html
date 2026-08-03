@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Interactive SensorBudget sensor-combination and illustrative-cost evidence.">
+    <title>Sensor selection and cost | SensorBudget</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&amp;family=Manrope:wght@600;700;800&amp;display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/css/styles.css">
+    <script src="https://cdn.plot.ly/plotly-2.35.2.min.js" defer></script>
+    <script src="../assets/js/sensor-selection.js" defer></script>
+    <script src="../assets/js/landing-navigation.js" defer></script>
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="../index.html" aria-label="SensorBudget home"><span class="brand-mark" aria-hidden="true">SB</span><span>SensorBudget</span></a>
+      <nav class="header-nav" aria-label="Primary navigation">
+        <a href="../index.html#dashboards">Dashboards</a>
+        <a href="https://github.com/michael-slota/sensorbudget/blob/main/reports/model_card.md">Model card</a>
+        <a class="button button-small button-ghost" href="https://github.com/michael-slota/sensorbudget">Repository</a>
+      </nav>
+    </header>
+
+    <nav class="scroll-rail" aria-label="Dashboard sections">
+      <div class="scroll-rail-track" aria-hidden="true"><span id="scroll-rail-progress"></span></div>
+      <div class="scroll-rail-links">
+        <a href="#overview" data-scroll-section="overview" aria-current="true"><span class="scroll-rail-dot"></span>Overview</a>
+        <a href="#findings" data-scroll-section="findings"><span class="scroll-rail-dot"></span>Findings</a>
+        <a href="#analysis" data-scroll-section="analysis"><span class="scroll-rail-dot"></span>Analysis</a>
+        <a href="#evidence" data-scroll-section="evidence"><span class="scroll-rail-dot"></span>Evidence</a>
+      </div><span class="scroll-rail-more" aria-hidden="true">↓</span>
+    </nav>
+
+    <main>
+      <section id="overview" class="dashboard-hero" data-page-section>
+        <div>
+          <p class="breadcrumb"><a class="breadcrumb-home" href="../index.html"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 11.5 12 4l9 7.5M5.5 10v10h13V10M9.5 20v-6h5v6"/></svg>Home</a><span>/</span>Sensor selection and cost</p>
+          <p class="eyebrow">Dashboard 03</p>
+          <h1>Which sensor combinations preserve performance at lower assumed cost?</h1>
+          <p class="hero-lead">All 15 non-empty combinations of Temperature, Humidity, Light, and CO2 are compared using the same chronological model-selection process. Costs are transparent sensitivity assumptions rather than market prices.</p>
+        </div>
+      </section>
+
+      <section id="findings" class="finding-strip" aria-labelledby="sensor-findings-title" data-page-section>
+        <h2 id="sensor-findings-title" class="sr-only">Key findings</h2>
+        <article class="finding-card"><span class="finding-value">15</span><h3>Sensor combinations</h3><p>Every non-empty subset of the four physical sensors is evaluated.</p></article>
+        <article class="finding-card finding-card-accent"><span class="finding-value">0.780</span><h3>Leading validation F1</h3><p>Temperature + Light + CO2 with logistic regression.</p></article>
+        <article class="finding-card"><span class="finding-value">3</span><h3>Stable frontier members</h3><p>The same core configurations remain efficient in all five cost scenarios.</p></article>
+        <article class="finding-card"><span class="finding-value">5 scenarios</span><h3>Cost sensitivity</h3><p>Illustrative assumptions are varied without retraining the models.</p></article>
+      </section>
+
+      <section id="analysis" class="dashboard-stage" aria-labelledby="sensor-view-heading" data-page-section>
+        <div class="stage-header"><div><p class="eyebrow">Interactive analysis</p><h2 id="sensor-view-heading">Explore the trade-offs</h2></div><p>Select a view. The chart and interpretation update together.</p></div>
+        <div class="view-tabs" role="tablist" aria-label="Sensor-selection chart views">
+          <button class="view-tab is-active" type="button" role="tab" aria-selected="true" data-view="ranking">Validation ranking</button>
+          <button class="view-tab" type="button" role="tab" aria-selected="false" data-view="frontier">Cost frontier</button>
+          <button class="view-tab" type="button" role="tab" aria-selected="false" data-view="light">Adding Light</button>
+          <button class="view-tab" type="button" role="tab" aria-selected="false" data-view="scenarios">Scenario stability</button>
+          <button class="view-tab" type="button" role="tab" aria-selected="false" data-view="heldout">Held-out stability</button>
+        </div>
+        <div class="chart-shell">
+          <div id="sensor-chart" class="plot" role="tabpanel" aria-live="polite" aria-label="Interactive sensor-selection chart"></div>
+          <div id="chart-error" class="chart-error" hidden>The chart data could not be loaded. Refresh the page or view the source notebook.</div>
+        </div>
+        <article class="interpretation-panel" aria-live="polite">
+          <p class="interpretation-label">Interpretation</p><h3 id="interpretation-title"></h3><p id="interpretation-copy"></p><p id="interpretation-boundary" class="interpretation-boundary"></p>
+        </article>
+      </section>
+
+      <section id="evidence" class="section evidence-section" aria-labelledby="sensor-evidence-title" data-page-section>
+        <div><p class="eyebrow">Method and evidence</p><h2 id="sensor-evidence-title">Trace the result</h2></div>
+        <div class="evidence-links">
+          <a href="https://github.com/michael-slota/sensorbudget/blob/main/notebooks/03_sensor_budget_analysis.ipynb" target="_blank" rel="noopener noreferrer"><span>Notebook 03</span><strong>Interactive experiment ↗</strong></a>
+          <a href="https://github.com/michael-slota/sensorbudget/blob/main/reports/sensor_budget_results.md" target="_blank" rel="noopener noreferrer"><span>Sensor-selection report</span><strong>Results and assumptions ↗</strong></a>
+          <a href="https://github.com/michael-slota/sensorbudget/blob/main/configs/cost_scenarios.json" target="_blank" rel="noopener noreferrer"><span>Cost scenarios</span><strong>Versioned assumptions ↗</strong></a>
+          <a href="https://github.com/michael-slota/sensorbudget/blob/main/reports/model_card.md" target="_blank" rel="noopener noreferrer"><span>Model card</span><strong>Project-wide interpretation ↗</strong></a>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <a href="../index.html">← Back to dashboard suite</a><span>No final sensor recommendation</span>
+      <a href="https://github.com/michael-slota/sensorbudget/blob/main/docs/sensor_budget_experiment.md" target="_blank" rel="noopener noreferrer">Experiment contract ↗</a>
+    </footer>
+  </body>
+</html>

@@ -1,5 +1,17 @@
 # Decision threshold and explainability results
 
+> **Project status:** This report completes Phase 6. It documents an auditable
+> validation-selected threshold but makes no unconditional operating-point or
+> deployment recommendation. See the consolidated [model card](model_card.md).
+
+**Traceability:** Settings are versioned in
+[`configs/decision_explainability.json`](../configs/decision_explainability.json),
+the presentation is in
+[`notebooks/08_decision_explainability.ipynb`](../notebooks/08_decision_explainability.ipynb),
+and source identity is fixed by
+[`data/source_checksums.json`](../data/source_checksums.json). The Git commit
+containing this report identifies the corresponding code revision.
+
 ## Validation-selected operating points
 
 | Cost scenario | Selected threshold | Cost/1,000 | Precision | Recall | F1 |

@@ -33,6 +33,12 @@ app = [
 
 [project.scripts]
 sensorbudget-build-data = "sensorbudget.data.build:main"
+sensorbudget-export-eda-dashboard = "sensorbudget.dashboard.export_eda:main"
+sensorbudget-export-model-dashboard = "sensorbudget.dashboard.export_models:main"
+sensorbudget-export-sensor-dashboard = "sensorbudget.dashboard.export_sensor_selection:main"
+sensorbudget-export-robustness-dashboard = "sensorbudget.dashboard.export_robustness:main"
+sensorbudget-export-mitigation-dashboard = "sensorbudget.dashboard.export_mitigation:main"
+sensorbudget-export-decision-dashboard = "sensorbudget.dashboard.export_decision:main"
 sensorbudget-run-cost-sensitivity = "sensorbudget.modeling.cost_sensitivity:main"
 sensorbudget-run-decision-analysis = "sensorbudget.modeling.decision_explainability:main"
 sensorbudget-run-fallback-mitigation = "sensorbudget.robustness.fallback:main"

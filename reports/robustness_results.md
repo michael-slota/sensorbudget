@@ -1,5 +1,17 @@
 # Robustness results
 
+> **Project status:** This report records the initial Phase 5 fault-injection
+> study. Fallback, realistic routing, and fault-aware-training follow-ups are
+> now complete; see the [model card](model_card.md) for their combined
+> reliability conclusion.
+
+**Traceability:** Settings are versioned in
+[`configs/robustness.json`](../configs/robustness.json), the presentation is in
+[`notebooks/04_robustness.ipynb`](../notebooks/04_robustness.ipynb), and source
+identity is fixed by [`data/source_checksums.json`](../data/source_checksums.json).
+The Git commit containing this report identifies the corresponding code
+revision.
+
 ## Scope
 
 The three validation-frontier configurations were evaluated under predefined
@@ -68,7 +80,7 @@ models also degrade, especially on Test 2.
 - Severe noise and calibration drift create period-dependent degradation.
 - No tested configuration passes the critical Light-failure scenarios.
 
-The next robustness increment should compare mitigation strategies using
-training-period validation: explicit missingness indicators, fault-augmented
-training, and models trained without Light as a fallback path. These results
-do not select or recommend a sensor configuration.
+Subsequent experiments compared a no-Light fallback, realistic detector
+routing, explicit missingness indicators, and fault-augmented training. These
+results remain the initial fault-injection evidence and do not select or
+recommend a sensor configuration.

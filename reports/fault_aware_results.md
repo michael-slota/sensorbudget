@@ -1,5 +1,18 @@
 # Fault-aware training results
 
+> **Project status:** This report completes the Phase 5 mitigation comparison.
+> Detector routing is the strongest tested strategy on average, but the project
+> does not certify it for deployment. See the consolidated
+> [model card](model_card.md).
+
+**Traceability:** Settings are versioned in
+[`configs/fault_aware_training.json`](../configs/fault_aware_training.json),
+the presentation is in
+[`notebooks/07_fault_aware_training.ipynb`](../notebooks/07_fault_aware_training.ipynb),
+and source identity is fixed by
+[`data/source_checksums.json`](../data/source_checksums.json). The Git commit
+containing this report identifies the corresponding code revision.
+
 ## Training-validation selection
 
 Both representations selected logistic regression with a 1% added fault
@@ -28,8 +41,12 @@ The missingness indicator prevents the Test 1 missing-Light loss that remains
 in the plain fault-aware model. It does not identify plausible stuck values or
 gradual calibration bias, because those readings are present rather than
 missing. Across all clean and episodic held-out cases, detector routing has the
-highest mean F1 on both Test 1 (0.970) and Test 2 (0.974). The missing-indicator
-model averages 0.969 and 0.939 respectively.
+highest mean F1 on Test 1 (0.970). On Test 2, the unchanged primary is slightly
+higher (0.978 versus 0.974 for detector routing), because short injected
+episodes often leave full-period primary performance high while detector false
+alarms can route healthy rows. Among the tested mitigation alternatives,
+detector routing remains strongest overall. The missing-indicator model
+averages 0.969 and 0.939 respectively.
 
 ## Reliability conclusion
 

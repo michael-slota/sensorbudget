@@ -1,0 +1,563 @@
+{
+  "metadata": {
+    "configuration_count": 15,
+    "cost_scenario_count": 5,
+    "cost_unit": "Illustrative relative cost points",
+    "selection_metric": "Mean chronological-validation F1",
+    "recommendation_status": "No final sensor recommendation"
+  },
+  "validation_ranking": [
+    {
+      "feature_set": "temperature__light__co2",
+      "sensor_label": "Temperature + Light + CO2",
+      "physical_sensor_count": 3,
+      "relative_cost": 5.5,
+      "model_label": "Logistic regression",
+      "cv_f1_mean": 0.7799761973
+    },
+    {
+      "feature_set": "humidity__light__co2",
+      "sensor_label": "Humidity + Light + CO2",
+      "physical_sensor_count": 3,
+      "relative_cost": 5.5,
+      "model_label": "Random forest",
+      "cv_f1_mean": 0.7678437106
+    },
+    {
+      "feature_set": "temperature__humidity__light__co2",
+      "sensor_label": "Temperature + Humidity + Light + CO2",
+      "physical_sensor_count": 4,
+      "relative_cost": 6.5,
+      "model_label": "Histogram gradient boosting",
+      "cv_f1_mean": 0.7669108413
+    },
+    {
+      "feature_set": "humidity__light",
+      "sensor_label": "Humidity + Light",
+      "physical_sensor_count": 2,
+      "relative_cost": 1.5,
+      "model_label": "Random forest",
+      "cv_f1_mean": 0.7561141135
+    },
+    {
+      "feature_set": "light",
+      "sensor_label": "Light",
+      "physical_sensor_count": 1,
+      "relative_cost": 0.5,
+      "model_label": "Histogram gradient boosting",
+      "cv_f1_mean": 0.7547658339
+    },
+    {
+      "feature_set": "temperature__light",
+      "sensor_label": "Temperature + Light",
+      "physical_sensor_count": 2,
+      "relative_cost": 1.5,
+      "model_label": "Logistic regression",
+      "cv_f1_mean": 0.7361059958
+    },
+    {
+      "feature_set": "light__co2",
+      "sensor_label": "Light + CO2",
+      "physical_sensor_count": 2,
+      "relative_cost": 4.5,
+      "model_label": "Logistic regression",
+      "cv_f1_mean": 0.7333779489
+    },
+    {
+      "feature_set": "temperature__humidity__light",
+      "sensor_label": "Temperature + Humidity + Light",
+      "physical_sensor_count": 3,
+      "relative_cost": 2.5,
+      "model_label": "Histogram gradient boosting",
+      "cv_f1_mean": 0.7311030264
+    },
+    {
+      "feature_set": "temperature__co2",
+      "sensor_label": "Temperature + CO2",
+      "physical_sensor_count": 2,
+      "relative_cost": 5.0,
+      "model_label": "Logistic regression",
+      "cv_f1_mean": 0.6789682073
+    },
+    {
+      "feature_set": "co2",
+      "sensor_label": "CO2",
+      "physical_sensor_count": 1,
+      "relative_cost": 4.0,
+      "model_label": "Logistic regression",
+      "cv_f1_mean": 0.6742493003
+    },
+    {
+      "feature_set": "temperature__humidity__co2",
+      "sensor_label": "Temperature + Humidity + CO2",
+      "physical_sensor_count": 3,
+      "relative_cost": 6.0,
+      "model_label": "Logistic regression",
+      "cv_f1_mean": 0.6167837574
+    },
+    {
+      "feature_set": "humidity__co2",
+      "sensor_label": "Humidity + CO2",
+      "physical_sensor_count": 2,
+      "relative_cost": 5.0,
+      "model_label": "Logistic regression",
+      "cv_f1_mean": 0.6144236356
+    },
+    {
+      "feature_set": "temperature",
+      "sensor_label": "Temperature",
+      "physical_sensor_count": 1,
+      "relative_cost": 1.0,
+      "model_label": "Histogram gradient boosting",
+      "cv_f1_mean": 0.4075427781
+    },
+    {
+      "feature_set": "temperature__humidity",
+      "sensor_label": "Temperature + Humidity",
+      "physical_sensor_count": 2,
+      "relative_cost": 2.0,
+      "model_label": "Logistic regression",
+      "cv_f1_mean": 0.3824969658
+    },
+    {
+      "feature_set": "humidity",
+      "sensor_label": "Humidity",
+      "physical_sensor_count": 1,
+      "relative_cost": 1.0,
+      "model_label": "Random forest",
+      "cv_f1_mean": 0.2129828726
+    }
+  ],
+  "current_cost_frontier": [
+    {
+      "feature_set": "light",
+      "sensor_label": "Light",
+      "model_label": "Histogram gradient boosting",
+      "cv_f1_mean": 0.7547658339,
+      "scenario_cost": 0.5,
+      "is_pareto": true
+    },
+    {
+      "feature_set": "humidity",
+      "sensor_label": "Humidity",
+      "model_label": "Random forest",
+      "cv_f1_mean": 0.2129828726,
+      "scenario_cost": 1.0,
+      "is_pareto": false
+    },
+    {
+      "feature_set": "temperature",
+      "sensor_label": "Temperature",
+      "model_label": "Histogram gradient boosting",
+      "cv_f1_mean": 0.4075427781,
+      "scenario_cost": 1.0,
+      "is_pareto": false
+    },
+    {
+      "feature_set": "humidity__light",
+      "sensor_label": "Humidity + Light",
+      "model_label": "Random forest",
+      "cv_f1_mean": 0.7561141135,
+      "scenario_cost": 1.5,
+      "is_pareto": true
+    },
+    {
+      "feature_set": "temperature__light",
+      "sensor_label": "Temperature + Light",
+      "model_label": "Logistic regression",
+      "cv_f1_mean": 0.7361059958,
+      "scenario_cost": 1.5,
+      "is_pareto": false
+    },
+    {
+      "feature_set": "temperature__humidity",
+      "sensor_label": "Temperature + Humidity",
+      "model_label": "Logistic regression",
+      "cv_f1_mean": 0.3824969658,
+      "scenario_cost": 2.0,
+      "is_pareto": false
+    },
+    {
+      "feature_set": "temperature__humidity__light",
+      "sensor_label": "Temperature + Humidity + Light",
+      "model_label": "Histogram gradient boosting",
+      "cv_f1_mean": 0.7311030264,
+      "scenario_cost": 2.5,
+      "is_pareto": false
+    },
+    {
+      "feature_set": "co2",
+      "sensor_label": "CO2",
+      "model_label": "Logistic regression",
+      "cv_f1_mean": 0.6742493003,
+      "scenario_cost": 4.0,
+      "is_pareto": false
+    },
+    {
+      "feature_set": "light__co2",
+      "sensor_label": "Light + CO2",
+      "model_label": "Logistic regression",
+      "cv_f1_mean": 0.7333779489,
+      "scenario_cost": 4.5,
+      "is_pareto": false
+    },
+    {
+      "feature_set": "humidity__co2",
+      "sensor_label": "Humidity + CO2",
+      "model_label": "Logistic regression",
+      "cv_f1_mean": 0.6144236356,
+      "scenario_cost": 5.0,
+      "is_pareto": false
+    },
+    {
+      "feature_set": "temperature__co2",
+      "sensor_label": "Temperature + CO2",
+      "model_label": "Logistic regression",
+      "cv_f1_mean": 0.6789682073,
+      "scenario_cost": 5.0,
+      "is_pareto": false
+    },
+    {
+      "feature_set": "humidity__light__co2",
+      "sensor_label": "Humidity + Light + CO2",
+      "model_label": "Random forest",
+      "cv_f1_mean": 0.7678437106,
+      "scenario_cost": 5.5,
+      "is_pareto": false
+    },
+    {
+      "feature_set": "temperature__light__co2",
+      "sensor_label": "Temperature + Light + CO2",
+      "model_label": "Logistic regression",
+      "cv_f1_mean": 0.7799761973,
+      "scenario_cost": 5.5,
+      "is_pareto": true
+    },
+    {
+      "feature_set": "temperature__humidity__co2",
+      "sensor_label": "Temperature + Humidity + CO2",
+      "model_label": "Logistic regression",
+      "cv_f1_mean": 0.6167837574,
+      "scenario_cost": 6.0,
+      "is_pareto": false
+    },
+    {
+      "feature_set": "temperature__humidity__light__co2",
+      "sensor_label": "Temperature + Humidity + Light + CO2",
+      "model_label": "Histogram gradient boosting",
+      "cv_f1_mean": 0.7669108413,
+      "scenario_cost": 6.5,
+      "is_pareto": false
+    }
+  ],
+  "light_additions": [
+    {
+      "base_sensors": "CO2",
+      "with_light_sensors": "Light + CO2",
+      "without_light_f1": 0.6742493002889827,
+      "with_light_f1": 0.7333779489001228,
+      "f1_change": 0.05912864861114009
+    },
+    {
+      "base_sensors": "Temperature + CO2",
+      "with_light_sensors": "Temperature + Light + CO2",
+      "without_light_f1": 0.6789682073342266,
+      "with_light_f1": 0.7799761973196231,
+      "f1_change": 0.1010079899853965
+    },
+    {
+      "base_sensors": "Temperature + Humidity + CO2",
+      "with_light_sensors": "Temperature + Humidity + Light + CO2",
+      "without_light_f1": 0.6167837573907319,
+      "with_light_f1": 0.7669108413079602,
+      "f1_change": 0.1501270839172283
+    },
+    {
+      "base_sensors": "Humidity + CO2",
+      "with_light_sensors": "Humidity + Light + CO2",
+      "without_light_f1": 0.6144236355560755,
+      "with_light_f1": 0.7678437105704508,
+      "f1_change": 0.15342007501437527
+    },
+    {
+      "base_sensors": "Temperature",
+      "with_light_sensors": "Temperature + Light",
+      "without_light_f1": 0.407542778111246,
+      "with_light_f1": 0.7361059958161109,
+      "f1_change": 0.3285632177048649
+    },
+    {
+      "base_sensors": "Temperature + Humidity",
+      "with_light_sensors": "Temperature + Humidity + Light",
+      "without_light_f1": 0.3824969658375082,
+      "with_light_f1": 0.7311030264338959,
+      "f1_change": 0.3486060605963877
+    },
+    {
+      "base_sensors": "Humidity",
+      "with_light_sensors": "Humidity + Light",
+      "without_light_f1": 0.2129828725954382,
+      "with_light_f1": 0.7561141134864688,
+      "f1_change": 0.5431312408910307
+    }
+  ],
+  "frontier_frequency": [
+    {
+      "feature_set": "temperature__light__co2",
+      "sensor_label": "Temperature + Light + CO2",
+      "frontier_scenarios": 5,
+      "total_scenarios": 5,
+      "cv_f1_mean": 0.7799761973,
+      "frontier_share": 1.0
+    },
+    {
+      "feature_set": "humidity__light",
+      "sensor_label": "Humidity + Light",
+      "frontier_scenarios": 5,
+      "total_scenarios": 5,
+      "cv_f1_mean": 0.7561141135,
+      "frontier_share": 1.0
+    },
+    {
+      "feature_set": "light",
+      "sensor_label": "Light",
+      "frontier_scenarios": 5,
+      "total_scenarios": 5,
+      "cv_f1_mean": 0.7547658339,
+      "frontier_share": 1.0
+    },
+    {
+      "feature_set": "co2",
+      "sensor_label": "CO2",
+      "frontier_scenarios": 1,
+      "total_scenarios": 5,
+      "cv_f1_mean": 0.6742493003,
+      "frontier_share": 0.2
+    },
+    {
+      "feature_set": "temperature",
+      "sensor_label": "Temperature",
+      "frontier_scenarios": 1,
+      "total_scenarios": 5,
+      "cv_f1_mean": 0.4075427781,
+      "frontier_share": 0.2
+    },
+    {
+      "feature_set": "humidity__light__co2",
+      "sensor_label": "Humidity + Light + CO2",
+      "frontier_scenarios": 0,
+      "total_scenarios": 5,
+      "cv_f1_mean": 0.7678437106,
+      "frontier_share": 0.0
+    },
+    {
+      "feature_set": "temperature__humidity__light__co2",
+      "sensor_label": "Temperature + Humidity + Light + CO2",
+      "frontier_scenarios": 0,
+      "total_scenarios": 5,
+      "cv_f1_mean": 0.7669108413,
+      "frontier_share": 0.0
+    },
+    {
+      "feature_set": "temperature__light",
+      "sensor_label": "Temperature + Light",
+      "frontier_scenarios": 0,
+      "total_scenarios": 5,
+      "cv_f1_mean": 0.7361059958,
+      "frontier_share": 0.0
+    },
+    {
+      "feature_set": "light__co2",
+      "sensor_label": "Light + CO2",
+      "frontier_scenarios": 0,
+      "total_scenarios": 5,
+      "cv_f1_mean": 0.7333779489,
+      "frontier_share": 0.0
+    },
+    {
+      "feature_set": "temperature__humidity__light",
+      "sensor_label": "Temperature + Humidity + Light",
+      "frontier_scenarios": 0,
+      "total_scenarios": 5,
+      "cv_f1_mean": 0.7311030264,
+      "frontier_share": 0.0
+    },
+    {
+      "feature_set": "temperature__co2",
+      "sensor_label": "Temperature + CO2",
+      "frontier_scenarios": 0,
+      "total_scenarios": 5,
+      "cv_f1_mean": 0.6789682073,
+      "frontier_share": 0.0
+    },
+    {
+      "feature_set": "temperature__humidity__co2",
+      "sensor_label": "Temperature + Humidity + CO2",
+      "frontier_scenarios": 0,
+      "total_scenarios": 5,
+      "cv_f1_mean": 0.6167837574,
+      "frontier_share": 0.0
+    },
+    {
+      "feature_set": "humidity__co2",
+      "sensor_label": "Humidity + CO2",
+      "frontier_scenarios": 0,
+      "total_scenarios": 5,
+      "cv_f1_mean": 0.6144236356,
+      "frontier_share": 0.0
+    },
+    {
+      "feature_set": "temperature__humidity",
+      "sensor_label": "Temperature + Humidity",
+      "frontier_scenarios": 0,
+      "total_scenarios": 5,
+      "cv_f1_mean": 0.3824969658,
+      "frontier_share": 0.0
+    },
+    {
+      "feature_set": "humidity",
+      "sensor_label": "Humidity",
+      "frontier_scenarios": 0,
+      "total_scenarios": 5,
+      "cv_f1_mean": 0.2129828726,
+      "frontier_share": 0.0
+    }
+  ],
+  "heldout_stability": [
+    {
+      "feature_set": "co2",
+      "sensor_label": "CO2",
+      "model_label": "Logistic regression",
+      "relative_cost": 4.0,
+      "physical_sensor_count": 1,
+      "test_1": 0.8273921201,
+      "test_2": 0.4494888755
+    },
+    {
+      "feature_set": "humidity",
+      "sensor_label": "Humidity",
+      "model_label": "Random forest",
+      "relative_cost": 1.0,
+      "physical_sensor_count": 1,
+      "test_1": 0.4543828265,
+      "test_2": 0.2932479805
+    },
+    {
+      "feature_set": "humidity__co2",
+      "sensor_label": "Humidity + CO2",
+      "model_label": "Logistic regression",
+      "relative_cost": 5.0,
+      "physical_sensor_count": 2,
+      "test_1": 0.8342911877,
+      "test_2": 0.5323793799
+    },
+    {
+      "feature_set": "humidity__light",
+      "sensor_label": "Humidity + Light",
+      "model_label": "Random forest",
+      "relative_cost": 1.5,
+      "physical_sensor_count": 2,
+      "test_1": 0.9672873679,
+      "test_2": 0.9598488427
+    },
+    {
+      "feature_set": "humidity__light__co2",
+      "sensor_label": "Humidity + Light + CO2",
+      "model_label": "Random forest",
+      "relative_cost": 5.5,
+      "physical_sensor_count": 3,
+      "test_1": 0.9606854839,
+      "test_2": 0.9201349831
+    },
+    {
+      "feature_set": "light",
+      "sensor_label": "Light",
+      "model_label": "Histogram gradient boosting",
+      "relative_cost": 0.5,
+      "physical_sensor_count": 1,
+      "test_1": 0.9714285714,
+      "test_2": 0.9824053989
+    },
+    {
+      "feature_set": "light__co2",
+      "sensor_label": "Light + CO2",
+      "model_label": "Logistic regression",
+      "relative_cost": 4.5,
+      "physical_sensor_count": 2,
+      "test_1": 0.970970971,
+      "test_2": 0.9611490464
+    },
+    {
+      "feature_set": "temperature",
+      "sensor_label": "Temperature",
+      "model_label": "Histogram gradient boosting",
+      "relative_cost": 1.0,
+      "physical_sensor_count": 1,
+      "test_1": 0.630638678,
+      "test_2": 0.6296846624
+    },
+    {
+      "feature_set": "temperature__co2",
+      "sensor_label": "Temperature + CO2",
+      "model_label": "Logistic regression",
+      "relative_cost": 5.0,
+      "physical_sensor_count": 2,
+      "test_1": 0.8166901078,
+      "test_2": 0.5402980755
+    },
+    {
+      "feature_set": "temperature__humidity",
+      "sensor_label": "Temperature + Humidity",
+      "model_label": "Logistic regression",
+      "relative_cost": 2.0,
+      "physical_sensor_count": 2,
+      "test_1": 0.7704460967,
+      "test_2": 0.653820598
+    },
+    {
+      "feature_set": "temperature__humidity__co2",
+      "sensor_label": "Temperature + Humidity + CO2",
+      "model_label": "Logistic regression",
+      "relative_cost": 6.0,
+      "physical_sensor_count": 3,
+      "test_1": 0.8315789474,
+      "test_2": 0.5455207575
+    },
+    {
+      "feature_set": "temperature__humidity__light",
+      "sensor_label": "Temperature + Humidity + Light",
+      "model_label": "Histogram gradient boosting",
+      "relative_cost": 2.5,
+      "physical_sensor_count": 3,
+      "test_1": 0.9286829776,
+      "test_2": 0.8937993236
+    },
+    {
+      "feature_set": "temperature__humidity__light__co2",
+      "sensor_label": "Temperature + Humidity + Light + CO2",
+      "model_label": "Histogram gradient boosting",
+      "relative_cost": 6.5,
+      "physical_sensor_count": 4,
+      "test_1": 0.9297971919,
+      "test_2": 0.8828499657
+    },
+    {
+      "feature_set": "temperature__light",
+      "sensor_label": "Temperature + Light",
+      "model_label": "Logistic regression",
+      "relative_cost": 1.5,
+      "physical_sensor_count": 2,
+      "test_1": 0.9719438878,
+      "test_2": 0.9793666027
+    },
+    {
+      "feature_set": "temperature__light__co2",
+      "sensor_label": "Temperature + Light + CO2",
+      "model_label": "Logistic regression",
+      "relative_cost": 5.5,
+      "physical_sensor_count": 3,
+      "test_1": 0.9714571858,
+      "test_2": 0.9802694899
+    }
+  ]
+}

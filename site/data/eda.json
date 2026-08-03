@@ -1,0 +1,664 @@
+{
+  "metadata": {
+    "title": "Time-aware exploratory analysis",
+    "total_rows": 20560,
+    "room_count": 1,
+    "sampling_interval_seconds": 60,
+    "source": "UCI Occupancy Detection",
+    "model_card": "https://github.com/michael-slota/sensorbudget/blob/main/reports/model_card.md"
+  },
+  "split_summary": [
+    {
+      "split": "train",
+      "label": "Training",
+      "rows": 8143,
+      "occupied_rows": 1729,
+      "unoccupied_rows": 6414,
+      "occupancy_rate": 0.2123296082524868,
+      "period_start": "2015-02-04T17:51:00",
+      "period_end": "2015-02-10T09:33:00"
+    },
+    {
+      "split": "test_1",
+      "label": "Test 1",
+      "rows": 2665,
+      "occupied_rows": 972,
+      "unoccupied_rows": 1693,
+      "occupancy_rate": 0.3647279549718574,
+      "period_start": "2015-02-02T14:19:00",
+      "period_end": "2015-02-04T10:43:00"
+    },
+    {
+      "split": "test_2",
+      "label": "Test 2",
+      "rows": 9752,
+      "occupied_rows": 2049,
+      "unoccupied_rows": 7703,
+      "occupancy_rate": 0.21011074651353567,
+      "period_start": "2015-02-11T14:48:00",
+      "period_end": "2015-02-18T09:19:00"
+    }
+  ],
+  "hourly_occupancy": [
+    {
+      "split": "test_1",
+      "label": "Test 1",
+      "hour": 0,
+      "occupancy_rate": 0.0,
+      "observations": 120
+    },
+    {
+      "split": "test_1",
+      "label": "Test 1",
+      "hour": 1,
+      "occupancy_rate": 0.0,
+      "observations": 122
+    },
+    {
+      "split": "test_1",
+      "label": "Test 1",
+      "hour": 2,
+      "occupancy_rate": 0.0,
+      "observations": 118
+    },
+    {
+      "split": "test_1",
+      "label": "Test 1",
+      "hour": 3,
+      "occupancy_rate": 0.0,
+      "observations": 120
+    },
+    {
+      "split": "test_1",
+      "label": "Test 1",
+      "hour": 4,
+      "occupancy_rate": 0.0,
+      "observations": 122
+    },
+    {
+      "split": "test_1",
+      "label": "Test 1",
+      "hour": 5,
+      "occupancy_rate": 0.0,
+      "observations": 118
+    },
+    {
+      "split": "test_1",
+      "label": "Test 1",
+      "hour": 6,
+      "occupancy_rate": 0.0,
+      "observations": 120
+    },
+    {
+      "split": "test_1",
+      "label": "Test 1",
+      "hour": 7,
+      "occupancy_rate": 0.319672131147541,
+      "observations": 122
+    },
+    {
+      "split": "test_1",
+      "label": "Test 1",
+      "hour": 8,
+      "occupancy_rate": 0.923728813559322,
+      "observations": 118
+    },
+    {
+      "split": "test_1",
+      "label": "Test 1",
+      "hour": 9,
+      "occupancy_rate": 0.9666666666666667,
+      "observations": 120
+    },
+    {
+      "split": "test_1",
+      "label": "Test 1",
+      "hour": 10,
+      "occupancy_rate": 1.0,
+      "observations": 105
+    },
+    {
+      "split": "test_1",
+      "label": "Test 1",
+      "hour": 11,
+      "occupancy_rate": 0.9830508474576272,
+      "observations": 59
+    },
+    {
+      "split": "test_1",
+      "label": "Test 1",
+      "hour": 12,
+      "occupancy_rate": 0.95,
+      "observations": 60
+    },
+    {
+      "split": "test_1",
+      "label": "Test 1",
+      "hour": 13,
+      "occupancy_rate": 0.5409836065573771,
+      "observations": 61
+    },
+    {
+      "split": "test_1",
+      "label": "Test 1",
+      "hour": 14,
+      "occupancy_rate": 1.0,
+      "observations": 100
+    },
+    {
+      "split": "test_1",
+      "label": "Test 1",
+      "hour": 15,
+      "occupancy_rate": 1.0,
+      "observations": 120
+    },
+    {
+      "split": "test_1",
+      "label": "Test 1",
+      "hour": 16,
+      "occupancy_rate": 1.0,
+      "observations": 122
+    },
+    {
+      "split": "test_1",
+      "label": "Test 1",
+      "hour": 17,
+      "occupancy_rate": 0.8050847457627118,
+      "observations": 118
+    },
+    {
+      "split": "test_1",
+      "label": "Test 1",
+      "hour": 18,
+      "occupancy_rate": 0.15,
+      "observations": 120
+    },
+    {
+      "split": "test_1",
+      "label": "Test 1",
+      "hour": 19,
+      "occupancy_rate": 0.0,
+      "observations": 122
+    },
+    {
+      "split": "test_1",
+      "label": "Test 1",
+      "hour": 20,
+      "occupancy_rate": 0.0,
+      "observations": 118
+    },
+    {
+      "split": "test_1",
+      "label": "Test 1",
+      "hour": 21,
+      "occupancy_rate": 0.0,
+      "observations": 120
+    },
+    {
+      "split": "test_1",
+      "label": "Test 1",
+      "hour": 22,
+      "occupancy_rate": 0.0,
+      "observations": 122
+    },
+    {
+      "split": "test_1",
+      "label": "Test 1",
+      "hour": 23,
+      "occupancy_rate": 0.0,
+      "observations": 118
+    },
+    {
+      "split": "test_2",
+      "label": "Test 2",
+      "hour": 0,
+      "occupancy_rate": 0.0,
+      "observations": 420
+    },
+    {
+      "split": "test_2",
+      "label": "Test 2",
+      "hour": 1,
+      "occupancy_rate": 0.0,
+      "observations": 427
+    },
+    {
+      "split": "test_2",
+      "label": "Test 2",
+      "hour": 2,
+      "occupancy_rate": 0.0,
+      "observations": 413
+    },
+    {
+      "split": "test_2",
+      "label": "Test 2",
+      "hour": 3,
+      "occupancy_rate": 0.0,
+      "observations": 420
+    },
+    {
+      "split": "test_2",
+      "label": "Test 2",
+      "hour": 4,
+      "occupancy_rate": 0.0,
+      "observations": 427
+    },
+    {
+      "split": "test_2",
+      "label": "Test 2",
+      "hour": 5,
+      "occupancy_rate": 0.0,
+      "observations": 413
+    },
+    {
+      "split": "test_2",
+      "label": "Test 2",
+      "hour": 6,
+      "occupancy_rate": 0.0,
+      "observations": 420
+    },
+    {
+      "split": "test_2",
+      "label": "Test 2",
+      "hour": 7,
+      "occupancy_rate": 0.0,
+      "observations": 427
+    },
+    {
+      "split": "test_2",
+      "label": "Test 2",
+      "hour": 8,
+      "occupancy_rate": 0.13801452784503632,
+      "observations": 413
+    },
+    {
+      "split": "test_2",
+      "label": "Test 2",
+      "hour": 9,
+      "occupancy_rate": 0.6526315789473685,
+      "observations": 380
+    },
+    {
+      "split": "test_2",
+      "label": "Test 2",
+      "hour": 10,
+      "occupancy_rate": 0.592896174863388,
+      "observations": 366
+    },
+    {
+      "split": "test_2",
+      "label": "Test 2",
+      "hour": 11,
+      "occupancy_rate": 0.4915254237288136,
+      "observations": 354
+    },
+    {
+      "split": "test_2",
+      "label": "Test 2",
+      "hour": 12,
+      "occupancy_rate": 0.5361111111111111,
+      "observations": 360
+    },
+    {
+      "split": "test_2",
+      "label": "Test 2",
+      "hour": 13,
+      "occupancy_rate": 0.3224043715846995,
+      "observations": 366
+    },
+    {
+      "split": "test_2",
+      "label": "Test 2",
+      "hour": 14,
+      "occupancy_rate": 0.5191256830601093,
+      "observations": 366
+    },
+    {
+      "split": "test_2",
+      "label": "Test 2",
+      "hour": 15,
+      "occupancy_rate": 0.5642857142857143,
+      "observations": 420
+    },
+    {
+      "split": "test_2",
+      "label": "Test 2",
+      "hour": 16,
+      "occupancy_rate": 0.6908665105386417,
+      "observations": 427
+    },
+    {
+      "split": "test_2",
+      "label": "Test 2",
+      "hour": 17,
+      "occupancy_rate": 0.6731234866828087,
+      "observations": 413
+    },
+    {
+      "split": "test_2",
+      "label": "Test 2",
+      "hour": 18,
+      "occupancy_rate": 0.1,
+      "observations": 420
+    },
+    {
+      "split": "test_2",
+      "label": "Test 2",
+      "hour": 19,
+      "occupancy_rate": 0.0,
+      "observations": 427
+    },
+    {
+      "split": "test_2",
+      "label": "Test 2",
+      "hour": 20,
+      "occupancy_rate": 0.0,
+      "observations": 413
+    },
+    {
+      "split": "test_2",
+      "label": "Test 2",
+      "hour": 21,
+      "occupancy_rate": 0.0,
+      "observations": 420
+    },
+    {
+      "split": "test_2",
+      "label": "Test 2",
+      "hour": 22,
+      "occupancy_rate": 0.0,
+      "observations": 427
+    },
+    {
+      "split": "test_2",
+      "label": "Test 2",
+      "hour": 23,
+      "occupancy_rate": 0.0,
+      "observations": 413
+    },
+    {
+      "split": "train",
+      "label": "Training",
+      "hour": 0,
+      "occupancy_rate": 0.0,
+      "observations": 360
+    },
+    {
+      "split": "train",
+      "label": "Training",
+      "hour": 1,
+      "occupancy_rate": 0.0,
+      "observations": 366
+    },
+    {
+      "split": "train",
+      "label": "Training",
+      "hour": 2,
+      "occupancy_rate": 0.0,
+      "observations": 354
+    },
+    {
+      "split": "train",
+      "label": "Training",
+      "hour": 3,
+      "occupancy_rate": 0.0,
+      "observations": 360
+    },
+    {
+      "split": "train",
+      "label": "Training",
+      "hour": 4,
+      "occupancy_rate": 0.0,
+      "observations": 366
+    },
+    {
+      "split": "train",
+      "label": "Training",
+      "hour": 5,
+      "occupancy_rate": 0.0,
+      "observations": 354
+    },
+    {
+      "split": "train",
+      "label": "Training",
+      "hour": 6,
+      "occupancy_rate": 0.0,
+      "observations": 360
+    },
+    {
+      "split": "train",
+      "label": "Training",
+      "hour": 7,
+      "occupancy_rate": 0.09016393442622951,
+      "observations": 366
+    },
+    {
+      "split": "train",
+      "label": "Training",
+      "hour": 8,
+      "occupancy_rate": 0.4209039548022599,
+      "observations": 354
+    },
+    {
+      "split": "train",
+      "label": "Training",
+      "hour": 9,
+      "occupancy_rate": 0.6407185628742516,
+      "observations": 334
+    },
+    {
+      "split": "train",
+      "label": "Training",
+      "hour": 10,
+      "occupancy_rate": 0.5868852459016394,
+      "observations": 305
+    },
+    {
+      "split": "train",
+      "label": "Training",
+      "hour": 11,
+      "occupancy_rate": 0.5864406779661017,
+      "observations": 295
+    },
+    {
+      "split": "train",
+      "label": "Training",
+      "hour": 12,
+      "occupancy_rate": 0.53,
+      "observations": 300
+    },
+    {
+      "split": "train",
+      "label": "Training",
+      "hour": 13,
+      "occupancy_rate": 0.2721311475409836,
+      "observations": 305
+    },
+    {
+      "split": "train",
+      "label": "Training",
+      "hour": 14,
+      "occupancy_rate": 0.5627118644067797,
+      "observations": 295
+    },
+    {
+      "split": "train",
+      "label": "Training",
+      "hour": 15,
+      "occupancy_rate": 0.6,
+      "observations": 300
+    },
+    {
+      "split": "train",
+      "label": "Training",
+      "hour": 16,
+      "occupancy_rate": 0.6,
+      "observations": 305
+    },
+    {
+      "split": "train",
+      "label": "Training",
+      "hour": 17,
+      "occupancy_rate": 0.6118421052631579,
+      "observations": 304
+    },
+    {
+      "split": "train",
+      "label": "Training",
+      "hour": 18,
+      "occupancy_rate": 0.06666666666666667,
+      "observations": 360
+    },
+    {
+      "split": "train",
+      "label": "Training",
+      "hour": 19,
+      "occupancy_rate": 0.0,
+      "observations": 366
+    },
+    {
+      "split": "train",
+      "label": "Training",
+      "hour": 20,
+      "occupancy_rate": 0.0,
+      "observations": 354
+    },
+    {
+      "split": "train",
+      "label": "Training",
+      "hour": 21,
+      "occupancy_rate": 0.0,
+      "observations": 360
+    },
+    {
+      "split": "train",
+      "label": "Training",
+      "hour": 22,
+      "occupancy_rate": 0.0,
+      "observations": 366
+    },
+    {
+      "split": "train",
+      "label": "Training",
+      "hour": 23,
+      "occupancy_rate": 0.0,
+      "observations": 354
+    }
+  ],
+  "target_correlations": [
+    {
+      "sensor": "Light",
+      "correlation": 0.9148497642352499
+    },
+    {
+      "sensor": "Temperature",
+      "correlation": 0.5556100148972717
+    },
+    {
+      "sensor": "CO2",
+      "correlation": 0.5015822358875038
+    },
+    {
+      "sensor": "HumidityRatio",
+      "correlation": 0.25732380950208456
+    },
+    {
+      "sensor": "Humidity",
+      "correlation": 0.046239914334053035
+    }
+  ],
+  "light_exceptions": [
+    {
+      "split": "train",
+      "label": "Training",
+      "occupied_rows": 1729,
+      "occupied_while_dark": 0,
+      "occupied_while_dark_rate": 0.0,
+      "unoccupied_rows": 6414,
+      "unoccupied_while_lit": 1254,
+      "unoccupied_while_lit_rate": 0.19550982226379796
+    },
+    {
+      "split": "test_1",
+      "label": "Test 1",
+      "occupied_rows": 972,
+      "occupied_while_dark": 0,
+      "occupied_while_dark_rate": 0.0,
+      "unoccupied_rows": 1693,
+      "unoccupied_while_lit": 78,
+      "unoccupied_while_lit_rate": 0.04607206142941524
+    },
+    {
+      "split": "test_2",
+      "label": "Test 2",
+      "occupied_rows": 2049,
+      "occupied_while_dark": 1,
+      "occupied_while_dark_rate": 0.0004880429477794046,
+      "unoccupied_rows": 7703,
+      "unoccupied_while_lit": 1707,
+      "unoccupied_while_lit_rate": 0.22160197325717254
+    }
+  ],
+  "standardized_drift": [
+    {
+      "split": "test_1",
+      "label": "Test 1",
+      "sensor": "Temperature",
+      "standardized_mean_difference": 0.7968746102827771
+    },
+    {
+      "split": "test_1",
+      "label": "Test 1",
+      "sensor": "Humidity",
+      "standardized_mean_difference": -0.08834324893402937
+    },
+    {
+      "split": "test_1",
+      "label": "Test 1",
+      "sensor": "Light",
+      "standardized_mean_difference": 0.32875423635222223
+    },
+    {
+      "split": "test_1",
+      "label": "Test 1",
+      "sensor": "CO2",
+      "standardized_mean_difference": 0.36668552397981957
+    },
+    {
+      "split": "test_1",
+      "label": "Test 1",
+      "sensor": "HumidityRatio",
+      "standardized_mean_difference": 0.22189049763588897
+    },
+    {
+      "split": "test_2",
+      "label": "Test 2",
+      "sensor": "Temperature",
+      "standardized_mean_difference": 0.3756206609982787
+    },
+    {
+      "split": "test_2",
+      "label": "Test 2",
+      "sensor": "Humidity",
+      "standardized_mean_difference": 0.8654437637203062
+    },
+    {
+      "split": "test_2",
+      "label": "Test 2",
+      "sensor": "Light",
+      "standardized_mean_difference": 0.01760187309432259
+    },
+    {
+      "split": "test_2",
+      "label": "Test 2",
+      "sensor": "CO2",
+      "standardized_mean_difference": 0.4796085790942713
+    },
+    {
+      "split": "test_2",
+      "label": "Test 2",
+      "sensor": "HumidityRatio",
+      "standardized_mean_difference": 1.0228092130377837
+    }
+  ]
+}

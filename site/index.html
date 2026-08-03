@@ -1,0 +1,179 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="SensorBudget: robust, cost-aware office occupancy detection from environmental sensors.">
+    <title>SensorBudget | Occupancy detection under sensor constraints</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&amp;family=Manrope:wght@600;700;800&amp;display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <script src="assets/js/landing-navigation.js" defer></script>
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="index.html" aria-label="SensorBudget home">
+        <span class="brand-mark" aria-hidden="true">SB</span>
+        <span>SensorBudget</span>
+      </a>
+      <nav class="header-nav" aria-label="Primary navigation">
+        <a href="#dashboards">Dashboards</a>
+        <a href="https://github.com/michael-slota/sensorbudget/blob/main/reports/model_card.md">Model card</a>
+        <a class="button button-small button-ghost" href="https://github.com/michael-slota/sensorbudget">View repository</a>
+      </nav>
+    </header>
+
+    <nav class="scroll-rail" aria-label="Landing page sections">
+      <div class="scroll-rail-track" aria-hidden="true">
+        <span id="scroll-rail-progress"></span>
+      </div>
+      <div class="scroll-rail-links">
+        <a href="#overview" data-scroll-section="overview" aria-current="true"><span class="scroll-rail-dot"></span>Overview</a>
+        <a href="#question" data-scroll-section="question"><span class="scroll-rail-dot"></span>Question</a>
+        <a href="#dashboards" data-scroll-section="dashboards"><span class="scroll-rail-dot"></span>Dashboards</a>
+        <a href="#evidence-scope" data-scroll-section="evidence-scope"><span class="scroll-rail-dot"></span><span class="scroll-rail-copy">Evidence<br>scope</span></a>
+        <a href="#summary" data-scroll-section="summary"><span class="scroll-rail-dot"></span>Summary</a>
+      </div>
+      <span class="scroll-rail-more" aria-hidden="true">↓</span>
+    </nav>
+
+    <main>
+      <section class="hero landing-hero" id="overview" data-page-section>
+        <div class="hero-copy">
+          <p class="eyebrow">Applied machine-learning study</p>
+          <h1>Occupancy detection under sensor constraints</h1>
+          <p class="hero-lead">
+            SensorBudget studies office occupancy classification through the
+            combined lenses of predictive quality, sensor cost, temporal
+            stability, failure tolerance, and decision consequences.
+          </p>
+          <div class="hero-actions">
+            <a class="button button-primary" href="#dashboards">Explore dashboards</a>
+            <a class="button button-secondary" href="https://github.com/michael-slota/sensorbudget/blob/main/reports/model_card.md">Read the model card</a>
+          </div>
+          <p class="scope-note">
+            Applied research study · One office room
+          </p>
+        </div>
+        <aside class="hero-panel" aria-label="Project evidence summary">
+          <p class="panel-kicker">Evidence at a glance</p>
+          <div class="metric-stack">
+            <div>
+              <span class="metric-value">3 sensors</span>
+              <span class="metric-label">Temperature + Light + CO2 logistic research candidate</span>
+            </div>
+            <div>
+              <span class="metric-value">0.971 / 0.980</span>
+              <span class="metric-label">clean F1 on Test 1 / Test 2 at 0.50</span>
+            </div>
+            <div>
+              <span class="metric-value">≈ 0</span>
+              <span class="metric-label">F1 under complete Light loss</span>
+            </div>
+          </div>
+          <p class="panel-footnote">Based on 20,560 minute-level observations from one office room.</p>
+        </aside>
+      </section>
+
+      <section class="section narrative-section" id="question" data-page-section aria-labelledby="project-question">
+        <div>
+          <p class="eyebrow">Research question</p>
+          <h2 id="project-question">How accurately and reliably can occupancy be detected with fewer, lower-cost sensors?</h2>
+        </div>
+        <div class="narrative-copy">
+          <p>
+            The study compares model performance across sensor combinations,
+            then tests whether those results remain stable when sensor costs,
+            missing readings, noise, drift, and Light failures are considered.
+          </p>
+          <p>
+            It also examines probability calibration, decision thresholds, and
+            model explanations. The evidence describes the trade-offs in this
+            dataset; it does not establish a final hardware or deployment choice.
+          </p>
+        </div>
+      </section>
+
+      <section class="section" id="dashboards" data-page-section aria-labelledby="dashboard-title">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">Interactive evidence</p>
+            <h2 id="dashboard-title">Dashboard suite</h2>
+            <p>Each dashboard leads with the findings, then lets you inspect the supporting Plotly views.</p>
+          </div>
+        </div>
+
+        <div class="dashboard-grid">
+          <a class="dashboard-card dashboard-card-live" href="dashboards/eda.html">
+            <span class="card-index">01</span>
+            <div>
+              <span class="status-pill status-live">Available</span>
+              <h3>Data and EDA</h3>
+              <p>Class balance, schedules, sensor relationships, the Light proxy, and period drift.</p>
+            </div>
+            <span class="card-arrow" aria-hidden="true">→</span>
+          </a>
+
+          <a class="dashboard-card dashboard-card-live" href="dashboards/model-performance.html">
+            <span class="card-index">02</span>
+            <div><span class="status-pill status-live">Available</span><h3>Model performance</h3><p>Chronological validation, held-out metrics, candidate progression, and error profiles.</p></div>
+            <span class="card-arrow" aria-hidden="true">→</span>
+          </a>
+          <a class="dashboard-card dashboard-card-live" href="dashboards/sensor-selection.html">
+            <span class="card-index">03</span>
+            <div><span class="status-pill status-live">Available</span><h3>Sensor selection and cost</h3><p>Sensor subsets, relative-cost scenarios, and Pareto-efficient configurations.</p></div>
+            <span class="card-arrow" aria-hidden="true">→</span>
+          </a>
+          <a class="dashboard-card dashboard-card-live" href="dashboards/robustness.html">
+            <span class="card-index">04</span>
+            <div><span class="status-pill status-live">Available</span><h3>Robustness</h3><p>Missing data, noise, sensor loss, stuck readings, and drift.</p></div>
+            <span class="card-arrow" aria-hidden="true">→</span>
+          </a>
+          <a class="dashboard-card dashboard-card-live" href="dashboards/fault-mitigation.html">
+            <span class="card-index">05</span>
+            <div><span class="status-pill status-live">Available</span><h3>Fault mitigation</h3><p>Fallback selection, detector routing, and fault-aware training.</p></div>
+            <span class="card-arrow" aria-hidden="true">→</span>
+          </a>
+          <a class="dashboard-card dashboard-card-live" href="dashboards/decision-explainability.html">
+            <span class="card-index">06</span>
+            <div><span class="status-pill status-live">Available</span><h3>Decision and explainability</h3><p>Threshold costs, calibration, coefficients, and transition errors.</p></div>
+            <span class="card-arrow" aria-hidden="true">→</span>
+          </a>
+        </div>
+      </section>
+
+      <section class="section boundary-section" id="evidence-scope" data-page-section aria-labelledby="boundary-title">
+        <p class="eyebrow">Evidence scope</p>
+        <h2 id="boundary-title">What the analysis establishes</h2>
+        <div class="boundary-grid">
+          <p><strong>Time-aware performance.</strong> Chronological validation and two separate source periods show how model quality changes over time within the studied office.</p>
+          <p><strong>Explicit trade-offs.</strong> Complete sensor ablation and multiple cost scenarios quantify how predictive quality changes as sensors and assumptions change.</p>
+          <p><strong>Known reliability limits.</strong> Fault simulation, routing, calibration, and threshold analysis identify where the candidate is strong and what should be validated prospectively across more rooms and seasons.</p>
+        </div>
+      </section>
+
+      <section class="section closing-summary" id="summary" data-page-section aria-labelledby="summary-title">
+        <p class="eyebrow">Project summary</p>
+        <h2 id="summary-title">Strong clean performance, with reliability governed by Light and operating context.</h2>
+        <p class="summary-lead">
+          The Temperature + Light + CO2 logistic candidate achieves clean F1
+          of 0.971 on Test 1 and 0.980 on Test 2 at threshold 0.50. The wider
+          study shows why those scores are not sufficient on their own.
+        </p>
+        <div class="summary-points">
+          <p><strong>Sensor trade-off</strong>Light-containing configurations lead the validation frontier under every tested cost scenario, but the assumed costs do not justify a final hardware recommendation.</p>
+          <p><strong>Reliability trade-off</strong>Complete or plausible Light failures can cause severe degradation. Detector routing offers the strongest tested mitigation overall, while retaining known false alarms and missed faults.</p>
+          <p><strong>Decision trade-off</strong>A threshold of 0.86 reduced validation cost under illustrative assumptions but did not remain advantageous on the held-out periods. Threshold 0.50 remains the stronger observed reference, not a universal optimum.</p>
+        </div>
+        <a class="button button-secondary" href="https://github.com/michael-slota/sensorbudget/blob/main/reports/model_card.md" target="_blank" rel="noopener noreferrer">Read the complete model card ↗</a>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <span>SensorBudget</span>
+      <span class="license-links">Project code and documentation: <a href="https://github.com/michael-slota/sensorbudget/blob/main/LICENSE" target="_blank" rel="noopener noreferrer">MIT ↗</a> · Dataset: <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener noreferrer">UCI Occupancy Detection, CC BY 4.0 ↗</a></span>
+      <a href="https://github.com/michael-slota/sensorbudget" target="_blank" rel="noopener noreferrer">Source and methodology</a>
+    </footer>
+  </body>
+</html>
