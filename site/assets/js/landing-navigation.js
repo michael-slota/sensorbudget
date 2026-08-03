@@ -8,6 +8,7 @@ function enhanceDashboardReadingPath() {
   const methods = {
     "eda.html": {
       title: "Audit the source data before modeling",
+      answer: "The source data is structurally clean, but Light is a dominant occupancy proxy and the single-room sample limits broader generalization.",
       steps: [
         "Validate all three supplied files, timestamps, target values, and sensor ranges.",
         "Compare class balance, schedules, distributions, and drift across the training and test periods.",
@@ -16,6 +17,7 @@ function enhanceDashboardReadingPath() {
     },
     "model-performance.html": {
       title: "Compare fixed classifiers without random shuffling",
+      answer: "Chronological evaluation produces strong candidates, but performance changes materially across feature sets and source periods.",
       steps: [
         "Test a dummy prior, logistic regression, decision tree, random forest, and histogram gradient boosting.",
         "Select models with five expanding chronological folds so every validation block follows its training rows.",
@@ -24,6 +26,7 @@ function enhanceDashboardReadingPath() {
     },
     "sensor-selection.html": {
       title: "Repeat model selection for every physical-sensor subset",
+      answer: "Temperature + Light + CO2 leads validation, while three Light-containing configurations remain Pareto-efficient across the tested costs, so the evidence does not justify one hardware choice.",
       steps: [
         "Evaluate all 15 non-empty combinations of Temperature, Humidity, Light, and CO2.",
         "Select the strongest fixed classifier for each combination using chronological validation only.",
@@ -33,6 +36,7 @@ function enhanceDashboardReadingPath() {
     },
     "robustness.html": {
       title: "Simulate three families of sensor and operating failures",
+      answer: "Strong clean performance hides a critical dependence on Light, with complete Light loss and occupied darkness reducing F1 to approximately zero.",
       steps: [
         "Data availability: randomly missing cells represent intermittent gaps, while complete sensor loss represents a sustained outage replaced by the training median.",
         "Measurement quality: Gaussian noise represents unstable readings, stuck-low or stuck-high values represent a frozen sensor, and gradual drift represents calibration bias building over time.",
@@ -42,6 +46,7 @@ function enhanceDashboardReadingPath() {
     },
     "fault-mitigation.html": {
       title: "Compare three responses to unreliable Light readings",
+      answer: "Detector routing is the strongest tested mitigation overall, but false alarms, missed plausible faults, and a weaker fallback prevent full recovery.",
       steps: [
         "Fallback model: select a Temperature + CO2 model that never uses Light. It sacrifices some clean performance but remains available when Light cannot be trusted.",
         "Detection and routing: monitor Light for missing, out-of-range, frozen, or abrupt readings and send flagged rows to the fallback. Oracle routing first shows the best recovery possible with perfect fault knowledge.",
@@ -51,6 +56,7 @@ function enhanceDashboardReadingPath() {
     },
     "decision-explainability.html": {
       title: "Audit how a fixed model becomes an operating decision",
+      answer: "The validation-selected threshold of 0.86 does not remain cost-effective on held-out periods, and model explanations confirm that Light drives the prediction most strongly.",
       steps: [
         "Select probability thresholds using chronological validation and explicit illustrative error costs.",
         "Check whether the chosen threshold and probability calibration remain stable on both held-out periods.",
@@ -60,11 +66,18 @@ function enhanceDashboardReadingPath() {
     },
   };
   const method = methods[currentPage];
+  let answerPanel = document.querySelector(".dashboard-answer");
+  if (method && hero && !answerPanel) {
+    answerPanel = document.createElement("aside");
+    answerPanel.className = "dashboard-answer";
+    answerPanel.innerHTML = `<span>Answer</span><p>${method.answer}</p>`;
+    hero.insertAdjacentElement("afterend", answerPanel);
+  }
   if (method && hero && !document.querySelector(".dashboard-method")) {
     const panel = document.createElement("aside");
     panel.className = "dashboard-method";
     panel.innerHTML = `<div><p class="eyebrow">Method</p><h2>${method.title}</h2>${method.assumption ? `<p class="method-assumption"><strong>Assumptions</strong>${method.assumption}</p>` : ""}</div><ol>${method.steps.map((step, index) => `<li><span>0${index + 1}</span>${step}</li>`).join("")}</ol>`;
-    hero.insertAdjacentElement("afterend", panel);
+    (answerPanel || hero).insertAdjacentElement("afterend", panel);
   }
 
   const nextPages = {
