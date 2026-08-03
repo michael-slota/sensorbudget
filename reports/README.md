@@ -17,6 +17,8 @@ Reports:
   missed faults, and realistic routing
 - `fault_aware_results.md` — training-only fault augmentation, missingness
   indicators, held-out comparison, and Phase 5 reliability conclusion
+- `decision_explainability_results.md` — validation-selected operating
+  thresholds, calibration, coefficients, local errors, and transition recall
 
 Planned reports:
 

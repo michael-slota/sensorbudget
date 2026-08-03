@@ -17,7 +17,8 @@ Notebook sequence:
    realistic fallback routing
 7. `07_fault_aware_training.ipynb` — training-only fault augmentation,
    missingness indicators, and reliability comparison
-8. `08_explainability.ipynb` — planned decision and explanation layer
+8. `08_decision_explainability.ipynb` — validation-only error-cost thresholds,
+   calibration, model explanations, and transition errors
 
 Move reusable parsing, feature, plotting, and evaluation functions into
 `src/sensorbudget/`. Clear large cell outputs before committing unless the
