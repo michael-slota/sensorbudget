@@ -4,15 +4,6 @@ function enhanceDashboardReadingPath() {
   if (!window.location.pathname.includes("/dashboards/")) return;
 
   const hero = document.querySelector(".dashboard-hero");
-  let periodKey = document.querySelector(".period-key");
-  if (hero && !document.querySelector(".period-key")) {
-    periodKey = document.createElement("aside");
-    periodKey.className = "period-key";
-    periodKey.setAttribute("aria-label", "Evaluation period definitions");
-    periodKey.innerHTML = `<strong>Evaluation periods</strong><span><b>Test 1</b> = earlier source period, before training</span><span><b>Test 2</b> = later source period, after training</span>`;
-    hero.insertAdjacentElement("afterend", periodKey);
-  }
-
   const currentPage = window.location.pathname.split("/").pop();
   const methods = {
     "eda.html": {
@@ -38,22 +29,25 @@ function enhanceDashboardReadingPath() {
         "Select the strongest fixed classifier for each combination using chronological validation only.",
         "Compare validation F1 with five transparent relative-cost scenarios and identify Pareto-efficient options.",
       ],
+      assumption: "Reference sensor-cost example (relative points): Temperature 1, Humidity 1, Light 0.5, and CO2 4. Sensitivity cases also test equal costs, CO2 at 1.5 or 8, and Light at 5.",
     },
     "robustness.html": {
-      title: "Stress-test fitted candidates without redesigning them",
+      title: "Simulate three families of sensor and operating failures",
       steps: [
-        "Keep the three validation-frontier configurations fixed.",
-        "Inject missingness, noise, complete loss, stuck readings, drift, and changed lighting behaviour.",
-        "Measure how the existing models perform on both held-out periods under each controlled fault.",
+        "Data availability: randomly missing cells represent intermittent gaps, while complete sensor loss represents a sustained outage replaced by the training median.",
+        "Measurement quality: Gaussian noise represents unstable readings, stuck-low or stuck-high values represent a frozen sensor, and gradual drift represents calibration bias building over time.",
+        "Changed room behaviour: occupied darkness and an unoccupied-but-lit room break the historical lighting pattern that the fitted models learned as an occupancy proxy.",
       ],
+      assumption: "The three frontier candidates remain fixed and are not retrained for each failure. These controlled scenarios diagnose sensitivity; they do not estimate how frequently real hardware faults occur.",
     },
     "fault-mitigation.html": {
       title: "Compare three responses to unreliable Light readings",
       steps: [
-        "Select a no-Light fallback using training-period validation.",
-        "Compare perfect oracle routing with causal fault detection and end-to-end routing.",
-        "Test whether fault augmentation or a missingness indicator improves robustness without excessive clean-data cost.",
+        "Fallback model: select a Temperature + CO2 model that never uses Light. It sacrifices some clean performance but remains available when Light cannot be trusted.",
+        "Detection and routing: monitor Light for missing, out-of-range, frozen, or abrupt readings and send flagged rows to the fallback. Oracle routing first shows the best recovery possible with perfect fault knowledge.",
+        "Fault-aware training: inject simulated Light faults during training, replace missing values with the training median, and optionally add an indicator telling the model that replacement occurred.",
       ],
+      assumption: "The comparison measures both recovery and side effects. A useful mitigation must improve faulted predictions without routing too many healthy rows or creating an unacceptable clean-data penalty.",
     },
     "decision-explainability.html": {
       title: "Audit how a fixed model becomes an operating decision",
@@ -62,14 +56,15 @@ function enhanceDashboardReadingPath() {
         "Check whether the chosen threshold and probability calibration remain stable on both held-out periods.",
         "Explain global coefficients, representative predictions, and recall after occupancy transitions.",
       ],
+      assumption: "Illustrative error-cost ratios (false occupied:false unoccupied): equal 1:1; comfort-focused 1:5, where missing occupancy costs more; energy-focused 5:1, where responding to an empty room costs more.",
     },
   };
   const method = methods[currentPage];
-  if (method && periodKey && !document.querySelector(".dashboard-method")) {
+  if (method && hero && !document.querySelector(".dashboard-method")) {
     const panel = document.createElement("aside");
     panel.className = "dashboard-method";
-    panel.innerHTML = `<div><p class="eyebrow">Method</p><h2>${method.title}</h2></div><ol>${method.steps.map((step, index) => `<li><span>0${index + 1}</span>${step}</li>`).join("")}</ol>`;
-    periodKey.insertAdjacentElement("afterend", panel);
+    panel.innerHTML = `<div><p class="eyebrow">Method</p><h2>${method.title}</h2>${method.assumption ? `<p class="method-assumption"><strong>Assumptions</strong>${method.assumption}</p>` : ""}</div><ol>${method.steps.map((step, index) => `<li><span>0${index + 1}</span>${step}</li>`).join("")}</ol>`;
+    hero.insertAdjacentElement("afterend", panel);
   }
 
   const nextPages = {
@@ -91,7 +86,7 @@ function enhanceDashboardReadingPath() {
 }
 
 function initialiseScrollRail() {
-  const defaultSections = ["overview", "results", "analysis", "evidence"];
+  const defaultSections = ["overview", "highlights", "analysis", "evidence"];
   const mainSections = [...document.querySelectorAll("main > section")].slice(0, defaultSections.length);
   if (!document.querySelector("[data-page-section]") && mainSections.length) {
     mainSections.forEach((section, index) => {
