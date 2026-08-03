@@ -27,7 +27,7 @@
       <div class="scroll-rail-track" aria-hidden="true"><span id="scroll-rail-progress"></span></div>
       <div class="scroll-rail-links">
         <a href="#overview" data-scroll-section="overview" aria-current="true"><span class="scroll-rail-dot"></span>Overview</a>
-        <a href="#results" data-scroll-section="results"><span class="scroll-rail-dot"></span>Results</a>
+        <a href="#highlights" data-scroll-section="highlights"><span class="scroll-rail-dot"></span>Highlights</a>
         <a href="#analysis" data-scroll-section="analysis"><span class="scroll-rail-dot"></span>Analysis</a>
         <a href="#evidence" data-scroll-section="evidence"><span class="scroll-rail-dot"></span>Evidence</a>
       </div><span class="scroll-rail-more" aria-hidden="true">↓</span>
@@ -37,18 +37,18 @@
       <section id="overview" class="dashboard-hero" data-page-section>
         <div>
           <p class="breadcrumb"><a class="breadcrumb-home" href="../index.html"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 11.5 12 4l9 7.5M5.5 10v10h13V10M9.5 20v-6h5v6"/></svg>Home</a><span>/</span>Sensor selection and cost</p>
-          <p class="eyebrow">Dashboard 03</p>
+          <p class="eyebrow">Interactive evidence</p>
           <h1>Which sensor combinations preserve performance at lower assumed cost?</h1>
           <p class="hero-lead">All 15 non-empty combinations of Temperature, Humidity, Light, and CO2 are compared using the same chronological model-selection process. Costs are transparent sensitivity assumptions rather than market prices.</p>
         </div>
       </section>
 
-      <section id="results" class="finding-strip" aria-labelledby="sensor-findings-title" data-page-section>
-        <h2 id="sensor-findings-title" class="sr-only">Key results</h2>
-        <article class="finding-card"><span class="finding-value">15</span><h3>Sensor combinations</h3><p>Every non-empty subset of the four physical sensors is evaluated.</p></article>
+      <section id="highlights" class="finding-strip" aria-labelledby="sensor-findings-title" data-page-section>
+        <h2 id="sensor-findings-title" class="sr-only">Key highlights</h2>
+        <article class="finding-card"><span class="finding-value">+0.059–0.543</span><h3>F1 gain after adding Light</h3><p>Every matched sensor-plus-model comparison improves when Light is added.</p></article>
         <article class="finding-card finding-card-accent"><span class="finding-value">0.780</span><h3>Leading validation F1</h3><p>Temperature + Light + CO2 with logistic regression.</p></article>
         <article class="finding-card"><span class="finding-value">3</span><h3>Stable frontier members</h3><p>The same core configurations remain efficient in all five cost scenarios.</p></article>
-        <article class="finding-card"><span class="finding-value">5 scenarios</span><h3>Cost sensitivity</h3><p>Illustrative assumptions are varied without retraining the models.</p></article>
+        <article class="finding-card"><span class="finding-value">≈ 0.001</span><h3>Small frontier gain</h3><p>Humidity + Light improves only marginally over Light alone in mean validation F1.</p></article>
       </section>
 
       <section id="analysis" class="dashboard-stage" aria-labelledby="sensor-view-heading" data-page-section>

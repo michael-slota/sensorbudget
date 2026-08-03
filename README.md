@@ -8,18 +8,25 @@ occupancy from environmental sensors while asking a practical question:
 > How accurately and reliably can occupancy be detected with fewer, cheaper
 > sensors?
 
-Explore the published [SensorBudget dashboard suite](https://michael-slota.github.io/sensorbudget/).
-The published suite includes a landing page and six interactive dashboards
-covering EDA, model performance, sensor selection, robustness, fault
-mitigation, and decision explainability.
+## Live demo
+
+**[Open the interactive SensorBudget dashboard suite →](https://michael-slota.github.io/sensorbudget/)**
+
+The live site is the fastest way to review the project. Its guided route covers
+model performance, sensor trade-offs, robustness, and decision analysis, with
+additional dashboards for EDA and fault mitigation. Each page combines a short
+method summary, headline metrics, interactive Plotly views, interpretation, and
+links to the underlying evidence.
+
+For a technical review, continue with the [model card](reports/model_card.md)
+and use the [results index](reports/README.md) to trace each conclusion to its
+detailed report.
+
+## Project at a glance
 
 The project uses the UCI Occupancy Detection dataset, which contains
 time-stamped temperature, humidity, light, CO2, humidity-ratio, and binary
 occupancy observations.
-
-**Short review:** start with the [dashboard landing page](https://michael-slota.github.io/sensorbudget/),
-continue with the [model card](reports/model_card.md), and use the
-[results index](reports/README.md) to trace any finding to its detailed report.
 
 | At a glance | Summary |
 |---|---|

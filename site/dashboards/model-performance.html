@@ -29,7 +29,7 @@
       <div class="scroll-rail-track" aria-hidden="true"><span id="scroll-rail-progress"></span></div>
       <div class="scroll-rail-links">
         <a href="#overview" data-scroll-section="overview" aria-current="true"><span class="scroll-rail-dot"></span>Overview</a>
-        <a href="#results" data-scroll-section="results"><span class="scroll-rail-dot"></span>Results</a>
+        <a href="#highlights" data-scroll-section="highlights"><span class="scroll-rail-dot"></span>Highlights</a>
         <a href="#analysis" data-scroll-section="analysis"><span class="scroll-rail-dot"></span>Analysis</a>
         <a href="#evidence" data-scroll-section="evidence"><span class="scroll-rail-dot"></span>Evidence</a>
       </div><span class="scroll-rail-more" aria-hidden="true">↓</span>
@@ -39,7 +39,7 @@
       <section id="overview" class="dashboard-hero" data-page-section>
         <div>
           <p class="breadcrumb"><a class="breadcrumb-home" href="../index.html"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 11.5 12 4l9 7.5M5.5 10v10h13V10M9.5 20v-6h5v6"/></svg>Home</a><span>/</span>Model performance</p>
-          <p class="eyebrow">Dashboard 02</p>
+          <p class="eyebrow">Interactive evidence</p>
           <h1>How were the models compared, and how stable were their results?</h1>
           <p class="hero-lead">
             Five fixed classifiers were compared with expanding chronological
@@ -49,12 +49,12 @@
         </div>
       </section>
 
-      <section id="results" class="finding-strip" aria-labelledby="model-findings-title" data-page-section>
-        <h2 id="model-findings-title" class="sr-only">Key results</h2>
-        <article class="finding-card"><span class="finding-value">5 models</span><h3>Fixed candidates</h3><p>Dummy, logistic regression, decision tree, random forest, and histogram boosting.</p></article>
+      <section id="highlights" class="finding-strip" aria-labelledby="model-findings-title" data-page-section>
+        <h2 id="model-findings-title" class="sr-only">Key highlights</h2>
+        <article class="finding-card"><span class="finding-value">0.930 / 0.883</span><h3>Initial baseline F1</h3><p>Histogram boosting on the earlier / later held-out periods.</p></article>
         <article class="finding-card"><span class="finding-value">0.767</span><h3>Baseline validation F1</h3><p>Histogram boosting leads the initial all-sensor comparison.</p></article>
         <article class="finding-card finding-card-accent"><span class="finding-value">0.971 / 0.980</span><h3>Research-candidate F1</h3><p>Clean Test 1 / Test 2 results at the fixed 0.50 threshold.</p></article>
-        <article class="finding-card"><span class="finding-value">5 folds</span><h3>Temporal validation</h3><p>Every validation block occurs after the rows used to fit its model.</p></article>
+        <article class="finding-card"><span class="finding-value">0.832 / 0.546</span><h3>No-Light baseline F1</h3><p>Removing Light produces a much larger loss on the later held-out period.</p></article>
       </section>
 
       <section id="analysis" class="dashboard-stage" aria-labelledby="model-view-heading" data-page-section>
