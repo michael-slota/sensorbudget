@@ -8,6 +8,11 @@ occupancy from environmental sensors while asking a practical question:
 > How accurately and reliably can occupancy be detected with fewer, cheaper
 > sensors?
 
+Explore the published [SensorBudget dashboard suite](https://michael-slota.github.io/sensorbudget/).
+The published suite includes a landing page and six interactive dashboards
+covering EDA, model performance, sensor selection, robustness, fault
+mitigation, and decision explainability.
+
 The project uses the UCI Occupancy Detection dataset, which contains
 time-stamped temperature, humidity, light, CO2, humidity-ratio, and binary
 occupancy observations.
@@ -268,6 +273,21 @@ Select validation-only operating thresholds and generate Phase 6 explanations:
 ```powershell
 python -m sensorbudget.modeling.decision_explainability
 ```
+
+Regenerate the compact data used by the static EDA dashboard:
+
+```powershell
+python -m sensorbudget.dashboard.export_eda
+python -m sensorbudget.dashboard.export_models
+python -m sensorbudget.dashboard.export_sensor_selection
+python -m sensorbudget.dashboard.export_robustness
+python -m sensorbudget.dashboard.export_mitigation
+python -m sensorbudget.dashboard.export_decision
+```
+
+The dashboard pages live under `site/` and are deployed to GitHub Pages by
+`.github/workflows/pages.yml`. The committed JSON contains aggregates only;
+the raw UCI files and row-level model artifacts are not published.
 
 ## Working principles
 

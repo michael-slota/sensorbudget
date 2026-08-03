@@ -1,0 +1,562 @@
+{
+  "metadata": {
+    "primary": "Temperature + Light + CO2 logistic regression",
+    "fallback": "Temperature + CO2 logistic regression",
+    "threshold": 0.5
+  },
+  "fallback_candidates": [
+    {
+      "feature_set": "temperature__co2",
+      "feature_label": "Temperature + CO2",
+      "model_label": "Logistic regression",
+      "cv_f1_mean": 0.6789682073,
+      "selected_fallback": true
+    },
+    {
+      "feature_set": "co2",
+      "feature_label": "CO2",
+      "model_label": "Logistic regression",
+      "cv_f1_mean": 0.6742493003,
+      "selected_fallback": false
+    },
+    {
+      "feature_set": "temperature",
+      "feature_label": "Temperature",
+      "model_label": "Histogram gradient boosting",
+      "cv_f1_mean": 0.4075427781,
+      "selected_fallback": false
+    }
+  ],
+  "oracle_recovery": [
+    {
+      "split": "test_1",
+      "scenario": "median_imputation",
+      "strategy": "primary_under_fault",
+      "f1": 0.0,
+      "split_label": "Test 1",
+      "scenario_label": "Complete Light loss",
+      "strategy_label": "Primary under fault"
+    },
+    {
+      "split": "test_1",
+      "scenario": "median_imputation",
+      "strategy": "oracle_gated_fallback",
+      "f1": 0.8166901078,
+      "split_label": "Test 1",
+      "scenario_label": "Complete Light loss",
+      "strategy_label": "Oracle fallback"
+    },
+    {
+      "split": "test_1",
+      "scenario": "stuck_low",
+      "strategy": "primary_under_fault",
+      "f1": 0.0,
+      "split_label": "Test 1",
+      "scenario_label": "Light fixed low",
+      "strategy_label": "Primary under fault"
+    },
+    {
+      "split": "test_1",
+      "scenario": "stuck_low",
+      "strategy": "oracle_gated_fallback",
+      "f1": 0.8166901078,
+      "split_label": "Test 1",
+      "scenario_label": "Light fixed low",
+      "strategy_label": "Oracle fallback"
+    },
+    {
+      "split": "test_1",
+      "scenario": "stuck_high",
+      "strategy": "primary_under_fault",
+      "f1": 0.5345064614,
+      "split_label": "Test 1",
+      "scenario_label": "Light fixed high",
+      "strategy_label": "Primary under fault"
+    },
+    {
+      "split": "test_1",
+      "scenario": "stuck_high",
+      "strategy": "oracle_gated_fallback",
+      "f1": 0.8166901078,
+      "split_label": "Test 1",
+      "scenario_label": "Light fixed high",
+      "strategy_label": "Oracle fallback"
+    },
+    {
+      "split": "test_1",
+      "scenario": "unoccupied_lit",
+      "strategy": "primary_under_fault",
+      "f1": 0.5337001376,
+      "split_label": "Test 1",
+      "scenario_label": "Unoccupied but lit",
+      "strategy_label": "Primary under fault"
+    },
+    {
+      "split": "test_1",
+      "scenario": "unoccupied_lit",
+      "strategy": "oracle_gated_fallback",
+      "f1": 0.8166901078,
+      "split_label": "Test 1",
+      "scenario_label": "Unoccupied but lit",
+      "strategy_label": "Oracle fallback"
+    },
+    {
+      "split": "test_1",
+      "scenario": "occupied_dark",
+      "strategy": "primary_under_fault",
+      "f1": 0.0,
+      "split_label": "Test 1",
+      "scenario_label": "Occupied but dark",
+      "strategy_label": "Primary under fault"
+    },
+    {
+      "split": "test_1",
+      "scenario": "occupied_dark",
+      "strategy": "oracle_gated_fallback",
+      "f1": 0.8166901078,
+      "split_label": "Test 1",
+      "scenario_label": "Occupied but dark",
+      "strategy_label": "Oracle fallback"
+    },
+    {
+      "split": "test_2",
+      "scenario": "median_imputation",
+      "strategy": "primary_under_fault",
+      "f1": 0.000973236,
+      "split_label": "Test 2",
+      "scenario_label": "Complete Light loss",
+      "strategy_label": "Primary under fault"
+    },
+    {
+      "split": "test_2",
+      "scenario": "median_imputation",
+      "strategy": "oracle_gated_fallback",
+      "f1": 0.5402980755,
+      "split_label": "Test 2",
+      "scenario_label": "Complete Light loss",
+      "strategy_label": "Oracle fallback"
+    },
+    {
+      "split": "test_2",
+      "scenario": "stuck_low",
+      "strategy": "primary_under_fault",
+      "f1": 0.000973236,
+      "split_label": "Test 2",
+      "scenario_label": "Light fixed low",
+      "strategy_label": "Primary under fault"
+    },
+    {
+      "split": "test_2",
+      "scenario": "stuck_low",
+      "strategy": "oracle_gated_fallback",
+      "f1": 0.5402980755,
+      "split_label": "Test 2",
+      "scenario_label": "Light fixed low",
+      "strategy_label": "Oracle fallback"
+    },
+    {
+      "split": "test_2",
+      "scenario": "stuck_high",
+      "strategy": "primary_under_fault",
+      "f1": 0.3472587069,
+      "split_label": "Test 2",
+      "scenario_label": "Light fixed high",
+      "strategy_label": "Primary under fault"
+    },
+    {
+      "split": "test_2",
+      "scenario": "stuck_high",
+      "strategy": "oracle_gated_fallback",
+      "f1": 0.5402980755,
+      "split_label": "Test 2",
+      "scenario_label": "Light fixed high",
+      "strategy_label": "Oracle fallback"
+    },
+    {
+      "split": "test_2",
+      "scenario": "unoccupied_lit",
+      "strategy": "primary_under_fault",
+      "f1": 0.346900545,
+      "split_label": "Test 2",
+      "scenario_label": "Unoccupied but lit",
+      "strategy_label": "Primary under fault"
+    },
+    {
+      "split": "test_2",
+      "scenario": "unoccupied_lit",
+      "strategy": "oracle_gated_fallback",
+      "f1": 0.5402980755,
+      "split_label": "Test 2",
+      "scenario_label": "Unoccupied but lit",
+      "strategy_label": "Oracle fallback"
+    },
+    {
+      "split": "test_2",
+      "scenario": "occupied_dark",
+      "strategy": "primary_under_fault",
+      "f1": 0.0009433962,
+      "split_label": "Test 2",
+      "scenario_label": "Occupied but dark",
+      "strategy_label": "Primary under fault"
+    },
+    {
+      "split": "test_2",
+      "scenario": "occupied_dark",
+      "strategy": "oracle_gated_fallback",
+      "f1": 0.5402980755,
+      "split_label": "Test 2",
+      "scenario_label": "Occupied but dark",
+      "strategy_label": "Oracle fallback"
+    }
+  ],
+  "detector_quality": [
+    {
+      "split": "test_1",
+      "scenario": "linear_bias_negative",
+      "detection_precision": 0.2107142857,
+      "detection_recall": 0.4916666667,
+      "detection_f1": 0.295,
+      "false_positive_rate": 0.0308300438,
+      "detection_delay_rows": 8.0,
+      "split_label": "Test 1",
+      "scenario_label": "Negative linear bias"
+    },
+    {
+      "split": "test_1",
+      "scenario": "linear_bias_positive",
+      "detection_precision": 0.0,
+      "detection_recall": 0.0,
+      "detection_f1": 0.0,
+      "false_positive_rate": 0.0308300438,
+      "detection_delay_rows": 37.5,
+      "split_label": "Test 1",
+      "scenario_label": "Positive linear bias"
+    },
+    {
+      "split": "test_1",
+      "scenario": "missing",
+      "detection_precision": 0.2908909574,
+      "detection_recall": 1.0,
+      "detection_f1": 0.4336425978,
+      "false_positive_rate": 0.0308300438,
+      "detection_delay_rows": 0.0,
+      "split_label": "Test 1",
+      "scenario_label": "Missing Light"
+    },
+    {
+      "split": "test_1",
+      "scenario": "out_of_range_high",
+      "detection_precision": 0.2885871933,
+      "detection_recall": 1.0,
+      "detection_f1": 0.4309582744,
+      "false_positive_rate": 0.0312106616,
+      "detection_delay_rows": 0.0,
+      "split_label": "Test 1",
+      "scenario_label": "Above training range"
+    },
+    {
+      "split": "test_1",
+      "scenario": "stuck_current",
+      "detection_precision": 0.0840163934,
+      "detection_recall": 0.1708333333,
+      "detection_f1": 0.1126373626,
+      "false_positive_rate": 0.0308300438,
+      "detection_delay_rows": 27.25,
+      "split_label": "Test 1",
+      "scenario_label": "Frozen at current value"
+    },
+    {
+      "split": "test_1",
+      "scenario": "stuck_high",
+      "detection_precision": 0.1680327869,
+      "detection_recall": 0.3416666667,
+      "detection_f1": 0.2252747253,
+      "false_positive_rate": 0.0308300438,
+      "detection_delay_rows": 17.0,
+      "split_label": "Test 1",
+      "scenario_label": "Fixed high"
+    },
+    {
+      "split": "test_1",
+      "scenario": "stuck_low",
+      "detection_precision": 0.0,
+      "detection_recall": 0.0,
+      "detection_f1": 0.0,
+      "false_positive_rate": 0.0308300438,
+      "detection_delay_rows": 37.5,
+      "split_label": "Test 1",
+      "scenario_label": "Fixed low / darkness"
+    },
+    {
+      "split": "test_2",
+      "scenario": "linear_bias_negative",
+      "detection_precision": 0.0920811703,
+      "detection_recall": 0.9416666667,
+      "detection_f1": 0.1636696799,
+      "false_positive_rate": 0.0354111735,
+      "detection_delay_rows": 1.25,
+      "split_label": "Test 2",
+      "scenario_label": "Negative linear bias"
+    },
+    {
+      "split": "test_2",
+      "scenario": "linear_bias_positive",
+      "detection_precision": 0.0,
+      "detection_recall": 0.0,
+      "detection_f1": 0.0,
+      "false_positive_rate": 0.0354111735,
+      "detection_delay_rows": 37.5,
+      "split_label": "Test 2",
+      "scenario_label": "Positive linear bias"
+    },
+    {
+      "split": "test_2",
+      "scenario": "missing",
+      "detection_precision": 0.0951487906,
+      "detection_recall": 1.0,
+      "detection_f1": 0.1694172967,
+      "false_positive_rate": 0.0354111735,
+      "detection_delay_rows": 0.0,
+      "split_label": "Test 2",
+      "scenario_label": "Missing Light"
+    },
+    {
+      "split": "test_2",
+      "scenario": "out_of_range_high",
+      "detection_precision": 0.0949074074,
+      "detection_recall": 1.0,
+      "detection_f1": 0.1690322581,
+      "false_positive_rate": 0.035514113,
+      "detection_delay_rows": 0.0,
+      "split_label": "Test 2",
+      "scenario_label": "Above training range"
+    },
+    {
+      "split": "test_2",
+      "scenario": "stuck_current",
+      "detection_precision": 0.0,
+      "detection_recall": 0.0,
+      "detection_f1": 0.0,
+      "false_positive_rate": 0.0354111735,
+      "detection_delay_rows": 37.5,
+      "split_label": "Test 2",
+      "scenario_label": "Frozen at current value"
+    },
+    {
+      "split": "test_2",
+      "scenario": "stuck_high",
+      "detection_precision": 0.0532467532,
+      "detection_recall": 0.3416666667,
+      "detection_f1": 0.0921348315,
+      "false_positive_rate": 0.0354111735,
+      "detection_delay_rows": 17.0,
+      "split_label": "Test 2",
+      "scenario_label": "Fixed high"
+    },
+    {
+      "split": "test_2",
+      "scenario": "stuck_low",
+      "detection_precision": 0.0,
+      "detection_recall": 0.0,
+      "detection_f1": 0.0,
+      "false_positive_rate": 0.0338635054,
+      "detection_delay_rows": 37.5,
+      "split_label": "Test 2",
+      "scenario_label": "Fixed low / darkness"
+    }
+  ],
+  "routing_average": [
+    {
+      "split": "test_1",
+      "strategy": "detector_routing",
+      "mean_f1": 0.9704245601,
+      "split_label": "Test 1",
+      "strategy_label": "Detector routing"
+    },
+    {
+      "split": "test_1",
+      "strategy": "fallback_only",
+      "mean_f1": 0.8166901078,
+      "split_label": "Test 1",
+      "strategy_label": "Fallback only"
+    },
+    {
+      "split": "test_1",
+      "strategy": "oracle_routing",
+      "mean_f1": 0.9690364401,
+      "split_label": "Test 1",
+      "strategy_label": "Oracle routing"
+    },
+    {
+      "split": "test_1",
+      "strategy": "primary_only",
+      "mean_f1": 0.966538711,
+      "split_label": "Test 1",
+      "strategy_label": "Primary only"
+    },
+    {
+      "split": "test_2",
+      "strategy": "detector_routing",
+      "mean_f1": 0.9741579326,
+      "split_label": "Test 2",
+      "strategy_label": "Detector routing"
+    },
+    {
+      "split": "test_2",
+      "strategy": "fallback_only",
+      "mean_f1": 0.5402980755,
+      "split_label": "Test 2",
+      "strategy_label": "Fallback only"
+    },
+    {
+      "split": "test_2",
+      "strategy": "oracle_routing",
+      "mean_f1": 0.9784442474,
+      "split_label": "Test 2",
+      "strategy_label": "Oracle routing"
+    },
+    {
+      "split": "test_2",
+      "strategy": "primary_only",
+      "mean_f1": 0.9779778926,
+      "split_label": "Test 2",
+      "strategy_label": "Primary only"
+    }
+  ],
+  "fault_aware_validation": [
+    {
+      "representation_label": "Fault-aware (diagnostic)",
+      "augmentation_ratio": 0.01,
+      "model_label": "Logistic regression",
+      "clean_f1_mean": 0.7599509388,
+      "fault_f1_mean": 0.4318699443,
+      "guardrail_satisfied": false,
+      "clean_reference_f1_mean": 0.7799761973
+    },
+    {
+      "representation_label": "Fault-aware + missing indicator",
+      "augmentation_ratio": 0.01,
+      "model_label": "Logistic regression",
+      "clean_f1_mean": 0.761351705,
+      "fault_f1_mean": 0.4316752564,
+      "guardrail_satisfied": true,
+      "clean_reference_f1_mean": 0.7799761973
+    }
+  ],
+  "clean_heldout": [
+    {
+      "split": "test_1",
+      "split_label": "Test 1",
+      "strategy": "primary_only",
+      "strategy_label": "Primary only",
+      "f1": 0.9714571858
+    },
+    {
+      "split": "test_1",
+      "split_label": "Test 1",
+      "strategy": "detector_routing",
+      "strategy_label": "Detector routing",
+      "f1": 0.9714571858
+    },
+    {
+      "split": "test_1",
+      "split_label": "Test 1",
+      "strategy": "fault_aware",
+      "strategy_label": "Fault-aware (diagnostic)",
+      "f1": 0.9714571858
+    },
+    {
+      "split": "test_1",
+      "split_label": "Test 1",
+      "strategy": "fault_aware_missing_indicator",
+      "strategy_label": "Fault-aware + missing indicator",
+      "f1": 0.9714571858
+    },
+    {
+      "split": "test_2",
+      "split_label": "Test 2",
+      "strategy": "primary_only",
+      "strategy_label": "Primary only",
+      "f1": 0.9802694899
+    },
+    {
+      "split": "test_2",
+      "split_label": "Test 2",
+      "strategy": "detector_routing",
+      "strategy_label": "Detector routing",
+      "f1": 0.9760076775
+    },
+    {
+      "split": "test_2",
+      "split_label": "Test 2",
+      "strategy": "fault_aware",
+      "strategy_label": "Fault-aware (diagnostic)",
+      "f1": 0.9168539326
+    },
+    {
+      "split": "test_2",
+      "split_label": "Test 2",
+      "strategy": "fault_aware_missing_indicator",
+      "strategy_label": "Fault-aware + missing indicator",
+      "f1": 0.9424809425
+    }
+  ],
+  "strategy_average": [
+    {
+      "split": "test_1",
+      "strategy": "detector_routing",
+      "mean_f1": 0.9704245601,
+      "split_label": "Test 1",
+      "strategy_label": "Detector routing"
+    },
+    {
+      "split": "test_1",
+      "strategy": "fault_aware",
+      "mean_f1": 0.9665742669,
+      "split_label": "Test 1",
+      "strategy_label": "Fault-aware (diagnostic)"
+    },
+    {
+      "split": "test_1",
+      "strategy": "fault_aware_missing_indicator",
+      "mean_f1": 0.9687714993,
+      "split_label": "Test 1",
+      "strategy_label": "Fault-aware + missing indicator"
+    },
+    {
+      "split": "test_1",
+      "strategy": "primary_only",
+      "mean_f1": 0.966538711,
+      "split_label": "Test 1",
+      "strategy_label": "Primary only"
+    },
+    {
+      "split": "test_2",
+      "strategy": "detector_routing",
+      "mean_f1": 0.9741579326,
+      "split_label": "Test 2",
+      "strategy_label": "Detector routing"
+    },
+    {
+      "split": "test_2",
+      "strategy": "fault_aware",
+      "mean_f1": 0.9148330461,
+      "split_label": "Test 2",
+      "strategy_label": "Fault-aware (diagnostic)"
+    },
+    {
+      "split": "test_2",
+      "strategy": "fault_aware_missing_indicator",
+      "mean_f1": 0.9393043465,
+      "split_label": "Test 2",
+      "strategy_label": "Fault-aware + missing indicator"
+    },
+    {
+      "split": "test_2",
+      "strategy": "primary_only",
+      "mean_f1": 0.9779778926,
+      "split_label": "Test 2",
+      "strategy_label": "Primary only"
+    }
+  ]
+}

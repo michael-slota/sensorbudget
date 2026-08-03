@@ -226,8 +226,10 @@ objective rather than the default value of 0.5.
 
 **Suggested duration:** 2–4 days
 
-**Status:** In progress. The final model card is complete; the static dashboard
-suite, architecture diagram, final report, and GitHub Pages release remain.
+**Status:** In progress. The final model card, shared static-site shell, landing
+page, and all six button-driven analysis dashboards are complete. The
+architecture diagram, final report, and public GitHub Pages verification
+remain.
 
 Build a static Plotly dashboard suite for GitHub Pages using precomputed,
 versioned results. Retain the packaged experiment and batch-scoring commands

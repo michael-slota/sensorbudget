@@ -41,8 +41,12 @@ The missingness indicator prevents the Test 1 missing-Light loss that remains
 in the plain fault-aware model. It does not identify plausible stuck values or
 gradual calibration bias, because those readings are present rather than
 missing. Across all clean and episodic held-out cases, detector routing has the
-highest mean F1 on both Test 1 (0.970) and Test 2 (0.974). The missing-indicator
-model averages 0.969 and 0.939 respectively.
+highest mean F1 on Test 1 (0.970). On Test 2, the unchanged primary is slightly
+higher (0.978 versus 0.974 for detector routing), because short injected
+episodes often leave full-period primary performance high while detector false
+alarms can route healthy rows. Among the tested mitigation alternatives,
+detector routing remains strongest overall. The missing-indicator model
+averages 0.969 and 0.939 respectively.
 
 ## Reliability conclusion
 
