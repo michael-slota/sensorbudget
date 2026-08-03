@@ -17,69 +17,54 @@ The project uses the UCI Occupancy Detection dataset, which contains
 time-stamped temperature, humidity, light, CO2, humidity-ratio, and binary
 occupancy observations.
 
-## Headline results
+**Short review:** start with the [dashboard landing page](https://michael-slota.github.io/sensorbudget/),
+continue with the [model card](reports/model_card.md), and use the
+[results index](reports/README.md) to trace any finding to its detailed report.
 
-Five classifiers were compared using expanding chronological validation. The
-selected all-sensor histogram gradient boosting model was then evaluated on
-the two source-provided held-out periods at the default 0.5 decision threshold.
-Test 1 precedes the training period; Test 2 follows it.
+| At a glance | Summary |
+|---|---|
+| Problem | Detect office occupancy accurately and reliably with fewer, lower-cost sensors |
+| Data | 20,560 time-ordered observations from one office room |
+| Method | Chronological validation, complete sensor ablation, fault simulation, and decision analysis |
+| Research candidate | Class-balanced logistic regression using Temperature, Light, and CO2 |
+| Clean held-out F1 | 0.971 on the earlier period; 0.980 on the later period |
+| Main reliability risk | Critical dependence on the historical relationship between Light and occupancy |
+| Conclusion | Strong clean research result, but insufficient external and fault evidence for deployment |
 
-| Held-out period | F1 | Precision | Recall | ROC-AUC |
-|---|---:|---:|---:|---:|
-| Test 1 | **0.930** | 0.940 | 0.920 | 0.990 |
-| Test 2 | **0.883** | 0.830 | 0.943 | 0.991 |
+## Results at a glance
 
-Removing the Light sensor reduced F1 to 0.832 on Test 1 and 0.546 on Test 2,
-showing that sensor cost and robustness cannot be judged from aggregate model
-accuracy alone. See the
-[full baseline report](reports/baseline_results.md) for validation variability,
-confusion counts, limitations, and reproduction details.
+The main research candidate is a class-balanced logistic regression using
+Temperature, Light, and CO2. It was selected through expanding chronological
+validation and evaluated at the reference threshold of 0.50. Test 1 precedes
+the training period; Test 2 follows it.
 
-The subsequent sensor-budget experiment evaluated all 15 non-empty
-combinations of four physical sensors. Under the current illustrative costs,
-the chronological-validation Pareto frontier is:
+| Held-out period | F1 | Precision | Recall |
+|---|---:|---:|---:|
+| Test 1 | **0.971** | 0.946 | 0.998 |
+| Test 2 | **0.980** | 0.967 | 0.994 |
 
-| Physical sensors | Relative cost | Mean validation F1 |
-|---|---:|---:|
-| Light | 0.5 | 0.755 |
-| Humidity + Light | 1.5 | 0.756 |
-| Temperature + Light + CO2 | 5.5 | 0.780 |
+The wider analysis changes how those clean scores should be interpreted:
 
-These three configurations remain on the frontier in all five tested cost
-scenarios. Phase 4 makes no sensor recommendation; it records the measured
-trade-offs that will be tested under sensor failures in Phase 5.
+- **Sensor trade-off:** all 15 physical-sensor combinations were evaluated.
+  Three Light-containing configurations remain Pareto-efficient across five
+  illustrative cost scenarios, without establishing a final hardware choice.
+- **Reliability:** occupied darkness and complete Light loss reduce F1 to
+  approximately zero. Additional sensors do not create automatic fallback
+  behaviour when the fitted model still depends on Light.
+- **Mitigation:** detector routing is the strongest tested mitigation overall,
+  but plausible faults remain difficult to identify and false alarms invoke a
+  weaker fallback unnecessarily.
+- **Decision threshold:** validation selected 0.86 under illustrative equal
+  error costs, but that advantage did not transfer to either held-out period.
+  Threshold 0.50 remains the stronger observed reference, not a universal
+  optimum.
 
-Initial Phase 5 fault injection finds that occupied darkness and complete
-Light loss reduce F1 to approximately zero for all three frontier
-configurations. Additional sensors do not provide automatic fallback behavior
-in the currently fitted models. See the
-[robustness report](reports/robustness_results.md) for the full failure matrix.
-
-An initial mitigation experiment selects a Temperature + CO2 logistic fallback
-using training-only chronological validation. With oracle knowledge of severe
-Light faults, switching raises F1 from approximately zero to 0.817 on Test 1
-and 0.540 on Test 2. The period-to-period gap and harmful switching during mild
-drift show that a real fault detector and routing rule are still required. See
-the [fallback mitigation report](reports/fallback_mitigation_results.md).
-
-A subsequent causal Light-health experiment replaces perfect oracle knowledge
-with training-selected missing, stuck, range, and abrupt-change rules. It
-detects missing and extreme-high readings immediately, but cannot safely
-distinguish a sensor stuck at darkness from normal unoccupied darkness. See the
-[fault-detection report](reports/fault_detection_results.md).
-
-Fault-aware retraining then compares 1%, 5%, and 10% training-only Light-fault
-augmentation, with and without an explicit missingness indicator. The selected
-indicator model retains Test 1 F1 but reduces pristine Test 2 F1 from 0.980 to
-0.942; detector routing remains stronger across the tested cases. See the
-[fault-aware results](reports/fault_aware_results.md).
-
-Phase 6 selects a reference operating threshold of 0.86 under an explicit
-equal-error-cost validation objective. Its validation advantage does not
-generalize reliably: the default 0.5 threshold has lower equal-cost error on
-both held-out periods, especially Test 2. Calibration, coefficient, local
-contribution, and transition-error results are documented in the
-[decision and explainability report](reports/decision_explainability_results.md).
+The project began with an all-sensor model comparison, where histogram gradient
+boosting obtained F1 of 0.930 on Test 1 and 0.883 on Test 2. The later
+sensor-budget study selected the three-sensor logistic candidate used for the
+robustness, mitigation, and explainability work. See the
+[model card](reports/model_card.md) for the consolidated evidence and the
+[baseline report](reports/baseline_results.md) for the initial comparison.
 
 ### Headline visualization
 

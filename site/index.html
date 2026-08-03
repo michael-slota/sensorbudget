@@ -30,7 +30,7 @@
       </div>
       <div class="scroll-rail-links">
         <a href="#overview" data-scroll-section="overview" aria-current="true"><span class="scroll-rail-dot"></span>Overview</a>
-        <a href="#question" data-scroll-section="question"><span class="scroll-rail-dot"></span>Question</a>
+        <a href="#method" data-scroll-section="method"><span class="scroll-rail-dot"></span>Method</a>
         <a href="#dashboards" data-scroll-section="dashboards"><span class="scroll-rail-dot"></span>Dashboards</a>
         <a href="#evidence-scope" data-scroll-section="evidence-scope"><span class="scroll-rail-dot"></span><span class="scroll-rail-copy">Evidence<br>scope</span></a>
         <a href="#summary" data-scroll-section="summary"><span class="scroll-rail-dot"></span>Summary</a>
@@ -48,6 +48,12 @@
             combined lenses of predictive quality, sensor cost, temporal
             stability, failure tolerance, and decision consequences.
           </p>
+          <p class="hero-question">
+            <span>Research question</span>
+            How accurately and reliably can occupancy be detected with fewer,
+            lower-cost sensors?
+          </p>
+          <p class="hero-takeaway"><strong>Main finding:</strong> Three sensors provide strong clean occupancy detection, but reliability depends heavily on Light and degrades under several simulated failure conditions.</p>
           <div class="hero-actions">
             <a class="button button-primary" href="#dashboards">Explore dashboards</a>
             <a class="button button-secondary" href="https://github.com/michael-slota/sensorbudget/blob/main/reports/model_card.md">Read the model card</a>
@@ -76,23 +82,18 @@
         </aside>
       </section>
 
-      <section class="section narrative-section" id="question" data-page-section aria-labelledby="project-question">
-        <div>
-          <p class="eyebrow">Research question</p>
-          <h2 id="project-question">How accurately and reliably can occupancy be detected with fewer, lower-cost sensors?</h2>
+      <section class="section method-overview" id="method" data-page-section aria-labelledby="method-title">
+        <div class="method-heading">
+          <p class="eyebrow">Method at a glance</p>
+          <h2 id="method-title">From time-ordered data to an auditable decision</h2>
+          <p>Each stage answers a different part of the research question while preserving the supplied temporal evaluation periods.</p>
         </div>
-        <div class="narrative-copy">
-          <p>
-            The study compares model performance across sensor combinations,
-            then tests whether those results remain stable when sensor costs,
-            missing readings, noise, drift, and Light failures are considered.
-          </p>
-          <p>
-            It also examines probability calibration, decision thresholds, and
-            model explanations. The evidence describes the trade-offs in this
-            dataset; it does not establish a final hardware or deployment choice.
-          </p>
-        </div>
+        <ol class="method-flow">
+          <li><span>01</span><strong>Validate the data</strong><small>20,560 time-ordered observations</small></li>
+          <li><span>02</span><strong>Select chronologically</strong><small>Models and sensor subsets</small></li>
+          <li><span>03</span><strong>Test reliability</strong><small>Cost assumptions and sensor faults</small></li>
+          <li><span>04</span><strong>Audit decisions</strong><small>Thresholds, calibration and explanations</small></li>
+        </ol>
       </section>
 
       <section class="section" id="dashboards" data-page-section aria-labelledby="dashboard-title">
@@ -102,6 +103,26 @@
             <h2 id="dashboard-title">Dashboard suite</h2>
             <p>Each dashboard leads with the findings, then lets you inspect the supporting Plotly views.</p>
           </div>
+        </div>
+
+        <aside class="review-path" aria-labelledby="review-path-title">
+          <div>
+            <p class="eyebrow">Short review</p>
+            <h3 id="review-path-title">A four-step route through the main evidence</h3>
+            <p>Use this route for the central model, sensor, reliability, and decision findings. Supporting dashboards remain available below.</p>
+          </div>
+          <ol>
+            <li><a href="dashboards/model-performance.html"><span>Dashboard 02</span><strong>Model performance</strong><small>Selection and held-out results</small></a></li>
+            <li><a href="dashboards/sensor-selection.html"><span>Dashboard 03</span><strong>Sensor trade-offs</strong><small>Performance versus assumed cost</small></a></li>
+            <li><a href="dashboards/robustness.html"><span>Dashboard 04</span><strong>Robustness</strong><small>Critical sensor failure modes</small></a></li>
+            <li><a href="dashboards/decision-explainability.html"><span>Dashboard 06</span><strong>Decision analysis</strong><small>Threshold stability and explanations</small></a></li>
+          </ol>
+        </aside>
+
+        <div class="additional-dashboard-heading">
+          <p class="eyebrow">Additional dashboards</p>
+          <h3>Supporting context and mitigation experiments</h3>
+          <p>Use these pages for the source-data audit or the detailed comparison of fault-handling strategies.</p>
         </div>
 
         <div class="dashboard-grid">
@@ -115,29 +136,9 @@
             <span class="card-arrow" aria-hidden="true">→</span>
           </a>
 
-          <a class="dashboard-card dashboard-card-live" href="dashboards/model-performance.html">
-            <span class="card-index">02</span>
-            <div><span class="status-pill status-live">Available</span><h3>Model performance</h3><p>Chronological validation, held-out metrics, candidate progression, and error profiles.</p></div>
-            <span class="card-arrow" aria-hidden="true">→</span>
-          </a>
-          <a class="dashboard-card dashboard-card-live" href="dashboards/sensor-selection.html">
-            <span class="card-index">03</span>
-            <div><span class="status-pill status-live">Available</span><h3>Sensor selection and cost</h3><p>Sensor subsets, relative-cost scenarios, and Pareto-efficient configurations.</p></div>
-            <span class="card-arrow" aria-hidden="true">→</span>
-          </a>
-          <a class="dashboard-card dashboard-card-live" href="dashboards/robustness.html">
-            <span class="card-index">04</span>
-            <div><span class="status-pill status-live">Available</span><h3>Robustness</h3><p>Missing data, noise, sensor loss, stuck readings, and drift.</p></div>
-            <span class="card-arrow" aria-hidden="true">→</span>
-          </a>
           <a class="dashboard-card dashboard-card-live" href="dashboards/fault-mitigation.html">
             <span class="card-index">05</span>
             <div><span class="status-pill status-live">Available</span><h3>Fault mitigation</h3><p>Fallback selection, detector routing, and fault-aware training.</p></div>
-            <span class="card-arrow" aria-hidden="true">→</span>
-          </a>
-          <a class="dashboard-card dashboard-card-live" href="dashboards/decision-explainability.html">
-            <span class="card-index">06</span>
-            <div><span class="status-pill status-live">Available</span><h3>Decision and explainability</h3><p>Threshold costs, calibration, coefficients, and transition errors.</p></div>
             <span class="card-arrow" aria-hidden="true">→</span>
           </a>
         </div>

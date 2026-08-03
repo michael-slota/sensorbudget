@@ -1,5 +1,14 @@
 # Light-health detector and routing results
 
+## Executive summary
+
+- Training-selected causal rules detect explicit missingness and above-range
+  Light readings, but plausible stuck-dark and positive-bias faults are missed.
+- Detector routing reaches mean F1 of `0.970` on Test 1 and `0.974` on Test 2
+  across clean and episodic cases.
+- False alarms sometimes invoke the weaker fallback, so detector quality must
+  be judged by downstream occupancy performance rather than recall alone.
+
 > **Project status:** This report records the causal-detector step of Phase 5.
 > The planned fault-aware-training comparison is complete; see the
 > [fault-aware report](fault_aware_results.md) and consolidated
