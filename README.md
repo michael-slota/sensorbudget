@@ -68,6 +68,13 @@ indicator model retains Test 1 F1 but reduces pristine Test 2 F1 from 0.980 to
 0.942; detector routing remains stronger across the tested cases. See the
 [fault-aware results](reports/fault_aware_results.md).
 
+Phase 6 selects a reference operating threshold of 0.86 under an explicit
+equal-error-cost validation objective. Its validation advantage does not
+generalize reliably: the default 0.5 threshold has lower equal-cost error on
+both held-out periods, especially Test 2. Calibration, coefficient, local
+contribution, and transition-error results are documented in the
+[decision and explainability report](reports/decision_explainability_results.md).
+
 ### Headline visualization
 
 ![Validation performance versus illustrative sensor cost](images/performance_vs_sensor_cost.png)
@@ -253,6 +260,12 @@ Train and evaluate fault-aware models with training-only augmentation:
 python -m sensorbudget.robustness.fault_aware
 ```
 
+Select validation-only operating thresholds and generate Phase 6 explanations:
+
+```powershell
+python -m sensorbudget.modeling.decision_explainability
+```
+
 ## Working principles
 
 - Preserve temporal ordering during validation.
@@ -266,10 +279,10 @@ python -m sensorbudget.robustness.fault_aware
 ## Current status
 
 The project scaffold, EDA, validated data pipeline, leakage-safe baseline
-comparison, complete sensor ablation, cost-sensitivity analysis, and Phase 5
-reliability experiments are implemented. Fault injection, oracle and causal
-routing, and fault-aware retraining are complete; no final sensor
-recommendation has been made. See the
+comparison, complete sensor ablation, cost-sensitivity analysis, Phase 5
+reliability experiments, and Phase 6 decision and explainability analysis are
+implemented. No unconditional deployment or final sensor recommendation has
+been made. See the
 [roadmap](docs/roadmap.md), [sensor-budget results](reports/sensor_budget_results.md),
 the [robustness results](reports/robustness_results.md), and the
 [fallback results](reports/fallback_mitigation_results.md). Interactive
@@ -281,6 +294,8 @@ The causal routing analysis is in
 [`notebooks/06_fault_detection_and_routing.ipynb`](notebooks/06_fault_detection_and_routing.ipynb).
 The fault-aware comparison and reliability conclusion are in
 [`notebooks/07_fault_aware_training.ipynb`](notebooks/07_fault_aware_training.ipynb).
+The operating-threshold, calibration, explanation, and transition analysis is
+in [`notebooks/08_decision_explainability.ipynb`](notebooks/08_decision_explainability.ipynb).
 
 ## License
 

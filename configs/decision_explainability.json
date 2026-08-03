@@ -1,0 +1,33 @@
+{
+  "feature_set": "temperature__light__co2",
+  "cv_splits": 5,
+  "random_seed": 42,
+  "threshold_start": 0.01,
+  "threshold_stop": 0.99,
+  "threshold_step": 0.01,
+  "calibration_bins": 10,
+  "representative_rows_per_outcome": 3,
+  "operating_scenario": "equal_cost",
+  "cost_scenarios": {
+    "equal_cost": {
+      "label": "Equal error cost",
+      "false_positive_cost": 1.0,
+      "false_negative_cost": 1.0,
+      "interpretation": "A false occupied and false unoccupied decision have equal assumed consequence."
+    },
+    "comfort_focused": {
+      "label": "Comfort-focused",
+      "false_positive_cost": 1.0,
+      "false_negative_cost": 5.0,
+      "interpretation": "Missing genuine occupancy is assumed five times as costly as responding to an empty room."
+    },
+    "energy_focused": {
+      "label": "Energy-focused",
+      "false_positive_cost": 5.0,
+      "false_negative_cost": 1.0,
+      "interpretation": "Responding to an empty room is assumed five times as costly as temporarily missing occupancy."
+    }
+  },
+  "selection_rule": "For each cost scenario, minimize total assumed error cost per 1000 out-of-fold chronological validation rows. Break ties with higher F1, then the threshold closest to 0.5. Test 1 and Test 2 never influence threshold selection.",
+  "calibration_note": "Calibration is diagnosed with equal-width reliability bins, Brier score, and expected calibration error. No recalibration is fitted because a leakage-safe nested calibration comparison is outside this phase."
+}

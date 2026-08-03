@@ -195,6 +195,10 @@ routing.
 
 **Suggested duration:** 2–3 days
 
+**Status:** Complete. Error-cost scenarios, validation-only threshold
+selection, calibration diagnostics, global and local logistic explanations,
+and occupancy-transition error analysis are reproducible and documented.
+
 Tasks:
 
 - Define costs for false occupied and false unoccupied decisions.
@@ -210,6 +214,10 @@ Deliverables:
 - calibration plot;
 - global and local explanations;
 - documented operating point.
+
+Implemented in `src/sensorbudget/modeling/decision_explainability.py`,
+`notebooks/08_decision_explainability.ipynb`, and
+`reports/decision_explainability_results.md`.
 
 Exit criterion: the selected threshold is justified by an explicit operational
 objective rather than the default value of 0.5.
