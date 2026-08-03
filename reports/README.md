@@ -13,6 +13,8 @@ Reports:
   evaluation
 - `fallback_mitigation_results.md` — Light-independent fallback selection and
   oracle-routing evaluation
+- `fault_detection_results.md` — causal Light-health detection, false alarms,
+  missed faults, and realistic routing
 
 Planned reports:
 

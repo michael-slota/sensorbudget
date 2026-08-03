@@ -13,7 +13,9 @@ Notebook sequence:
    analysis
 5. `05_fallback_mitigation.ipynb` — Light-independent fallback and oracle
    routing analysis
-6. `06_explainability.ipynb` — planned decision and explanation layer
+6. `06_fault_detection_and_routing.ipynb` — causal Light-health detection and
+   realistic fallback routing
+7. `07_explainability.ipynb` — planned decision and explanation layer
 
 Move reusable parsing, feature, plotting, and evaluation functions into
 `src/sensorbudget/`. Clear large cell outputs before committing unless the

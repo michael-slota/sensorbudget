@@ -154,10 +154,10 @@ deployment configuration.
 
 **Suggested duration:** 3–5 days
 
-**Status:** In progress. The reproducible fault-injection comparison and
-Light-independent oracle-fallback mitigation are complete. The immediate next
-step is a training-validated Light-health detector and realistic routing
-evaluation. Fault-aware retraining and the reliability conclusion follow.
+**Status:** In progress. The reproducible fault-injection comparison,
+Light-independent oracle fallback, and training-validated causal Light-health
+detector are complete. Fault-aware retraining and the reliability conclusion
+remain.
 
 Simulate:
 
@@ -180,8 +180,9 @@ Deliverables:
 - oracle-gated mitigation analysis (complete);
 - `notebooks/04_robustness.ipynb` (complete);
 - `notebooks/05_fallback_mitigation.ipynb` (complete);
-- Light-health detector and non-oracle routing evaluation;
-- false-alarm and missed-fault analysis;
+- Light-health detector and non-oracle routing evaluation (complete);
+- false-alarm and missed-fault analysis (complete);
+- `notebooks/06_fault_detection_and_routing.ipynb` (complete);
 - fault-aware retraining comparison;
 - reliability recommendation.
 

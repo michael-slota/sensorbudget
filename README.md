@@ -56,6 +56,12 @@ and 0.540 on Test 2. The period-to-period gap and harmful switching during mild
 drift show that a real fault detector and routing rule are still required. See
 the [fallback mitigation report](reports/fallback_mitigation_results.md).
 
+A subsequent causal Light-health experiment replaces perfect oracle knowledge
+with training-selected missing, stuck, range, and abrupt-change rules. It
+detects missing and extreme-high readings immediately, but cannot safely
+distinguish a sensor stuck at darkness from normal unoccupied darkness. See the
+[fault-detection report](reports/fault_detection_results.md).
+
 ### Headline visualization
 
 ![Validation performance versus illustrative sensor cost](images/performance_vs_sensor_cost.png)
@@ -228,6 +234,13 @@ simulated Light faults:
 python -m sensorbudget.robustness.fallback
 ```
 
+Tune the causal Light-health detector on chronological training folds and
+evaluate realistic held-out routing:
+
+```powershell
+python -m sensorbudget.robustness.fault_detection
+```
+
 ## Working principles
 
 - Preserve temporal ordering during validation.
@@ -242,9 +255,9 @@ python -m sensorbudget.robustness.fallback
 
 The project scaffold, EDA, validated data pipeline, leakage-safe baseline
 comparison, complete sensor ablation, cost-sensitivity analysis, and initial
-fault-injection evaluation are implemented. The first oracle-fallback
-mitigation is also complete; real fault detection and further mitigation work
-remain, and no final sensor recommendation has been made. See the
+fault-injection evaluation are implemented. Oracle and causal fallback-routing
+experiments are also complete; fault-aware retraining and the final reliability
+conclusion remain, and no final sensor recommendation has been made. See the
 [roadmap](docs/roadmap.md), [sensor-budget results](reports/sensor_budget_results.md),
 the [robustness results](reports/robustness_results.md), and the
 [fallback results](reports/fallback_mitigation_results.md). Interactive
@@ -252,6 +265,8 @@ analyses are presented in
 [`notebooks/03_sensor_budget_analysis.ipynb`](notebooks/03_sensor_budget_analysis.ipynb)
 [`notebooks/04_robustness.ipynb`](notebooks/04_robustness.ipynb), and
 [`notebooks/05_fallback_mitigation.ipynb`](notebooks/05_fallback_mitigation.ipynb).
+The causal routing analysis is in
+[`notebooks/06_fault_detection_and_routing.ipynb`](notebooks/06_fault_detection_and_routing.ipynb).
 
 ## License
 

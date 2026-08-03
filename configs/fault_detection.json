@@ -1,0 +1,33 @@
+{
+  "primary_feature_set": "temperature__light__co2",
+  "fallback_feature_set": "temperature__co2",
+  "heldout_splits": ["test_1", "test_2"],
+  "cv_splits": 5,
+  "random_seed": 42,
+  "fault_scenarios": [
+    "missing",
+    "stuck_current",
+    "stuck_low",
+    "stuck_high",
+    "out_of_range_high",
+    "linear_bias_positive",
+    "linear_bias_negative"
+  ],
+  "selection_episode_lengths": [15, 30, 60],
+  "selection_repeats": 2,
+  "heldout_episode_lengths": [15, 60],
+  "heldout_repeats": 2,
+  "stuck_windows": [5, 10, 20],
+  "stuck_tolerances_lux": [0.0, 1.0, 5.0],
+  "range_quantile_pairs": [
+    {"low": 0.0, "high": 1.0},
+    {"low": 0.001, "high": 0.999}
+  ],
+  "abrupt_change_quantiles": [0.99, 1.0],
+  "max_cv_false_positive_rate": 0.05,
+  "stuck_reference_quantiles": {"low": 0.05, "high": 0.95},
+  "linear_bias_final_std": 1.0,
+  "out_of_range_std_multiplier": 1.0,
+  "selection_rule": "Among candidates with a mean chronological-validation false-positive rate no greater than 5%, maximize mean fault-detection F1 across equally weighted simulated scenarios; break ties with lower false-positive rate and shorter detection delay.",
+  "scope_note": "The detector uses only current and past Light readings. Occupied-dark and unoccupied-lit counterfactuals are excluded because they are policy or behavior changes, not observable sensor-health labels."
+}
