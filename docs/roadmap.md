@@ -154,10 +154,10 @@ deployment configuration.
 
 **Suggested duration:** 3–5 days
 
-**Status:** In progress. The reproducible fault-injection comparison,
-Light-independent oracle fallback, and training-validated causal Light-health
-detector are complete. Fault-aware retraining and the reliability conclusion
-remain.
+**Status:** Complete. The reproducible fault-injection comparison,
+Light-independent oracle fallback, training-validated causal Light-health
+detector, fault-aware retraining comparison, and reliability conclusion are
+implemented and documented.
 
 Simulate:
 
@@ -183,8 +183,9 @@ Deliverables:
 - Light-health detector and non-oracle routing evaluation (complete);
 - false-alarm and missed-fault analysis (complete);
 - `notebooks/06_fault_detection_and_routing.ipynb` (complete);
-- fault-aware retraining comparison;
-- reliability recommendation.
+- fault-aware retraining comparison (complete);
+- `notebooks/07_fault_aware_training.ipynb` (complete);
+- comparative reliability conclusion (complete).
 
 Exit criterion: the candidate system has documented behavior under every
 defined sensor fault, including the effect of imperfect fault detection and

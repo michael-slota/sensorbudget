@@ -62,6 +62,12 @@ detects missing and extreme-high readings immediately, but cannot safely
 distinguish a sensor stuck at darkness from normal unoccupied darkness. See the
 [fault-detection report](reports/fault_detection_results.md).
 
+Fault-aware retraining then compares 1%, 5%, and 10% training-only Light-fault
+augmentation, with and without an explicit missingness indicator. The selected
+indicator model retains Test 1 F1 but reduces pristine Test 2 F1 from 0.980 to
+0.942; detector routing remains stronger across the tested cases. See the
+[fault-aware results](reports/fault_aware_results.md).
+
 ### Headline visualization
 
 ![Validation performance versus illustrative sensor cost](images/performance_vs_sensor_cost.png)
@@ -241,6 +247,12 @@ evaluate realistic held-out routing:
 python -m sensorbudget.robustness.fault_detection
 ```
 
+Train and evaluate fault-aware models with training-only augmentation:
+
+```powershell
+python -m sensorbudget.robustness.fault_aware
+```
+
 ## Working principles
 
 - Preserve temporal ordering during validation.
@@ -254,10 +266,10 @@ python -m sensorbudget.robustness.fault_detection
 ## Current status
 
 The project scaffold, EDA, validated data pipeline, leakage-safe baseline
-comparison, complete sensor ablation, cost-sensitivity analysis, and initial
-fault-injection evaluation are implemented. Oracle and causal fallback-routing
-experiments are also complete; fault-aware retraining and the final reliability
-conclusion remain, and no final sensor recommendation has been made. See the
+comparison, complete sensor ablation, cost-sensitivity analysis, and Phase 5
+reliability experiments are implemented. Fault injection, oracle and causal
+routing, and fault-aware retraining are complete; no final sensor
+recommendation has been made. See the
 [roadmap](docs/roadmap.md), [sensor-budget results](reports/sensor_budget_results.md),
 the [robustness results](reports/robustness_results.md), and the
 [fallback results](reports/fallback_mitigation_results.md). Interactive
@@ -267,6 +279,8 @@ analyses are presented in
 [`notebooks/05_fallback_mitigation.ipynb`](notebooks/05_fallback_mitigation.ipynb).
 The causal routing analysis is in
 [`notebooks/06_fault_detection_and_routing.ipynb`](notebooks/06_fault_detection_and_routing.ipynb).
+The fault-aware comparison and reliability conclusion are in
+[`notebooks/07_fault_aware_training.ipynb`](notebooks/07_fault_aware_training.ipynb).
 
 ## License
 
